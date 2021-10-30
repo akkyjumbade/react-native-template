@@ -1,0 +1,34 @@
+{
+   "name": "juxtapp",
+   "version": "0.0.1",
+   "private": true,
+   "scripts": {
+      "android": "react-native run-android",
+      "ios": "react-native run-ios",
+      "start": "react-native start",
+      "test": "jest",
+      "lint": "eslint .",
+      "podinstall": "cd ios && pod install && cd ..",
+      "prettier": "prettier --write \"./src/**/*.{js,md,yml}\"",
+      "build:android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
+      "bundle:ios": "react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform ios --assets-dest ios",
+      "clean": "watchman watch-del-all && rm -rf package-lock.json && rm -rf node_modules && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && yarn install && say Project has been cleaned successfully"
+   },
+   "dependencies": {
+      "react": "17.0.2",
+      "react-native": "0.66.1"
+   },
+   "devDependencies": {
+      "@babel/core": "^7.12.9",
+      "@babel/runtime": "^7.12.5",
+      "@react-native-community/eslint-config": "^2.0.0",
+      "babel-jest": "^26.6.3",
+      "eslint": "7.14.0",
+      "jest": "^26.6.3",
+      "metro-react-native-babel-preset": "^0.66.2",
+      "react-test-renderer": "17.0.2"
+   },
+   "jest": {
+      "preset": "react-native"
+   }
+}
