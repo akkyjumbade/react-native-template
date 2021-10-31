@@ -9,7 +9,7 @@
       "test": "jest",
       "lint": "eslint .",
       "podinstall": "cd ios && pod install && cd ..",
-      "prettier": "prettier --write \"./src/**/*.{js,md,yml}\"",
+      "format": "prettier --write \"./src/**/*.{js,md,yml}\"",
       "build:android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
       "bundle:ios": "react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform ios --assets-dest ios",
       "clean": "watchman watch-del-all && rm -rf package-lock.json && rm -rf node_modules && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && yarn install && say Project has been cleaned successfully"

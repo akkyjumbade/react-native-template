@@ -20,5 +20,6 @@
    "redux-persist": "^6.0.0",
    "redux-thunk": "^2.3.0",
    "formik": "^2.2.9",
-   "styled-components": "^5.3.3"
+   "styled-components": "^5.3.3",
+   "lodash": "^4.17.21"
 }
