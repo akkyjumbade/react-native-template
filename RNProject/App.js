@@ -5,8 +5,9 @@ import { QueryClientProvider } from "react-query";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { ThemeProvider } from "styled-components";
+import Bootstrap from "./src/bootstrap";
 import store, { persistor } from "./src/store";
-import { theme } from "./src/style";
+import theme from "./src/style/theme";
 import { queryClient } from "./src/utils/http";
 
 const App = () => {
@@ -16,7 +17,7 @@ const App = () => {
             <PersistGate persistor={persistor} loading={null} >
                <ThemeProvider theme={theme}>
                   <SafeAreaProvider>
-                     <Text>Hello world</Text>
+                     <Bootstrap />
                   </SafeAreaProvider>
                </ThemeProvider>
             </PersistGate>

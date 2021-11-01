@@ -19,7 +19,7 @@ export const auth_login_action = token => {
             key: '@token',
             data: token,
          })
-         const { data } = await params.api.get(`/api/v1/me?token=${token}`)
+         const { data } = await params.api().get(`/api/v1/me?token=${token}`)
          console.info({ data, params })
          dispatch({
             type: T_AUTH_TOKEN,
@@ -51,7 +51,7 @@ export const auth_check_action = () => {
    return async (dispatch, getState, { api, cacheStore }) => {
       try {
          const token = await cacheStore.load({ key: '@token', })
-         const { data } = await api.get(`/api/v1/me?token=${token}`)
+         const { data } = await api().get(`/api/v1/me?token=${token}`)
          dispatch({
             type: T_AUTH_TOKEN,
             payload: token

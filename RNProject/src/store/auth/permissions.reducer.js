@@ -3,11 +3,13 @@ const defaultState = {
    token: null,
 }
 
-export const T_GRANT_PERMISSION = 'GRANT_PERMISSION'
+export const ACTION_TYPES = {
+   T_GRANT_PERMISSION: 'T_GRANT_PERMISSION',
+}
 
 export default function permissionsReducer(state = defaultState, action) {
    switch (action) {
-      case T_GRANT_PERMISSION:
+      case ACTION_TYPES.T_GRANT_PERMISSION:
          state = {
             ...state,
             granted: [...state.granted, action.payload]
