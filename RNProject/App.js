@@ -9,20 +9,23 @@ import Bootstrap from "./src/bootstrap";
 import store, { persistor } from "./src/store";
 import theme from "./src/style/theme";
 import { queryClient } from "./src/utils/http";
+import { NetworkProvider } from 'react-native-offline';
 
 const App = () => {
    return (
-      <QueryClientProvider client={queryClient}>
-         <Provider store={store}>
-            <PersistGate persistor={persistor} loading={null} >
-               <ThemeProvider theme={theme}>
-                  <SafeAreaProvider>
-                     <Bootstrap />
-                  </SafeAreaProvider>
-               </ThemeProvider>
-            </PersistGate>
-         </Provider>
-      </QueryClientProvider>
+      <NetworkProvider>
+         <QueryClientProvider client={queryClient}>
+            <Provider store={store}>
+               <PersistGate persistor={persistor} loading={null} >
+                  <ThemeProvider theme={theme}>
+                     <SafeAreaProvider>
+                        <Bootstrap />
+                     </SafeAreaProvider>
+                  </ThemeProvider>
+               </PersistGate>
+            </Provider>
+         </QueryClientProvider>
+      </NetworkProvider>
    )
 }
 

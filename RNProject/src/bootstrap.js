@@ -1,21 +1,32 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import OfflineScreen from './screens/OfflineScreen'
+import LoadingScreen from './screens/LoadingScreen'
 import useAppMount from './hooks/useAppMount'
-import { Text } from 'react-native'
+import ErrorBoundary from './components/errors/ErrorBoundary'
+import { useIsConnected } from 'react-native-offline';
+
 
 const Bootstrap = (props) => {
-   // const isOnline = useIsConnected()
-   const { status, mode } = useAppMount()
+   const isOnline = useIsConnected()
+   const { status, } = useAppMount()
 
+   if (status === 'LOADING' || status === 'INIT') {
+      // render loading screen
+      return (
+         <ErrorBoundary>
+            <LoadingScreen />
+         </ErrorBoundary>
+      )
+   }
    return (
-      <Fragment>
-         {mode === 'online' ? (
+      <ErrorBoundary>
+         {isOnline === 'online' ? (
             <OfflineScreen />
          ) : (
             <OfflineScreen />
          )}
-      </Fragment>
+      </ErrorBoundary>
    )
 }
 
