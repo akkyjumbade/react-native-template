@@ -1,0 +1,16 @@
+export default {
+   textColor: 'darkslategray',
+   gray: 'gray',
+   black: 'black',
+   dark: 'black',
+   label: '#f1f1f1',
+   primary: 'blue',
+   secondary: 'gray',
+   success: 'gren',
+   warning: 'yellow',
+   danger: 'red',
+   light: '#f1f1f1',
+   white: 'white',
+   default: 'white',
+   info: 'skyblue',
+}
