@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { actionTypes } from "../store/options/options.reducer"
 import http from "../utils/http"
 
@@ -17,6 +17,7 @@ const download_assets_async = params => {
 export default function useAppMount() {
    const [ status, setStatus, ] = useState('INIT')
    const [ mode, setMode, ] = useState('offline')
+   const auth = useSelector(state => state.auth)
    const dispatch = useDispatch()
 
    function setOfflineMode() {
@@ -46,6 +47,7 @@ export default function useAppMount() {
    return {
       status,
       mode,
+      isLoggedin: auth.token,
       setOfflineMode
    }
 }

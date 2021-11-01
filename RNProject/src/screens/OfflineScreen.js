@@ -2,12 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Text, View } from 'react-native'
 import Page from '../components/layouts/Page'
+import { useSelector } from 'react-redux'
+import useTranslation from '../hooks/useTranslation'
 
 const OfflineScreen = (props) => {
-   //
+   const auth = useSelector(state => state.auth)
+   const __ = useTranslation()
    return (
       <Page>
-         <Text>Offline</Text>
+         <Text>{__('welcome_note')}</Text>
+         <Text>{JSON.stringify({ auth })}</Text>
       </Page>
    )
 }

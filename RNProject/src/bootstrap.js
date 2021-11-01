@@ -5,7 +5,7 @@ import LoadingScreen from './screens/LoadingScreen'
 import useAppMount from './hooks/useAppMount'
 import ErrorBoundary from './components/errors/ErrorBoundary'
 import { useIsConnected } from 'react-native-offline';
-
+import './i18n'
 
 const Bootstrap = (props) => {
    const isOnline = useIsConnected()
