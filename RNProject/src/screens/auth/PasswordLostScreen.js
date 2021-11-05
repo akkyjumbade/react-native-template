@@ -5,7 +5,7 @@ import Page from '../../components/layouts/Page'
 import { useSelector } from 'react-redux'
 import useTranslation from '../../hooks/useTranslation'
 
-const RegisterScreen = (props) => {
+const PasswordLostScreen = (props) => {
    const auth = useSelector(state => state.auth)
    const __ = useTranslation()
    return (
@@ -16,12 +16,12 @@ const RegisterScreen = (props) => {
    )
 }
 
-RegisterScreen.propTypes = {
+PasswordLostScreen.propTypes = {
    // prop: PropTypes.string
 }
 
-RegisterScreen.defaultProps = {
+PasswordLostScreen.defaultProps = {
    type: 'text'
 }
 
-export default RegisterScreen
+export default PasswordLostScreen

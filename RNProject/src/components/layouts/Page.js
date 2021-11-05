@@ -7,18 +7,17 @@ const StyledPage = styled.View`
    flex: 1;
    background-color: white;
 `
-export default function Page(props) {
-   const { scroll = false, } = props
+export default function Page({ scroll = false, children, ...props }) {
    return (
       <StyledPage {...props}>
          <SafeAreaView>
             {scroll ? (
                <ScrollView>
-                  {props.children}
+                  {children}
                </ScrollView>
             ) : (
                <Fragment>
-                  {props.children}
+                  {children}
                </Fragment>
             )}
          </SafeAreaView>

@@ -10,7 +10,7 @@ const OfflineScreen = (props) => {
    const __ = useTranslation()
    return (
       <Page>
-         <Text>{__('welcome_note')}</Text>
+         <Text>{__('welcome_note sdsdf')}</Text>
          <Text>{JSON.stringify({ auth })}</Text>
       </Page>
    )

@@ -5,7 +5,7 @@ import Page from '../../components/layouts/Page'
 import { useSelector } from 'react-redux'
 import useTranslation from '../../hooks/useTranslation'
 
-const RegisterScreen = (props) => {
+const EditProfileScreen = (props) => {
    const auth = useSelector(state => state.auth)
    const __ = useTranslation()
    return (
@@ -16,12 +16,12 @@ const RegisterScreen = (props) => {
    )
 }
 
-RegisterScreen.propTypes = {
+EditProfileScreen.propTypes = {
    // prop: PropTypes.string
 }
 
-RegisterScreen.defaultProps = {
+EditProfileScreen.defaultProps = {
    type: 'text'
 }
 
-export default RegisterScreen
+export default EditProfileScreen

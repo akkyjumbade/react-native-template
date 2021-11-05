@@ -1,27 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Text, View } from 'react-native'
-import Page from '../../components/layouts/Page'
+import Page from '../components/layouts/Page'
 import { useSelector } from 'react-redux'
-import useTranslation from '../../hooks/useTranslation'
+import useTranslation from '../hooks/useTranslation'
 
-const RegisterScreen = (props) => {
+const DocumentScreen = (props) => {
    const auth = useSelector(state => state.auth)
    const __ = useTranslation()
    return (
       <Page>
-         <Text>{__('welcome_note')}</Text>
+         <Text>{__('DocumentScreen')}</Text>
          <Text>{JSON.stringify({ auth })}</Text>
       </Page>
    )
 }
 
-RegisterScreen.propTypes = {
+DocumentScreen.propTypes = {
    // prop: PropTypes.string
 }
 
-RegisterScreen.defaultProps = {
+DocumentScreen.defaultProps = {
    type: 'text'
 }
 
-export default RegisterScreen
+export default DocumentScreen

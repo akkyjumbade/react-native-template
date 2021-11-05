@@ -6,6 +6,8 @@ import useAppMount from './hooks/useAppMount'
 import ErrorBoundary from './components/errors/ErrorBoundary'
 import { useIsConnected } from 'react-native-offline';
 import './i18n'
+import Navigation from './navigation'
+import { Text } from 'react-native'
 
 const Bootstrap = (props) => {
    const isOnline = useIsConnected()
@@ -21,8 +23,8 @@ const Bootstrap = (props) => {
    }
    return (
       <ErrorBoundary>
-         {isOnline === 'online' ? (
-            <OfflineScreen />
+         {isOnline ? (
+            <Navigation />
          ) : (
             <OfflineScreen />
          )}
