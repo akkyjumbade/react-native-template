@@ -12,7 +12,8 @@
       "format": "prettier --write \"./src/**/*.{js,md,yml}\"",
       "build:android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
       "bundle:ios": "react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform ios --assets-dest ios",
-      "clean": "watchman watch-del-all && rm -rf package-lock.json && rm -rf node_modules && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && yarn install && say Project has been cleaned successfully"
+      "clean:npm": "watchman watch-del-all && rm -rf package-lock.json && rm -rf node_modules && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && npm install --force && say Project has been cleaned successfully",
+      "clean": "watchman watch-del-all && rm -rf yarn.lock && rm -rf node_modules && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && yarn install && say Project has been cleaned successfully"
    },
    "dependencies": {
       "@react-native-async-storage/async-storage": "^1.15.9",
@@ -34,11 +35,13 @@
       "react-native-safe-area-context": "^3.3.2",
       "react-native-screens": "^3.9.0",
       "react-native-storage": "^1.0.1",
+      "react-native-vector-icons": "^9.0.0",
       "react-query": "^3.31.0",
       "react-redux": "^7.2.6",
       "redux": "^4.1.2",
       "redux-persist": "^6.0.0",
       "redux-thunk": "^2.4.0",
+      "rn-kit": "file:packages/rn-kit",
       "styled-components": "^5.3.3"
    },
    "devDependencies": {

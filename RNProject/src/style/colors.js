@@ -1,5 +1,5 @@
 export default {
-   textColor: 'darkslategray',
+   textColor: 'black',
    gray: 'gray',
    black: 'black',
    dark: 'black',

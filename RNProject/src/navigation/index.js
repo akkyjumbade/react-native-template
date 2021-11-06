@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 import 'react-native-gesture-handler';
 import { createStackNavigator, } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -20,27 +20,11 @@ import PasswordChangeScreen from '../screens/auth/PasswordChangeScreen';
 import VerifyOTPScreen from '../screens/auth/VerifyOTPScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import ExploreScreen from '../screens/ExploreScreen';
+import { horizontalAnimation } from './navigationTransitions';
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
 
-const horizontalAnimation = {
-   gestureDirection: 'horizontal',
-   cardStyleInterpolator: ({ current, layouts }) => {
-      return {
-         cardStyle: {
-            transform: [
-               {
-                  translateX: current.progress.interpolate({
-                     inputRange: [0, 1],
-                     outputRange: [layouts.screen.width, 0],
-                  }),
-               },
-            ],
-         },
-      };
-   },
-};
 const screenOptions = theme => ({
    // headerShown: false,
    headerTitleStyle: {
@@ -97,14 +81,15 @@ const Navigation = () => {
                {!user ? (
                   <Stack.Screen headerMode="none" options={{ title: '', headerShown: false, }} name="Auth" component={AuthStack} />
                ) : (
-                  <Stack.Screen headerMode="none" name="Home" options={{ headerTransparent: true, title: '',}} component={FirstScreen} />
+                  <Fragment>
+                     <Stack.Screen headerMode="none" name="Home" options={{ headerTransparent: true, title: '',}} component={FirstScreen} />
+                     <Stack.Screen options={{ title: '' }} name="Home" component={WelcomeScreen} />
+                     <Stack.Screen options={{ title: '',  }} name="PasswordLost" component={PasswordLostScreen} />
+                     <Stack.Screen options={{ title: '',  }} name="PasswordChange" component={PasswordChangeScreen} />
+                     <Stack.Screen options={{ title: '',  }} name="VerifyPhone" component={VerifyOTPScreen} />
+                     <Stack.Screen options={{ title: '',  }} name="EditProfile" component={EditProfileScreen} />
+                  </Fragment>
                )}
-
-               <Stack.Screen options={{ title: '' }} name="Home" component={WelcomeScreen} />
-               <Stack.Screen options={{ title: '',  }} name="PasswordLost" component={PasswordLostScreen} />
-               <Stack.Screen options={{ title: '',  }} name="PasswordChange" component={PasswordChangeScreen} />
-               <Stack.Screen options={{ title: '',  }} name="VerifyPhone" component={VerifyOTPScreen} />
-               <Stack.Screen options={{ title: '',  }} name="EditProfile" component={EditProfileScreen} />
             </Stack.Navigator>
          </Host>
       </NavigationContainer>

@@ -7,7 +7,7 @@ const StyledPage = styled.View`
    flex: 1;
    background-color: ${props => props.theme.colors.primary} ;
 `
-export default function Page({ scroll = false, children, ...props }) {
+export default function Page({ fullScreen = false, scroll = false, children, ...props }) {
    return (
       <StyledPage {...props}>
          <SafeAreaView>
@@ -28,4 +28,5 @@ export default function Page({ scroll = false, children, ...props }) {
 
 Page.propTypes = {
    scroll: PropTypes.bool,
+   fullScreen: PropTypes.bool,
 }

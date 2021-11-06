@@ -10,7 +10,7 @@ const EditProfileScreen = (props) => {
    const __ = useTranslation()
    return (
       <Page>
-         <Text>{__('welcome_note')}</Text>
+         <Text>{__('editProfile')}</Text>
          <Text>{JSON.stringify({ auth })}</Text>
       </Page>
    )

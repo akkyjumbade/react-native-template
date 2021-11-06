@@ -9,7 +9,7 @@ const VerifyOTPScreen = (props) => {
    const auth = useSelector(state => state.auth)
    const __ = useTranslation()
    return (
-      <Page>
+      <Page >
          <Text>{__('welcome_note')}</Text>
          <Text>{JSON.stringify({ auth })}</Text>
       </Page>
