@@ -42,11 +42,14 @@ const horizontalAnimation = {
    },
 };
 const screenOptions = theme => ({
+   // headerShown: false,
    headerTitleStyle: {
       // fontFamily: fonts.primary,
    },
+
    headerStyle: {
-      // backgroundColor: theme.colors?.primary,
+      backgroundColor: 'transparent',
+
       shadowColor: '#fff',
       elevation: 0,
    },
@@ -68,9 +71,9 @@ const AuthStack = props => {
       <Stack.Navigator screenOptions={screenOptions(theme)}>
          <Stack.Screen options={{ title: 'Login', headerTitleStyle: { alignSelf: 'center' } }} name="Signin" component={LoginScreen} />
          <Stack.Screen options={{ title: 'Register', }} name="Signup" component={RegisterScreen} />
-         <Stack.Screen options={{ title: '', }} name="PasswordLost" component={PasswordLostScreen} />
-         <Stack.Screen options={{ tteaitle: '',  }} name="PasswordChange" component={PasswordChangeScreen} />
-         <Stack.Screen options={{ title: '',  }} name="VerifyPhone" component={VerifyOTPScreen} />
+         <Stack.Screen options={{ title: 'Password Lost?', }} name="PasswordLost" component={PasswordLostScreen} />
+         <Stack.Screen options={{ tteaitle: 'Change Password',  }} name="PasswordChange" component={PasswordChangeScreen} />
+         <Stack.Screen options={{ title: 'Verify Phone',  }} name="VerifyPhone" component={VerifyOTPScreen} />
       </Stack.Navigator>
    )
 }

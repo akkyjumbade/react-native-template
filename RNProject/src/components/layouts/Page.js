@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 const StyledPage = styled.View`
    flex: 1;
-   background-color: white;
+   background-color: ${props => props.theme.colors.primary} ;
 `
 export default function Page({ scroll = false, children, ...props }) {
    return (

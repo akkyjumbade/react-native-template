@@ -7,28 +7,37 @@ import ErrorBoundary from './components/errors/ErrorBoundary'
 import { useIsConnected } from 'react-native-offline';
 import './i18n'
 import Navigation from './navigation'
-import { Text } from 'react-native'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { ThemeProvider } from 'styled-components'
+import { useToggleTheme } from './providers/ThemeProvider'
+
 
 const Bootstrap = (props) => {
    const isOnline = useIsConnected()
    const { status, } = useAppMount()
-
-   if (status === 'LOADING' || status === 'INIT') {
-      // render loading screen
-      return (
-         <ErrorBoundary>
-            <LoadingScreen />
-         </ErrorBoundary>
-      )
+   const { theme } = useToggleTheme()
+   console.log({ theme })
+   if (!theme) {
+      return null
    }
    return (
-      <ErrorBoundary>
-         {isOnline ? (
-            <Navigation />
-         ) : (
-            <OfflineScreen />
-         )}
-      </ErrorBoundary>
+      <SafeAreaProvider>
+         <ErrorBoundary>
+            <ThemeProvider theme={theme}>
+               {status === 'LOADING' || status === 'INIT' ? (
+                  <LoadingScreen />
+               ) : (
+                  <Fragment>
+                     {isOnline ? (
+                        <Navigation />
+                     ) : (
+                        <OfflineScreen />
+                     )}
+                  </Fragment>
+               )}
+            </ThemeProvider>
+         </ErrorBoundary>
+      </SafeAreaProvider>
    )
 }
 
