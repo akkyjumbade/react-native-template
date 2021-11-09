@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styled from "styled-components/native";
-import { Text, } from 'uikit';
+import Text from '../atoms/Text';
 
 const StyledFormControl = styled.View`
    font-size: 16px;
@@ -11,11 +11,9 @@ const ErrorMessage = styled.Text`
    font-size: 13px;
    color: ${({ theme }) => theme.colors.danger};
    margin-bottom: 10px;
-   font-family: ${({ theme }) => theme.font_serif};
 `
 
-export default function FormControl(props) {
-   const { error, label, children, caption } = props
+const FormControl = ({ error, label, children, caption, ...props}) => {
    return (
       <StyledFormControl >
          {label && <Text size={14}>{label}</Text>}
@@ -35,3 +33,6 @@ export default function FormControl(props) {
       </StyledFormControl>
    )
 }
+
+
+export default memo(FormControl)

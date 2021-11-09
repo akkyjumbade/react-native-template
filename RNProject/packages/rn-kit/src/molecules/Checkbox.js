@@ -1,11 +1,10 @@
-import { CheckBox as BaseCheckBox } from 'native-base'
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components/native'
 import { Text } from '../..'
 // import Label from '../atoms/'
-const StyledCheckbox = styled(BaseCheckBox)`
+const StyledCheckbox = styled(View)`
    margin-left: -15px;
    margin-right: 20px;
 `
@@ -20,7 +19,6 @@ const styles = StyleSheet.create({
 export default function Checkbox(props) {
    const [ checked, setChecked, ] = useState(false)
    function onToggle() {
-      alert('dsdf')
       setChecked(prev => !prev)
       props.onChange && props.onChange(checked)
    }
@@ -41,6 +39,5 @@ export default function Checkbox(props) {
 }
 
 Checkbox.propTypes = {
-   ...BaseCheckBox.propTypes,
    label: PropTypes.string,
 }

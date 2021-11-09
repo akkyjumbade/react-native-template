@@ -1,9 +1,5 @@
-export { default as Text } from './src/atoms/Text'
-export { default as Flex } from './src/atoms/Flex'
-export { default as Grid } from './src/atoms/Grid'
-export { default as List } from './src/atoms/List'
-export { default as Loading } from './src/atoms/Loading'
-export { default as Picture } from './src/atoms/Picture'
-export { default as Icon } from './src/atoms/Icon'
-export { default as Button } from './src/atoms/Button'
-export { default as Badge } from './src/atoms/Badge'
+import Text from './src/atoms/Text'
+
+export default {
+   Text
+}

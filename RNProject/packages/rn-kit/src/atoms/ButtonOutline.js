@@ -1,4 +1,4 @@
-import React, {  } from 'react'
+import React from 'react'
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 import styled from "styled-components/native";
 import PropTypes from 'prop-types'
@@ -9,7 +9,7 @@ const buttonSizes = {
    lg: '60px',
 }
 
-const StyledButton = styled.TouchableOpacity`
+const StyledButtonOutline = styled.TouchableOpacity`
    padding: 0 20px;
    border-radius: 10px;
    display: flex;
@@ -22,8 +22,8 @@ const StyledButton = styled.TouchableOpacity`
    color: black;
 `
 
-const Button = (props) => {
-   const { title, onPress, intent  } = props
+const ButtonOutline = (props) => {
+   const { title, onPress, leftIcon, rightIcon, disabled, loading, intent  } = props
 
 
    let labelStyle = {
@@ -37,51 +37,51 @@ const Button = (props) => {
       }
    }
    return (
-      <StyledButton intent={intent} {...props} onPress={onPress} >
+      <StyledButtonOutline intent={intent} {...props} onPress={onPress} >
 
          <Text style={{ ...labelStyle, }}>{title}</Text>
          <Text style={{ ...labelStyle, }}>{JSON.stringify({ intent })}</Text>
 
-      </StyledButton>
+      </StyledButtonOutline>
    )
 }
 
 // size variants
-Button.SIZE_MD = 'md'
-Button.SIZE_SM = 'sm'
-Button.SIZE_LG = 'lg'
-Button.SIZE_FULL = 'full'
+ButtonOutline.SIZE_MD = 'md'
+ButtonOutline.SIZE_SM = 'sm'
+ButtonOutline.SIZE_LG = 'lg'
+ButtonOutline.SIZE_FULL = 'full'
 
 // intent variants
-Button.INTENT_PRIMARY = 'primary'
-Button.INTENT_DEFAULT = 'default'
-Button.INTENT_INFO = 'info'
-Button.INTENT_DANGER = 'danger'
-Button.INTENT_SUCCESS = 'success'
+ButtonOutline.INTENT_PRIMARY = 'primary'
+ButtonOutline.INTENT_DEFAULT = 'default'
+ButtonOutline.INTENT_INFO = 'info'
+ButtonOutline.INTENT_DANGER = 'danger'
+ButtonOutline.INTENT_SUCCESS = 'success'
 
-Button.propTypes = {
+ButtonOutline.propTypes = {
    label: PropTypes.string,
    title: PropTypes.string,
    leftIcon: PropTypes.string,
    rightIcon: PropTypes.string,
    size: PropTypes.oneOf([
-      Button.SIZE_LG, Button.SIZE_MD, Button.SIZE_SM
+      ButtonOutline.SIZE_LG, ButtonOutline.SIZE_MD, ButtonOutline.SIZE_SM
    ]),
    intent: PropTypes.oneOf([
-      Button.INTENT_PRIMARY,
-      Button.INTENT_DEFAULT,
-      Button.INTENT_INFO,
-      Button.INTENT_DANGER,
-      Button.INTENT_SUCCESS,
+      ButtonOutline.INTENT_PRIMARY,
+      ButtonOutline.INTENT_DEFAULT,
+      ButtonOutline.INTENT_INFO,
+      ButtonOutline.INTENT_DANGER,
+      ButtonOutline.INTENT_SUCCESS,
    ]),
    onPress: PropTypes.func,
    disabled: PropTypes.bool,
    loading: PropTypes.bool,
 }
 
-Button.defaultProps = {
-   intent: Button.INTENT_DEFAULT,
-   size: Button.SIZE_MD,
+ButtonOutline.defaultProps = {
+   intent: ButtonOutline.INTENT_DEFAULT,
+   size: ButtonOutline.SIZE_MD,
 }
 
-export default Button
+export default ButtonOutline

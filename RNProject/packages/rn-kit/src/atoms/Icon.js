@@ -10,30 +10,10 @@ import Badge from './Badge'
 import { Text } from '../..'
 
 const Icon = (props) => {
-   const { name, lib = 'fa' } = props
+   const { name, } = props
    return (
       <TouchableOpacity style={{ position: 'relative', }}>
-         {Boolean(props.badge) && (
-            <Badge >
-               {props.badge}
-            </Badge >
-         )}
-         {/* icon repo */}
-         {lib === 'fa' && (
-            <LibIcon name={name} {...props} />
-         )}
-         {lib === 'feather' && (
-            <FeatherIcon name={name} {...props} />
-         )}
-         {lib === 'ant' && (
-            <AntIcon name={name} {...props} />
-         )}
-         {lib === 'FontAwesome5' && (
-            <FontAwesome5 name={name} {...props} />
-         )}
-         {lib === 'fontisto' && (
-            <Fontisto name={name} {...props} />
-         )}
+         <FeatherIcon name={name} {...props} />
       </TouchableOpacity>
    )
 }
@@ -46,4 +26,8 @@ Icon.propTypes = {
    name: PropTypes.string,
    size: PropTypes.number,
    badge: PropTypes.number,
+}
+
+Icon.defaultProps = {
+
 }

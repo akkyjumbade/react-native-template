@@ -1,6 +1,6 @@
-import React, {  } from 'react'
+import React, { useContext, useMemo } from 'react'
 // import { TouchableOpacity } from 'react-native-gesture-handler';
-import styled from "styled-components/native";
+import styled, { css, } from "styled-components/native";
 import PropTypes from 'prop-types'
 import Text from './Text';
 
@@ -18,13 +18,12 @@ const StyledButton = styled.TouchableOpacity`
    justify-content: center;
    overflow: hidden;
    height: ${props => buttonSizes[props.size]};
-   background-color: ${({ intent, theme }) => theme.colors[intent]};
-   color: black;
+   background-color: ${({ intent, theme }) => theme.colors.primary};
+   color: white;
 `
 
-const Button = (props) => {
-   const { title, onPress, intent  } = props
-
+const ButtonPrimary = (props) => {
+   const { title, onPress, leftIcon, rightIcon, disabled, loading, intent  } = props
 
    let labelStyle = {
       backgroundColor: 'transparent',
@@ -47,41 +46,41 @@ const Button = (props) => {
 }
 
 // size variants
-Button.SIZE_MD = 'md'
-Button.SIZE_SM = 'sm'
-Button.SIZE_LG = 'lg'
-Button.SIZE_FULL = 'full'
+ButtonPrimary.SIZE_MD = 'md'
+ButtonPrimary.SIZE_SM = 'sm'
+ButtonPrimary.SIZE_LG = 'lg'
+ButtonPrimary.SIZE_FULL = 'full'
 
 // intent variants
-Button.INTENT_PRIMARY = 'primary'
-Button.INTENT_DEFAULT = 'default'
-Button.INTENT_INFO = 'info'
-Button.INTENT_DANGER = 'danger'
-Button.INTENT_SUCCESS = 'success'
+ButtonPrimary.INTENT_PRIMARY = 'primary'
+ButtonPrimary.INTENT_DEFAULT = 'default'
+ButtonPrimary.INTENT_INFO = 'info'
+ButtonPrimary.INTENT_DANGER = 'danger'
+ButtonPrimary.INTENT_SUCCESS = 'success'
 
-Button.propTypes = {
+ButtonPrimary.propTypes = {
    label: PropTypes.string,
    title: PropTypes.string,
    leftIcon: PropTypes.string,
    rightIcon: PropTypes.string,
    size: PropTypes.oneOf([
-      Button.SIZE_LG, Button.SIZE_MD, Button.SIZE_SM
+      ButtonPrimary.SIZE_LG, ButtonPrimary.SIZE_MD, ButtonPrimary.SIZE_SM
    ]),
    intent: PropTypes.oneOf([
-      Button.INTENT_PRIMARY,
-      Button.INTENT_DEFAULT,
-      Button.INTENT_INFO,
-      Button.INTENT_DANGER,
-      Button.INTENT_SUCCESS,
+      ButtonPrimary.INTENT_PRIMARY,
+      ButtonPrimary.INTENT_DEFAULT,
+      ButtonPrimary.INTENT_INFO,
+      ButtonPrimary.INTENT_DANGER,
+      ButtonPrimary.INTENT_SUCCESS,
    ]),
    onPress: PropTypes.func,
    disabled: PropTypes.bool,
    loading: PropTypes.bool,
 }
 
-Button.defaultProps = {
-   intent: Button.INTENT_DEFAULT,
-   size: Button.SIZE_MD,
+ButtonPrimary.defaultProps = {
+   intent: ButtonPrimary.INTENT_DEFAULT,
+   size: ButtonPrimary.SIZE_MD,
 }
 
-export default Button
+export default ButtonPrimary
