@@ -14,6 +14,7 @@
 		1FE74B67FBB7349A9B0EB84B /* libPods-RNProject-RNProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7226B4407BB626FE139989 /* libPods-RNProject-RNProjectTests.a */; };
 		657F6F69316E273668D257A2 /* libPods-RNProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1D43EEFF8671E76947B982 /* libPods-RNProject.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		B5A38B05273FC22800182B19 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A38B04273FC22800182B19 /* BootSplash.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		A0581BD64DF26AFFF6FF9AE9 /* Pods-RNProject-RNProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNProject-RNProjectTests.release.xcconfig"; path = "Target Support Files/Pods-RNProject-RNProjectTests/Pods-RNProject-RNProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		A1B9988F800AAE826F53D8F9 /* Pods-RNProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNProject.debug.xcconfig"; path = "Target Support Files/Pods-RNProject/Pods-RNProject.debug.xcconfig"; sourceTree = "<group>"; };
 		AC7226B4407BB626FE139989 /* libPods-RNProject-RNProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNProject-RNProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5A38B04273FC22800182B19 /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = RNProject/BootSplash.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 		13B07FAE1A68108700A75B9A /* RNProject */ = {
 			isa = PBXGroup;
 			children = (
+				B5A38B04273FC22800182B19 /* BootSplash.storyboard */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -114,7 +117,6 @@
 				12074D6D32D3CD90136558ED /* Pods-RNProject-RNProjectTests.debug.xcconfig */,
 				A0581BD64DF26AFFF6FF9AE9 /* Pods-RNProject-RNProjectTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -243,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A38B05273FC22800182B19 /* BootSplash.storyboard in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);

@@ -1,4 +1,4 @@
-import React, { Fragment, memo } from 'react'
+import React, {Fragment, memo, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import OfflineScreen from './screens/OfflineScreen'
 import LoadingScreen from './screens/LoadingScreen'
@@ -9,11 +9,17 @@ import './i18n'
 import Navigation from './navigation'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { StatusBar } from 'react-native'
+import RNBootSplash from "react-native-bootsplash";
+import {useIsConnected} from "react-native-offline";
 
 
 const Bootstrap = () => {
-   const isOnline = true
+   const isOnline = useIsConnected()
    const status = 'READY'
+
+   useEffect(() => {
+      RNBootSplash.hide({ fade: true });
+   }, [])
 
    return (
       <SafeAreaProvider >
