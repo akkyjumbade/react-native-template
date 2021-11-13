@@ -6,9 +6,11 @@ import React from 'react'
 import ErrorBoundary from '../errors/ErrorBoundary'
 import { useFormik } from 'formik'
 import ButtonPrimary from '@ui/atoms/ButtonPrimary'
+import {useNavigation} from "@react-navigation/core";
 
 
 const LoginForm = ({ initialValues = {}, }) => {
+   const nav = useNavigation()
    const onSubmit = async (values) => {
       // return await http()
    }
@@ -24,7 +26,7 @@ const LoginForm = ({ initialValues = {}, }) => {
          <FormControl label={'Password'} >
             <TextInput values={formik.values.password} onChangeText={formik.handleChange('password')} placeholder={'password'}  />
          </FormControl>
-         <ButtonPrimary title={'LOGIN'} />
+         <ButtonPrimary title={'LOGIN'} onPress={() => nav.navigate('Home')} />
       </ErrorBoundary>
    )
 }

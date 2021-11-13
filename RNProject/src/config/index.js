@@ -4,6 +4,8 @@ export const SERVER_URL = '';
 export const SCREEN = Dimensions.get('window')
 export const GCP_API_KEY = 'AIzaSyCl4VjPXxr36NWtyK1u1lnSK6zI3PhxrVE'
 
+export const LOGO_PATH = '../../assets/logo/logo@1080x1080.png'
+
 export const FIREBASE_CONFIG = {
    apiKey: "AIzaSyD6BddktNOzTwsXH7KFA03tKObmtqjM9Gc",
    // authDomain: "project-id.firebaseapp.com",

@@ -9,20 +9,20 @@ const StyledPage = styled(SafeAreaView)`
    height: 100%;
 
    background-color: ${props => {
-   if (props.bg) {
-      return props.bg
-   }
-   return props.theme.colors.light
-}};
+      if (props.bg) {
+         return props.bg
+      }
+      return props.theme.colors.white
+   }};
    ${props => {
-   if(props.centerMode) {
-      return css`
+      if(props.centerMode) {
+         return css`
             justify-content: center;
             flex-direction: column;
             background-color: white;
-         `
-   }
-}}
+            `
+      }
+   }}
 
 `
 export default function Page({ fullScreen = false, scroll = false, children, ...props }) {

@@ -9,20 +9,24 @@ import Page from "@ui/layouts/Page";
 import { View } from "react-native";
 import ButtonOutline from "@ui/atoms/ButtonOutline";
 import Container from "@ui/layouts/Container";
+import {useNavigation} from "@react-navigation/core";
+import Logo from "@/components/Logo";
 
 const LoginScreen = (props) => {
    const __ = useTranslation()
+   const nav = useNavigation()
 
    return (
       <Page scroll={false} centerMode={true}>
          <Container>
             <ErrorBoundary>
+               <Logo />
                <LoginForm  />
                <View style={{ marginTop: 30, }}>
                   <View style={{ marginBottom: 15, }}>
                      <Text >New Customer? Register here</Text>
                   </View>
-                  <ButtonOutline title={__('Register')} />
+                  <ButtonOutline title={__('Register')} onPress={() => nav.navigate('Home')} />
                </View>
             </ErrorBoundary>
          </Container>

@@ -52,7 +52,7 @@ const AuthStack = props => {
          <Stack.Screen options={{ title: 'Login', headerTitleStyle: { alignSelf: 'center' } }} name="Signin" component={LoginScreen} />
          <Stack.Screen options={{ title: 'Register', }} name="Signup" component={RegisterScreen} />
          <Stack.Screen options={{ title: 'Password Lost?', }} name="PasswordLost" component={PasswordLostScreen} />
-         <Stack.Screen options={{ tteaitle: 'Change Password',  }} name="PasswordChange" component={PasswordChangeScreen} />
+         <Stack.Screen options={{ title: 'Change Password',  }} name="PasswordChange" component={PasswordChangeScreen} />
          <Stack.Screen options={{ title: 'Verify Phone',  }} name="VerifyPhone" component={VerifyOTPScreen} />
       </Stack.Navigator>
    )
@@ -68,16 +68,6 @@ const Navigation = ({ user, loading }) => {
       user: user
    })
 
-   if (loading) {
-      return (
-         <NavigationContainer linking={linkingConfig}>
-            <Host>
-               <Stack.Screen headerMode="none" options={{ title: '', headerShown: false, }} name="Auth" component={AuthStack} />
-            </Host>
-         </NavigationContainer>
-      );
-   }
-
    return (
       <NavigationContainer linking={linkingConfig}>
          <Host>
@@ -85,15 +75,14 @@ const Navigation = ({ user, loading }) => {
                {!user ? (
                   <Stack.Screen headerMode="none" options={{ title: '', headerShown: false, }} name="Auth" component={AuthStack} />
                ) : (
-                  <Fragment>
-                     <Stack.Screen headerMode="none" name="Home" options={{ headerTransparent: true, title: '',}} component={FirstScreen} />
-                     <Stack.Screen options={{ title: '' }} name="Home" component={WelcomeScreen} />
-                     <Stack.Screen options={{ title: '',  }} name="PasswordLost" component={PasswordLostScreen} />
-                     <Stack.Screen options={{ title: '',  }} name="PasswordChange" component={PasswordChangeScreen} />
-                     <Stack.Screen options={{ title: '',  }} name="VerifyPhone" component={VerifyOTPScreen} />
-                     <Stack.Screen options={{ title: '',  }} name="EditProfile" component={EditProfileScreen} />
-                  </Fragment>
+                  null
                )}
+               <Stack.Screen headerMode="none" name="Home" options={{ headerTransparent: true, title: '',}} component={FirstScreen} />
+               <Stack.Screen name="Welcome" options={{ title: '' }} component={WelcomeScreen} />
+               <Stack.Screen name="PasswordLost" options={{ title: '' }} component={PasswordLostScreen} />
+               <Stack.Screen name="PasswordChange" options={{ title: '' }} component={PasswordChangeScreen} />
+               <Stack.Screen name="VerifyPhone" options={{ title: '' }} component={VerifyOTPScreen} />
+               <Stack.Screen name="EditProfile" options={{ title: '' }} component={EditProfileScreen} />
             </Stack.Navigator>
          </Host>
       </NavigationContainer>

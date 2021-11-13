@@ -1,16 +1,16 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 import { useSelector } from 'react-redux'
 import useTranslation from '../hooks/useTranslation'
 import Page from "@ui/layouts/Page";
+import Text from "@ui/atoms/Text";
 
 const WelcomeScreen = (props) => {
    const auth = useSelector(state => state.auth)
    const __ = useTranslation()
    return (
       <Page>
-         <Text style={{ color: 'red' }}>{__('WelcomeScrsf sdfeens d sfs sdf')}</Text>
-         <Text>{JSON.stringify({ auth })}</Text>
+         <Text style={{ color: 'red' }}>{__('Welcome')}</Text>
       </Page>
    )
 }
@@ -20,7 +20,7 @@ WelcomeScreen.propTypes = {
 }
 
 WelcomeScreen.defaultProps = {
-   type: 'text'
+
 }
 
 export default WelcomeScreen
