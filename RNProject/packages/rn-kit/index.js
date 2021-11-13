@@ -1,0 +1,6 @@
+export { default as Text } from './src/atoms/Text'
+export { default as Button } from './src/atoms/Button'
+export { default as ButtonOutline } from './src/atoms/ButtonOutline'
+export { default as ButtonPrimary } from './src/atoms/ButtonPrimary'
+export { default as Page } from './src/layouts/Page'
+export { default as Container } from './src/layouts/Container'

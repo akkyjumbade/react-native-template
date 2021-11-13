@@ -1,0 +1,23 @@
+{
+   "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+         "@/*": [
+            "./src/*"
+         ],
+         "@assets/*": [
+            "./assets/*"
+         ],
+         "@ui/*": [
+            "./packages/rn-kit/src/*"
+         ],
+         "@rn-kit/*": [
+            "./packages/rn-kit/src/*"
+         ],
+      }
+   },
+   "exclude": [
+      "node_modules",
+      "dist"
+   ]
+}

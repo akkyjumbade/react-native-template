@@ -1,0 +1,31 @@
+{
+   "presets": [
+      "module:metro-react-native-babel-preset"
+   ],
+   "plugins": [
+      [
+         "module-resolver",
+         {
+            "root": [
+               "./src"
+            ],
+            "extensions": [
+               ".ios.ts",
+               ".android.ts",
+               ".ts",
+               ".ios.tsx",
+               ".android.tsx",
+               ".jsx",
+               ".js",
+               ".json"
+            ],
+            "alias": {
+               "@ui": "./packages/rn-kit/src",
+               "@rn-kit": "./packages/rn-kit/src",
+               "@assets": "./assets",
+               "@": "./src"
+            }
+         }
+      ]
+   ]
+}

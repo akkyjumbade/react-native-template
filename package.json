@@ -6,6 +6,7 @@
    "author": "Akshay Jumbade <akkyjumbade@gmail.com>",
    "license": "MIT",
    "dependencies": {
+      "@react-navigation/native": "^6.0.6",
       "formik": "^2.2.9",
       "lodash": "^4.17.21",
       "react-native-gesture-handler": "^1.10.3",

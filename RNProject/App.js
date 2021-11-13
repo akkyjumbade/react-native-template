@@ -1,31 +1,26 @@
-import React from "react";
-import { Text } from "react-native";
+import React, { memo } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { QueryClientProvider } from "react-query";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import { ThemeProvider } from "styled-components";
 import Bootstrap from "./src/bootstrap";
-import store, { persistor } from "./src/store";
-import theme from "./src/style/theme";
 import { queryClient } from "./src/utils/http";
 import { NetworkProvider } from 'react-native-offline';
+import ThemeContextProvider from "@ui/provider/ThemeContextProvider";
+import { Provider } from "react-redux";
+import store from "@/store";
 
 const App = () => {
    return (
-      <NetworkProvider>
-         <QueryClientProvider client={queryClient}>
-            <Provider store={store}>
-               <PersistGate persistor={persistor} loading={null} >
-                  <ThemeProvider theme={theme}>
-                     <SafeAreaProvider>
-                        <Bootstrap />
-                     </SafeAreaProvider>
-                  </ThemeProvider>
-               </PersistGate>
-            </Provider>
-         </QueryClientProvider>
-      </NetworkProvider>
+      <React.StrictMode>
+         <NetworkProvider>
+            <QueryClientProvider client={queryClient}>
+               <Provider store={store}>
+                  <ThemeContextProvider>
+                     <Bootstrap />
+                  </ThemeContextProvider>
+               </Provider>
+            </QueryClientProvider>
+         </NetworkProvider>
+      </React.StrictMode>
    )
 }
 

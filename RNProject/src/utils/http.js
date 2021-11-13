@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { QueryClient } from 'react-query';
+import { QueryCache, QueryClient } from 'react-query';
 import { SERVER_URL } from '../config';
 
 export const baseURL = SERVER_URL
@@ -37,7 +37,11 @@ export const queryClient = new QueryClient({
       queries: {
          queryFn: defaultQueryFn
       }
-   }
+   },
+})
+
+export const queryCache = new QueryCache({
+
 })
 
 export default http
