@@ -7,5 +7,12 @@
    },
    "ios": {
       "bundleId": ""
+   },
+   "developer": {
+      "name": "",
+      "url": ""
+   },
+   "expo": {
+
    }
 }
