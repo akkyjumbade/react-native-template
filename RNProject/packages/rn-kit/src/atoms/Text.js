@@ -1,9 +1,14 @@
-import React, { Fragment } from 'react'
-import { Text as BaseText } from 'react-native';
+import React from 'react'
+import styled from 'styled-components/native'
 
-export default function Text({ children }) {
+const StyledText = styled.Text`
+
+`
+
+const Text = ({ children }) => {
    return (
-      <BaseText>{children}</BaseText>
+      <StyledText>{children}</StyledText>
    )
 }
 
+export default Text

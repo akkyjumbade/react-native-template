@@ -1,41 +1,35 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, memo } from 'react'
 import PropTypes from 'prop-types'
 import OfflineScreen from './screens/OfflineScreen'
 import LoadingScreen from './screens/LoadingScreen'
 import useAppMount from './hooks/useAppMount'
 import ErrorBoundary from './components/errors/ErrorBoundary'
-import { useIsConnected } from 'react-native-offline';
+// import { useIsConnected } from 'react-native-offline';
 import './i18n'
 import Navigation from './navigation'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import { ThemeProvider } from 'styled-components'
-import { useToggleTheme } from './providers/ThemeProvider'
+import { StatusBar } from 'react-native'
 
 
 const Bootstrap = (props) => {
-   const isOnline = useIsConnected()
-   const { status, } = useAppMount()
-   const { theme } = useToggleTheme()
-   console.log({ theme })
-   if (!theme) {
-      return null
-   }
+   const isOnline = true
+   const status = 'READY'
+
    return (
-      <SafeAreaProvider>
+      <SafeAreaProvider >
+         {/* <StatusBar translucent={true} /> */}
          <ErrorBoundary>
-            <ThemeProvider theme={theme}>
-               {status === 'LOADING' || status === 'INIT' ? (
-                  <LoadingScreen />
-               ) : (
-                  <Fragment>
-                     {isOnline ? (
-                        <Navigation />
-                     ) : (
-                        <OfflineScreen />
-                     )}
-                  </Fragment>
-               )}
-            </ThemeProvider>
+            {status === 'LOADING' || status === 'INIT' ? (
+               <LoadingScreen />
+            ) : (
+               <Fragment>
+                  {isOnline ? (
+                     <Navigation />
+                  ) : (
+                     <OfflineScreen />
+                  )}
+               </Fragment>
+            )}
          </ErrorBoundary>
       </SafeAreaProvider>
    )
@@ -49,4 +43,4 @@ Bootstrap.defaultProps = {
    type: 'text'
 }
 
-export default Bootstrap
+export default memo(Bootstrap)

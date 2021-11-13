@@ -1,10 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import { ThemeContext } from 'styled-components'
 import { Container, Text } from '../..'
+import { List_Item } from './List_Item'
 
-const List = props => {
-   const { title } = props
+const List = ({ title, children, ...props }) => {
    return (
       <View>
          {title && (
@@ -12,38 +11,14 @@ const List = props => {
                <Text size={16} weight="bold">{title}</Text>
             </Container>
          )}
-         {props.children}
-      </View>
-   )
-}
-
-export const List_Item = props => {
-   const { label, caption } = props
-   const { colors } = useContext(ThemeContext)
-
-   return (
-      <View style={styles.list_item_container}>
-         <View style={styles.list_item}>
-            <Container>
-               <Text size={15}>{label}</Text>
-               {props.children}
-               {props.right && props.right()}
-            </Container>
-         </View>
-         {caption && (
-            <Container>
-               <View style={{ marginTop: 6, marginBottom: 15 }}>
-                  <Text color={colors.gray}>{caption}</Text>
-               </View>
-            </Container>
-         )}
+         {children}
       </View>
    )
 }
 
 List.Item = List_Item
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
    list_item: {
       backgroundColor: 'white',
       paddingVertical: 8,

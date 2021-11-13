@@ -1,13 +1,14 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Text, View } from 'react-native'
-import Page from '../components/layouts/Page'
+import Page from '@/components/layouts/Page'
+import Text from '@rn-kit/atoms/Text'
+import ButtonPrimary from '@rn-kit/atoms/ButtonPrimary'
 
 const LoadingScreen = (props) => {
    //
    return (
       <Page>
          <Text>Loading...</Text>
+         <ButtonPrimary title={'Login'} />
       </Page>
    )
 }

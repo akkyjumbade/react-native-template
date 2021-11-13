@@ -1,21 +1,17 @@
-import React, { memo, useEffect, useRef } from 'react'
-import styled, { css } from 'styled-components/native'
-import PropTypes from 'prop-types'
-import { StyleSheet, TextInput as TextInputBase, View } from 'react-native'
-// import Icon from '../atoms/Icon'
+import React, { Fragment } from 'react'
+import styled from 'styled-components/native'
+import { TextInput as BaseTextInput } from 'react-native';
+
+const StyledTextInput = styled.TextInput`
+`
 
 
-function TextInput({ prepend, append, ...props }) {
+export default function TextInput({ ...props }) {
    return (
-      <TextInputBase {...props} />
+      <StyledTextInput {...props} />
    )
 }
 
-export default memo(TextInput)
-
 TextInput.propTypes = {
-   name: PropTypes.string,
-   type: PropTypes.oneOf([ 'email', 'tel', 'text', 'number', 'password' ]),
-   secureTextEntry: PropTypes.bool,
-   autocapitalize: PropTypes.bool,
+   ...BaseTextInput.propTypes
 }

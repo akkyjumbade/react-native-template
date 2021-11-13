@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react'
+import React, { Fragment, memo, useContext, useEffect, useState } from 'react'
 import 'react-native-gesture-handler';
 import { createStackNavigator, } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -62,22 +62,30 @@ const AuthStack = props => {
    )
 }
 
-const Navigation = () => {
-   const user = useSelector(state => state.auth.user)
-   const theme = useContext(ThemeContext)
+const Navigation = ({ user, loading }) => {
    const userAccountStatus = user?.status
 
-   const FirstScreen = userAccountStatus === 'active' ? ExploreScreen : WelcomeScreen
+   const FirstScreen = WelcomeScreen
    console.log({
       userAccountStatus,
       FirstScreen,
       user: user
    })
 
+   if (loading) {
+      return (
+         <NavigationContainer linking={linkingConfig}>
+            <Host>
+               <Stack.Screen headerMode="none" options={{ title: '', headerShown: false, }} name="Auth" component={AuthStack} />
+            </Host>
+         </NavigationContainer>
+      );
+   }
+
    return (
       <NavigationContainer linking={linkingConfig}>
          <Host>
-            <Stack.Navigator screenOptions={screenOptions(theme)}>
+            <Stack.Navigator >
                {!user ? (
                   <Stack.Screen headerMode="none" options={{ title: '', headerShown: false, }} name="Auth" component={AuthStack} />
                ) : (
@@ -96,4 +104,9 @@ const Navigation = () => {
    );
 }
 
-export default Navigation
+const mapStateToProps = (state) => ({
+   user: state.auth.user,
+   loading: false
+})
+
+export default connect(mapStateToProps)(Navigation)

@@ -1,14 +1,14 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, memo } from 'react'
 import { ThemeProvider } from 'styled-components'
 import theme from '../themes/theme'
 
 const ThemeContextProvider = ({ children, theme: providedTheme }) => {
    return (
-      <Fragment>
+      <React.StrictMode>
          <ThemeProvider theme={providedTheme}>
             {children}
          </ThemeProvider>
-      </Fragment>
+      </React.StrictMode>
    )
 }
 
@@ -16,4 +16,4 @@ ThemeContextProvider.defaultProps = {
    theme,
 }
 
-export default ThemeContextProvider
+export default memo(ThemeContextProvider)

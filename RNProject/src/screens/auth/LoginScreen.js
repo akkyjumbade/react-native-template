@@ -1,21 +1,20 @@
 import React from 'react'
-import Page from '../../components/layouts/Page'
+import Page from '@/components/layouts/Page'
 import { useSelector } from 'react-redux'
-import useTranslation from '../../hooks/useTranslation'
-import { Button, Text } from 'rn-kit'
-import ErrorBoundary from '../../components/errors/ErrorBoundary'
+import useTranslation from '@/hooks/useTranslation'
+import ErrorBoundary from '@/components/errors/ErrorBoundary'
+import LoginForm from '@/components/forms/LoginForm'
+import Text from '@ui/atoms/Text'
 
 const LoginScreen = (props) => {
-   const auth = useSelector(state => state.auth)
    const __ = useTranslation()
 
    return (
       <Page scroll={true}>
-         <Text>{__('login')}</Text>
+         <Text>{__('login form')}</Text>
          <ErrorBoundary>
-            <Button title={'Login'} />
+            <LoginForm  />
          </ErrorBoundary>
-         <Text>{JSON.stringify({ auth })}</Text>
       </Page>
    )
 }
