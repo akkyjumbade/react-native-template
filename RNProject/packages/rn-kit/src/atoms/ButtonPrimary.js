@@ -37,10 +37,7 @@ const ButtonPrimary = (props) => {
    }
    return (
       <StyledButton intent={intent} {...props} onPress={onPress} >
-
          <Text style={{ ...labelStyle, }}>{title}</Text>
-         <Text style={{ ...labelStyle, }}>{JSON.stringify({ intent })}</Text>
-
       </StyledButton>
    )
 }

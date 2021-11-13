@@ -1,8 +1,8 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import Page from '../components/layouts/Page'
 import { useSelector } from 'react-redux'
 import useTranslation from '../hooks/useTranslation'
+import Page from "@ui/layouts/Page";
 
 const WelcomeScreen = (props) => {
    const auth = useSelector(state => state.auth)

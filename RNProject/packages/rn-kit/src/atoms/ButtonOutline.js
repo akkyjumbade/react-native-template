@@ -38,10 +38,7 @@ const ButtonOutline = (props) => {
    }
    return (
       <StyledButtonOutline intent={intent} {...props} onPress={onPress} >
-
          <Text style={{ ...labelStyle, }}>{title}</Text>
-         <Text style={{ ...labelStyle, }}>{JSON.stringify({ intent })}</Text>
-
       </StyledButtonOutline>
    )
 }

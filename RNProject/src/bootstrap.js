@@ -11,7 +11,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { StatusBar } from 'react-native'
 
 
-const Bootstrap = (props) => {
+const Bootstrap = () => {
    const isOnline = true
    const status = 'READY'
 
@@ -36,11 +36,11 @@ const Bootstrap = (props) => {
 }
 
 Bootstrap.propTypes = {
-   // prop: PropTypes.string
+
 }
 
 Bootstrap.defaultProps = {
-   type: 'text'
+
 }
 
 export default memo(Bootstrap)

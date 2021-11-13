@@ -5,7 +5,7 @@ export default {
    dark: 'black',
    label: '#f1f1f1',
    primary: 'orange',
-   secondary: 'gray',
+   secondary: 'lightgray',
    success: 'gren',
    warning: 'yellow',
    danger: 'red',

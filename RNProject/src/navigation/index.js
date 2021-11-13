@@ -4,9 +4,6 @@ import { createStackNavigator, } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { connect, useSelector } from 'react-redux';
-import { colors } from '../style';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { fonts, } from '../style';
 
 import { ThemeContext } from 'styled-components/native';
 
@@ -19,7 +16,6 @@ import PasswordLostScreen from '../screens/auth/PasswordLostScreen';
 import PasswordChangeScreen from '../screens/auth/PasswordChangeScreen';
 import VerifyOTPScreen from '../screens/auth/VerifyOTPScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
-import ExploreScreen from '../screens/ExploreScreen';
 import { horizontalAnimation } from './navigationTransitions';
 
 const Stack = createStackNavigator();

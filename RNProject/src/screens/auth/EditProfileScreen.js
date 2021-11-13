@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Text, View } from 'react-native'
-import Page from '../../components/layouts/Page'
 import { useSelector } from 'react-redux'
 import useTranslation from '../../hooks/useTranslation'
+import Page from "@ui/layouts/Page";
 
 const EditProfileScreen = (props) => {
    const auth = useSelector(state => state.auth)
@@ -21,7 +21,7 @@ EditProfileScreen.propTypes = {
 }
 
 EditProfileScreen.defaultProps = {
-   type: 'text'
+
 }
 
 export default EditProfileScreen
