@@ -5,9 +5,9 @@ const StyledText = styled.Text`
 
 `
 
-const Text = ({ children }) => {
+const Text = ({ children, ...props }) => {
    return (
-      <StyledText>{children}</StyledText>
+      <StyledText {...props}>{children}</StyledText>
    )
 }
 

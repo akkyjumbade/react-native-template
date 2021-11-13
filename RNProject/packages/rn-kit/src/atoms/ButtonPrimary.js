@@ -1,6 +1,5 @@
-import React, { useContext, useMemo } from 'react'
-// import { TouchableOpacity } from 'react-native-gesture-handler';
-import styled, { css, } from "styled-components/native";
+import React from 'react'
+import styled from "styled-components/native";
 import PropTypes from 'prop-types'
 import Text from './Text';
 
@@ -18,16 +17,16 @@ const StyledButton = styled.TouchableOpacity`
    justify-content: center;
    overflow: hidden;
    height: ${props => buttonSizes[props.size]};
-   background-color: ${({ intent, theme }) => theme.colors.primary};
-   color: white;
+   background-color: ${({ theme }) => theme.colors.primary};
+   color: black;
 `
 
 const ButtonPrimary = (props) => {
-   const { title, onPress, leftIcon, rightIcon, disabled, loading, intent  } = props
+   const { title, onPress, intent  } = props
 
    let labelStyle = {
       backgroundColor: 'transparent',
-      color: 'white'
+      color: 'black'
    }
    if (props.size === 'lg') {
       labelStyle = {

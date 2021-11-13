@@ -1,5 +1,4 @@
 import React from 'react'
-// import { TouchableOpacity } from 'react-native-gesture-handler';
 import styled from "styled-components/native";
 import PropTypes from 'prop-types'
 import Text from './Text';
@@ -19,16 +18,16 @@ const StyledButtonOutline = styled.TouchableOpacity`
    overflow: hidden;
    height: ${props => buttonSizes[props.size]};
    background-color: ${({ intent, theme }) => theme.colors[intent]};
-   color: black;
+   color: white;
 `
 
 const ButtonOutline = (props) => {
-   const { title, onPress, leftIcon, rightIcon, disabled, loading, intent  } = props
+   const { title, onPress, intent  } = props
 
 
    let labelStyle = {
       backgroundColor: 'transparent',
-      color: 'white'
+      color: 'black'
    }
    if (props.size === 'lg') {
       labelStyle = {

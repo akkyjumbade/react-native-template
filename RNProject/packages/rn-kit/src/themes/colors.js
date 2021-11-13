@@ -11,6 +11,6 @@ export default {
    danger: 'red',
    light: '#f1f1f1',
    white: 'white',
-   default: 'gray',
+   default: 'lightgray',
    info: 'skyblue',
 }
