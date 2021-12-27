@@ -9,12 +9,12 @@ import { ThemeContext } from 'styled-components/native';
 
 import { Host } from 'react-native-portalize';
 import { linkingConfig } from '../config';
-import LoginScreen from '../screens/auth/LoginScreen';
-import RegisterScreen from '../screens/auth/RegisterScreen';
-import EditProfileScreen from '../screens/auth/EditProfileScreen';
-import PasswordLostScreen from '../screens/auth/PasswordLostScreen';
-import PasswordChangeScreen from '../screens/auth/PasswordChangeScreen';
-import VerifyOTPScreen from '../screens/auth/VerifyOTPScreen';
+import LoginScreen from '../screens/Auth/LoginScreen';
+import RegisterScreen from '../screens/Auth/RegisterScreen';
+import EditProfileScreen from '../screens/Auth/EditProfileScreen';
+import PasswordLostScreen from '../screens/Auth/PasswordLostScreen';
+import PasswordChangeScreen from '../screens/Auth/PasswordChangeScreen';
+import VerifyOTPScreen from '../screens/Auth/VerifyOTPScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import { horizontalAnimation } from './navigationTransitions';
 
