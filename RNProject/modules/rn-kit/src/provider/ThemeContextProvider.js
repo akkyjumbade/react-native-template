@@ -2,10 +2,14 @@ import React, { memo } from 'react'
 import { ThemeProvider } from 'styled-components'
 import theme from '../themes/theme'
 import {StatusBar} from "react-native";
+import { extendTheme, NativeBaseProvider } from 'native-base';
 
 const ThemeContextProvider = ({ children, theme: providedTheme }) => {
+   if (!providedTheme) {
+      return null
+   }
    return (
-      <React.StrictMode>
+      <React.Fragment>
          <StatusBar
             animated={true}
             backgroundColor={providedTheme.colors?.primary ?? 'black'}
@@ -14,9 +18,11 @@ const ThemeContextProvider = ({ children, theme: providedTheme }) => {
             showHideTransition={'fade'}
          />
          <ThemeProvider theme={providedTheme}>
-            {children}
+            <NativeBaseProvider theme={extendTheme(providedTheme)}>
+               {children}
+            </NativeBaseProvider>
          </ThemeProvider>
-      </React.StrictMode>
+      </React.Fragment>
    )
 }
 
