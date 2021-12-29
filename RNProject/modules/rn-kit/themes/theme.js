@@ -4,7 +4,7 @@ import colors from "./colors"
 export default {
    colors: {
       ...colors,
-      primary: '#fef100'
+      primary: '#1C6DD0'
    },
    fontConfig: {
       Inter: {
