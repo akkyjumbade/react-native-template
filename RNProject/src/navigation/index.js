@@ -45,9 +45,9 @@ const AuthStack = ({ theme }) => {
       <Stack.Navigator screenOptions={screenOptions(theme)}>
          <Stack.Screen options={{ headerShown: false, title: 'Register', }} name="register" component={RegisterScreen} />
          <Stack.Screen options={{ title: '',  }} name="login" component={LoginScreen} />
-         <Stack.Screen options={{ title: 'Password Lost?', }} name="password_request" component={PasswordLostScreen} />
-         <Stack.Screen options={{ title: 'Change Password',  }} name="password_reset" component={PasswordChangeScreen} />
-         <Stack.Screen options={{ title: 'Verify Phone',  }} name="verification" component={VerifyOTPScreen} />
+         <Stack.Screen options={{ title: '', }} name="password_request" component={PasswordLostScreen} />
+         <Stack.Screen options={{ title: '',  }} name="password_reset" component={PasswordChangeScreen} />
+         <Stack.Screen options={{ title: '',  }} name="verification" component={VerifyOTPScreen} />
       </Stack.Navigator>
    )
 }

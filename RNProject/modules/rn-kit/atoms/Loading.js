@@ -1,6 +1,6 @@
 import React from 'react'
 import { ActivityIndicator, View } from 'react-native';
-import { ThemeContext, useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 import styled from "styled-components/native";
 import { Text } from '..';
 
@@ -13,7 +13,7 @@ const StyledLoading = styled.View`
 `
 
 export const Spinner = () => {
-   const { colors } = useTheme(ThemeContext)
+   const { colors } = useTheme()
    return (
       <View style={{ width: '100%', alignItems: 'center', alignSelf: 'center' }}>
          <ActivityIndicator size={25} color={colors.dark} />
@@ -22,7 +22,7 @@ export const Spinner = () => {
 }
 
 export default function LoadingSpinner(props) {
-   const { colors } = useTheme(ThemeContext)
+   const { colors } = useTheme()
    return (
       <StyledLoading >
          <View style={{ width: '100%', flex: 1, alignItems: 'center', }}>

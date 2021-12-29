@@ -8,7 +8,7 @@ export default function EmailInput({ prepend, append, ...props }) {
       <Fragment>
          <TextInput {...props}
             keyboardType={'email-address'}
-            placeholder={'example@domain.com'}
+            placeholder={props.placeholder}
             autoCapitalize={'none'} />
       </Fragment>
    )
@@ -17,4 +17,8 @@ export default function EmailInput({ prepend, append, ...props }) {
 
 EmailInput.propTypes = {
    name: PropTypes.string,
+}
+
+EmailInput.defaultProps = {
+   placeholder: 'example@domain.com'
 }
