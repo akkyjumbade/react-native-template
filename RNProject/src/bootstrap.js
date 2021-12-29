@@ -11,6 +11,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { StatusBar } from 'react-native'
 import RNBootSplash from "react-native-bootsplash";
 import {useIsConnected} from "react-native-offline";
+import { registerPushNotificationChannels } from './services/PushNotificationService'
+import { notificationChannels } from './config'
 
 
 const Bootstrap = () => {
@@ -22,6 +24,7 @@ const Bootstrap = () => {
          setStatus('READY')
       }
       RNBootSplash.hide({ fade: true });
+      registerPushNotificationChannels(notificationChannels)
    }, [ isOnline ])
 
    return (
