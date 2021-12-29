@@ -9,7 +9,7 @@
       android:icon="@mipmap/ic_launcher"
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
-      android:theme="@style/AppTheme">
+      android:theme="@style/BootTheme">
 
        <activity
           android:name=".MainActivity"
@@ -20,17 +20,10 @@
           android:launchMode="singleTask">
           <!-- ⚠️ add android:exported="true" and android:launchMode="singleTask" above -->
           <!-- remove the <intent-filter> from .MainActivity -->
-       </activity>
-
-       <!-- add the following lines (use the theme you created at step 2) -->
-       <activity
-          android:name="com.zoontek.rnbootsplash.RNBootSplashActivity"
-          android:theme="@style/BootTheme"
-          android:launchMode="singleTask">
           <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-             <category android:name="android.intent.category.LAUNCHER" />
-          </intent-filter>
+               <action android:name="android.intent.action.MAIN" />
+               <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
        </activity>
 
 

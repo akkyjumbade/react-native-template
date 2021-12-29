@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import {connect, useDispatch, useSelector} from 'react-redux';
 import Page from '@modules/rn-kit/layouts/Page';
-import { Avatar, Center, Divider, HStack, List, useToast, VStack } from 'native-base';
+import { Avatar, Box, Center, Divider, HStack, List, useToast, VStack } from 'native-base';
 import Text from '@modules/rn-kit/atoms/Text';
 import Icon from '@modules/rn-kit/atoms/Icon';
 import { useNavigation } from '@react-navigation/core';
@@ -104,7 +104,28 @@ const BillingScreen = ({ user, isAuthenticated }) => {
                            <icons.chevronRightIcon width={24} height={24} />
                         </View>
                      </HStack>
+
                   </List.Item>
+                  <Fragment>
+                     <VStack space={3}>
+                        <Box borderWidth={1}  shadow={'2'}>
+                           <Text>Address, </Text>
+                           <Text>Address, </Text>
+                        </Box>
+                        <Box borderWidth={1}  shadow={'2'}>
+                           <Text>Address, </Text>
+                           <Text>Address, </Text>
+                        </Box>
+                        <Box borderWidth={1}  shadow={'2'}>
+                           <Text>Address, </Text>
+                           <Text>Address, </Text>
+                        </Box>
+                        <Box borderWidth={1}  shadow={'2'}>
+                           <Text>Address, </Text>
+                           <Text>Address, </Text>
+                        </Box>
+                     </VStack>
+                  </Fragment>
                </List>
             </View>
          </Center>

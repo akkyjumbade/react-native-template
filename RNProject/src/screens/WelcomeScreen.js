@@ -5,7 +5,6 @@ import useTranslation from '../hooks/useTranslation'
 import Page from "@modules/rn-kit/layouts/Page";
 import Text from "@modules/rn-kit/atoms/Text";
 import { Center, HStack, Image } from 'native-base';
-import AppIntroSlider from 'react-native-app-intro-slider';
 import PagerView from 'react-native-pager-view';
 
 import Button from '@modules/rn-kit/atoms/Button';
