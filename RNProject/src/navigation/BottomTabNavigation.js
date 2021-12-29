@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
-import { Text, Icon } from 'uikit'
-import { colors } from '../style/style'
 import styled from 'styled-components/native'
 import { connect } from 'react-redux'
-import {themes} from "../style";
 import useTranslation from '../hooks/useTranslation'
+import { useTheme } from 'styled-components'
+import { Text } from '@modules/rn-kit'
+import colors from '@modules/rn-kit/themes/colors'
 
 const StyledBottomView = styled.View`
    background: ${({ theme }) => theme.colors.light};
@@ -48,9 +47,12 @@ const TabBarItem = ({ onClick, icon, label, activeTab, nav }) => {
    }
    return (
    <StyledTabItem active={activeTab} style={styles.tabItem} onPress={onClick} >
-      <Icon lib={'FontAwesome5'} size={24} onPress={onClick} {...activeIconColor} style={[styles.tabIcon, ]} name={icon} />
-      {activeTab && (
-         <Text size={13}>{label}</Text>
+      {/* <Icon lib={'FontAwesome5'} size={24} onPress={onClick} {...activeIconColor} style={[styles.tabIcon, ]} name={icon} /> */}
+      {/* {activeTab && (
+         <Text >{label}</Text>
+      )} */}
+      {1 && (
+         <Text >{label}</Text>
       )}
    </StyledTabItem>
    )
@@ -58,7 +60,7 @@ const TabBarItem = ({ onClick, icon, label, activeTab, nav }) => {
 const BottomTabNavigation = ({ selectedTheme, state, descriptors, navigation, ...props }) => {
    const [ activeTab,  setActiveTab ] = useState(null)
    const __ = useTranslation()
-   const theme = themes[selectedTheme]
+   const theme = useTheme()
    useEffect(() => {
       // console.log({ state })
       setActiveTab(state.index)
@@ -70,10 +72,10 @@ const BottomTabNavigation = ({ selectedTheme, state, descriptors, navigation, ..
    }
    return (
       <StyledBottomView style={[styles.tabBar, { backgroundColor: theme?.colors.primary }]}>
-         <TabBarItem activeTab={activeTab === 0} icon={'home'} label={__('home_menu')} onClick={_ => navigate('Welcome')} nav={navigation} />
-         <TabBarItem activeTab={activeTab === 1} icon={'search'} label={__('market_menu')} onClick={_ => navigate('Explore')} nav={navigation} />
-         <TabBarItem activeTab={activeTab === 2} icon={'list'} label={__('dashboard_menu')} onClick={_ => navigate('Dashboard')} nav={navigation} />
-         <TabBarItem activeTab={activeTab === 3} icon={'user-circle'} label={__('profile_menu')} onClick={_ => navigate('MyProfile')} nav={navigation} />
+         <TabBarItem activeTab={activeTab === 0} icon={'home'} label={__('home_menu')} onClick={_ => navigate('home')} nav={navigation} />
+         <TabBarItem activeTab={activeTab === 1} icon={'search'} label={__('market_menu')} onClick={_ => navigate('explore')} nav={navigation} />
+         <TabBarItem activeTab={activeTab === 2} icon={'list'} label={__('dashboard_menu')} onClick={_ => navigate('dashboard')} nav={navigation} />
+         <TabBarItem activeTab={activeTab === 3} icon={'user-circle'} label={__('profile_menu')} onClick={_ => navigate('profile')} nav={navigation} />
       </StyledBottomView>
    )
 }

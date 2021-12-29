@@ -21,11 +21,15 @@ import { fonts } from '@modules/rn-kit/themes';
 import { useTheme } from 'styled-components';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import HomeScreen from '@/screens/Home';
+import ExploreScreen from '@/screens/Explore';
+import BottomTabNavigation from './BottomTabNavigation';
+import ProfileScreen from '@/screens/User/ProfileScreen';
+import NotificationsScreen from '@/screens/User/NotificationsScreen';
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
 
-const screenOptions = theme => ({
+const screenOptions = (theme = null) => ({
    // headerShown: false,
    headerTitleStyle: {
       fontFamily: fonts.heading,
@@ -39,6 +43,13 @@ const screenOptions = theme => ({
    headerTintColor: '#4c5561',
    ...horizontalAnimation,
 })
+const tabNavOptions = () => {
+   return screenOptions()
+}
+
+const tabBarOptions = {
+
+}
 
 const AuthStack = ({ theme }) => {
    return (
@@ -52,6 +63,42 @@ const AuthStack = ({ theme }) => {
    )
 }
 
+const HomeStack = props => {
+   const theme = useTheme()
+   return (
+      <Tabs.Navigator
+         tabBar={_props => <BottomTabNavigation {..._props} />}
+         screenOptions={tabNavOptions()}
+      >
+         <Tabs.Screen
+            options={{title: '', headerLeft: () => null}}
+            name="home"
+            component={HomeScreen}
+         />
+         <Tabs.Screen
+            options={{title: ''}}
+            name="explore"
+            component={ExploreScreen}
+         />
+         <Tabs.Screen
+            options={{title: ''}}
+            name="dashboard"
+            component={HomeScreen}
+         />
+         <Tabs.Screen
+            options={{title: 'Notifications'}}
+            name="notifications"
+            component={NotificationsScreen}
+         />
+         {/* <Tabs.Screen
+            options={{title: 'My Profile'}}
+            name="profile"
+            component={ProfileScreen}
+         /> */}
+      </Tabs.Navigator>
+   );
+};
+
 const Navigation = ({ user, loading }) => {
    const theme = useTheme()
    const LaunchScreen = WelcomeScreen
@@ -60,29 +107,35 @@ const Navigation = ({ user, loading }) => {
       // return false
    }, [ user ])
 
+   if (!isAuthenticated) {
+      <SafeAreaProvider>
+         <NavigationContainer linking={linkingConfig}>
+            <Host>
+               <Stack.Navigator screenOptions={screenOptions(theme)}>
+                  <Stack.Screen headerMode="none" name="welcome" options={{ title: '', headerShown: false }} component={LaunchScreen} />
+                  <Stack.Screen
+                     headerMode="none"
+                     options={{ title: '', headerShown: false }}
+                     name="auth"
+                     component={AuthStack}
+                  />
+               </Stack.Navigator>
+            </Host>
+         </NavigationContainer>
+      </SafeAreaProvider>
+   }
+
    return (
       <SafeAreaProvider>
          <NavigationContainer linking={linkingConfig}>
             <Host>
                <Stack.Navigator screenOptions={screenOptions(theme)}>
-                  <Stack.Screen headerMode="none" name="home" options={{ title: '', headerShown: false }} component={LaunchScreen} />
-                  {!isAuthenticated ? (
-                     <Stack.Screen
-                        headerMode="none"
-                        options={{ title: '', headerShown: false }}
-                        name="auth"
-                        component={AuthStack}
-                     />
-                  ) : (
-                     <Fragment>
-                        <Stack.Screen headerMode="none" name="home" options={{ headerTransparent: true, title: '',}} component={LaunchScreen} />
-                        <Stack.Screen name="welcome" options={{ title: '' }} component={HomeScreen} />
-                        <Stack.Screen name="PasswordLost" options={{ title: '' }} component={PasswordLostScreen} />
-                        <Stack.Screen name="PasswordChange" options={{ title: '' }} component={PasswordChangeScreen} />
-                        <Stack.Screen name="VerifyPhone" options={{ title: '' }} component={VerifyOTPScreen} />
-                        <Stack.Screen name="EditProfile" options={{ title: '' }} component={EditProfileScreen} />
-                     </Fragment>
-                  )}
+                  <Stack.Screen name="home" options={{ title: '', headerShown: false }} component={HomeStack} />
+                  <Stack.Screen name="password_request" options={{ title: '' }} component={PasswordLostScreen} />
+                  <Stack.Screen name="password_reset" options={{ title: '' }} component={PasswordChangeScreen} />
+                  <Stack.Screen name="verification" options={{ title: '' }} component={VerifyOTPScreen} />
+                  <Stack.Screen name="profile" options={{ title: '' }} component={ProfileScreen} />
+                  <Stack.Screen name="profile.edit" options={{ title: '' }} component={EditProfileScreen} />
                </Stack.Navigator>
             </Host>
          </NavigationContainer>

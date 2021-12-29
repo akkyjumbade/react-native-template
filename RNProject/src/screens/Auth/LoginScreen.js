@@ -15,12 +15,16 @@ import { Center } from 'native-base'
 import { Button } from '@modules/rn-kit'
 import Hyperlink from '@modules/rn-kit/atoms/Hyperlink'
 import { alert } from '@modules/rn-kit/utils/alert'
+import { useDispatch } from 'react-redux'
+import { auth_guest_login_action } from '@/store/auth/auth.actions'
 
 const LoginScreen = (props) => {
    const __ = useTranslation()
    const nav = useNavigation()
+   const dispatch = useDispatch()
    const loginAsGuest = () => {
-      alert('Login as guest')
+      // alert('Login as guest')
+      dispatch(auth_guest_login_action())
    }
 
    return (

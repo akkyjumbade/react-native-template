@@ -47,6 +47,34 @@ export const auth_login_action = token => {
    }
 }
 
+const guestUser = {
+   name: 'Guest',
+   email: 'guest@xxxxx.xxx',
+   phone: 'XXXXXXXXXX',
+   isGuest: true,
+   avatar: require('@assets/avatar_placeholder.jpeg'),
+   id: 0,
+}
+export const auth_guest_login_action = (token = '__GUEST_TOKEN__') => {
+   return async (dispatch, getState, params) => {
+      try {
+         await params.cacheStore.save({
+            key: '@token',
+            data: token,
+         })
+         dispatch({
+            type: T_AUTH_TOKEN,
+            payload: token
+         })
+         dispatch({ type: T_AUTH_SET, payload: guestUser })
+         dispatch({ type: T_LOGIN, payload: guestUser })
+      } catch (error) {
+         console.warn({ error, params }, error.response?.data)
+
+      }
+   }
+}
+
 export const auth_check_action = () => {
    return async (dispatch, getState, { api, cacheStore }) => {
       try {
