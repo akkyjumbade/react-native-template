@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import {connect, useDispatch, useSelector} from 'react-redux';
@@ -16,11 +16,12 @@ import { APP_VERSION } from '@/config';
 import LogoutActionDialogue from '@/components/dialogues/LogoutActionDialogue';
 import ErrorBoundary from '@/components/errors/ErrorBoundary';
 import useTranslation from '@/hooks/useTranslation';
+import ProfilePhotoUpdate from '@/components/ProfilePhotoUpdate';
 // import ErrorMessage from '@modules/rn-kit/molecules/ErrorMessage';
 // import { Button } from 'packages/rn-kit';
 const avatarPlaceholderImage = require('../../../assets/avatar_placeholder.jpeg')
 
-const ProfileScreen = ({ user }) => {
+const ProfileScreen = ({ user, isAuthenticated }) => {
    const nav = useNavigation()
    const __ = useTranslation();
    function loginAsGuest() {
@@ -42,15 +43,22 @@ const ProfileScreen = ({ user }) => {
          <Center style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center', paddingHorizontal: 15 }}>
             <View style={{ flex: 1, }}>
                <HStack alignItems={'center'} space={4}>
-                  {user.isGuest ? (
-                     <Avatar source={avatarPlaceholderImage} size={'lg'} />
+                  {!isAuthenticated ? (
+                     <Fragment>
+                        <ProfilePhotoUpdate>
+                           <Avatar source={avatarPlaceholderImage} size={'lg'} />
+                        </ProfilePhotoUpdate>
+                     </Fragment>
                   ) : (
-                     <Avatar source={{ uri: user.avatar }} size={'lg'} />
+                     <Fragment>
+                        <ProfilePhotoUpdate>
+                           <Avatar source={{ uri: user.avatar }} size={'lg'} />
+                        </ProfilePhotoUpdate>
+                     </Fragment>
                   )}
                   <View style={{ flex: 1, }}>
                      <Text fontSize={'xl'} bold>{user.name}</Text>
                      <HStack space={1} style={{ marginBottom: 4, }} alignItems={'center'}>
-                        {/* <Icon name="envelope" style={{ marginRight: 6, }} /> */}
                         <icons.email width={16} height={16} />
                         <Text>{user.email}</Text>
                      </HStack>
@@ -58,7 +66,6 @@ const ProfileScreen = ({ user }) => {
                         <icons.phone width={16} height={16} />
                         <Text>{user.phone}</Text>
                      </HStack>
-
                   </View>
                   <View style={{ marginLeft: 10, }}>
                      <TouchableOpacity onPress={() => nav.navigate('profile.edit')}>
@@ -84,7 +91,6 @@ const ProfileScreen = ({ user }) => {
                   <List.Item onPress={_ => nav.navigate('preferences.notifications')}>
                      <Text>{__('Notification Preferences')}</Text>
                   </List.Item>
-                  {/* <Divider /> */}
                   <List.Item onPress={_ => nav.navigate('page', { url: '/terms-and-conditions' })}>
                      <Text>{__('Terms & Conditions')}</Text>
                   </List.Item>
@@ -123,5 +129,6 @@ ProfileScreen.defaultProps = {
 };
 
 export default connect(state => ({
-   user: state.auth.user
+   user: state.auth.user,
+   isAuthenticated: parseInt(state.auth.user?.id) > 0,
 }))(ProfileScreen);
