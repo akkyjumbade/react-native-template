@@ -1,34 +1,23 @@
 import React, {  } from 'react'
-// import { TouchableOpacity } from 'react-native-gesture-handler';
 import styled from "styled-components/native";
 import PropTypes from 'prop-types'
 import Text from './Text';
+import { HStack } from 'native-base';
+import { StyledBaseButton } from '../themes/common';
 
-const buttonSizes = {
-   md: '40px',
-   lg: '60px',
-}
-
-const StyledButton = styled.TouchableOpacity`
-   padding: 0 20px;
-   border-radius: 10px;
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: center;
-   overflow: hidden;
-   height: ${props => buttonSizes[props.size]};
+const StyledButton = styled(StyledBaseButton)`
    background-color: ${({ intent, theme }) => theme.colors[intent]};
    color: black;
 `
 
 const Button = (props) => {
-   const { title, onPress, intent  } = props
+   const { title, onPress, intent, leftIcon } = props
 
 
    let labelStyle = {
       backgroundColor: 'transparent',
-      color: 'white'
+      color: 'black',
+      fontSize: 17,
    }
    if (props.size === 'lg') {
       labelStyle = {
@@ -38,10 +27,10 @@ const Button = (props) => {
    }
    return (
       <StyledButton intent={intent} {...props} onPress={onPress} >
-
-         <Text style={{ ...labelStyle, }}>{title}</Text>
-         <Text style={{ ...labelStyle, }}>{JSON.stringify({ intent })}</Text>
-
+         <HStack space={2} alignItems={'center'}>
+            {leftIcon && leftIcon()}
+            <Text style={{ ...labelStyle, }}>{title}</Text>
+         </HStack>
       </StyledButton>
    )
 }
@@ -84,4 +73,4 @@ Button.defaultProps = {
    size: Button.SIZE_MD,
 }
 
-export default Button
+export default React.forwardRef((props, ref) => <Button ref={ref} {...props} />)

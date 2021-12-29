@@ -1,42 +1,54 @@
 import React from 'react'
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import PropTypes from 'prop-types'
 import Text from './Text';
+import { Spinner } from './Loading';
+import { StyleSheet } from 'react-native';
+import { HStack, View } from 'native-base';
+import { StyledBaseButton } from '../themes/common';
 
-const buttonSizes = {
-   md: '40px',
-   lg: '60px',
-}
-
-const StyledButton = styled.TouchableOpacity`
-   padding: 0 20px;
-   border-radius: 10px;
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: center;
-   overflow: hidden;
-   height: ${props => buttonSizes[props.size]};
-   background-color: ${({ theme }) => theme.colors.primary};
+const StyledButton = styled(StyledBaseButton)`
+   background-color: ${({ theme, loading = false }) => {
+      if(loading) {
+         return 'gray'
+      }
+      return theme.colors.primary
+   }};
    color: black;
+
 `
 
 const ButtonPrimary = (props) => {
-   const { title, onPress, intent  } = props
+   const { title, onPress, intent = 'primary', loading = false, leftIcon  } = props
 
    let labelStyle = {
       backgroundColor: 'transparent',
-      color: 'black'
+      color: 'black',
+      fontSize: 17,
    }
    if (props.size === 'lg') {
       labelStyle = {
          ...labelStyle,
-         fontSize: 18,
+
+      }
+   }
+   if (loading) {
+      labelStyle = {
+         ...labelStyle,
+         opacity: 0
       }
    }
    return (
-      <StyledButton intent={intent} {...props} onPress={onPress} >
-         <Text style={{ ...labelStyle, }}>{title}</Text>
+      <StyledButton intent={intent} loading={loading} {...props} onPress={onPress} >
+         {loading && (
+            <View style={{ ...StyleSheet.absoluteFillObject, top: 13 }}>
+               <Spinner />
+            </View>
+         )}
+         <HStack space={2} alignItems={'center'}>
+            {leftIcon && leftIcon()}
+            <Text style={{ ...labelStyle, }}>{title}</Text>
+         </HStack>
       </StyledButton>
    )
 }

@@ -1,33 +1,30 @@
 import React from 'react'
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import PropTypes from 'prop-types'
 import Text from './Text';
+import { HStack } from 'native-base';
+import { StyledBaseButton } from '../themes/common';
 
-const buttonSizes = {
-   md: '40px',
-   lg: '60px',
-}
-
-const StyledButtonOutline = styled.TouchableOpacity`
-   padding: 0 20px;
-   border-radius: 10px;
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: center;
-   overflow: hidden;
-   height: ${props => buttonSizes[props.size]};
-   background-color: ${({ intent, theme }) => theme.colors[intent]};
-   color: white;
+const StyledButtonOutline = styled(StyledBaseButton)`
+   background-color: white;
+   color: black;
+   ${props => {
+      if (props.active) {
+         return css`
+         background-color: lightgray;
+         `
+      }
+   }}
 `
 
 const ButtonOutline = (props) => {
-   const { title, onPress, intent  } = props
+   const { title, onPress, intent, leftIcon  } = props
 
 
    let labelStyle = {
       backgroundColor: 'transparent',
-      color: 'black'
+      color: 'black',
+      fontSize: 17,
    }
    if (props.size === 'lg') {
       labelStyle = {
@@ -35,9 +32,18 @@ const ButtonOutline = (props) => {
          fontSize: 18,
       }
    }
+   if (props.size === 'sm') {
+      labelStyle = {
+         ...labelStyle,
+         fontSize: 13,
+      }
+   }
    return (
       <StyledButtonOutline intent={intent} {...props} onPress={onPress} >
-         <Text style={{ ...labelStyle, }}>{title}</Text>
+         <HStack space={2} alignItems={'center'}>
+            {leftIcon && leftIcon()}
+            <Text style={{ ...labelStyle, }}>{title}</Text>
+         </HStack>
       </StyledButtonOutline>
    )
 }
@@ -58,7 +64,7 @@ ButtonOutline.INTENT_SUCCESS = 'success'
 ButtonOutline.propTypes = {
    label: PropTypes.string,
    title: PropTypes.string,
-   leftIcon: PropTypes.string,
+   leftIcon: PropTypes.any,
    rightIcon: PropTypes.string,
    size: PropTypes.oneOf([
       ButtonOutline.SIZE_LG, ButtonOutline.SIZE_MD, ButtonOutline.SIZE_SM
