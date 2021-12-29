@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 import { QueryClientProvider } from "react-query";
 import Bootstrap from "./bootstrap";
 import { queryClient } from "./utils/http";
@@ -10,7 +9,7 @@ import store from "@/store";
 
 const App = () => {
    return (
-      <React.StrictMode>
+      <React.Fragment>
          <NetworkProvider>
             <QueryClientProvider client={queryClient}>
                <Provider store={store}>
@@ -20,7 +19,7 @@ const App = () => {
                </Provider>
             </QueryClientProvider>
          </NetworkProvider>
-      </React.StrictMode>
+      </React.Fragment>
    )
 }
 

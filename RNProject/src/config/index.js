@@ -27,6 +27,39 @@ export const linkingConfig = {
    // },
 };
 
+export const notificationChannels = [
+   {
+      channelId: 'default',
+      channelName: 'Updates',
+      channelDescription: '',
+      importance: 'HIGH',
+      vibrate: true,
+      playSound: true,
+      soundName: 'notification_sound.mp3',
+   },
+   {
+      channelId: 'promotions',
+      channelName: 'Promotions',
+      channelDescription: 'Promotions & Newsletters',
+      importance: 'DEFAULT',
+   },
+]
+
+export const broadcastChannels = [
+   {
+      label: 'Push Notification',
+      value: 'push_notification',
+   },
+   {
+      label: 'Email',
+      value: 'email',
+   },
+   {
+      label: 'SMS',
+      value: 'sms',
+   },
+]
+
 const config = {
    appVersion: 'v1.0.0-alpha',
 }

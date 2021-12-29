@@ -26,6 +26,7 @@ import BottomTabNavigation from './BottomTabNavigation';
 import ProfileScreen from '@/screens/User/ProfileScreen';
 import NotificationsScreen from '@/screens/User/NotificationsScreen';
 import BillingScreen from '@/screens/User/BillingScreen';
+import NotificationsPreferenceScreen from '@/screens/User/NotificationsPreferenceScreen';
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -137,6 +138,7 @@ const Navigation = ({ user, loading }) => {
                   <Stack.Screen name="verification" options={{ title: '' }} component={VerifyOTPScreen} />
                   <Stack.Screen name="profile" options={{ title: '' }} component={ProfileScreen} />
                   <Stack.Screen name="billing" options={{ title: '' }} component={BillingScreen} />
+                  <Stack.Screen name="preferences.notifications" options={{ title: '' }} component={NotificationsPreferenceScreen} />
                   <Stack.Screen name="profile.edit" options={{ title: '' }} component={EditProfileScreen} />
                   <Stack.Screen name="profile.changePassword" options={{ title: '' }} component={PasswordChangeScreen} />
                </Stack.Navigator>

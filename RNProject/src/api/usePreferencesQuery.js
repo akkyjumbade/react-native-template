@@ -1,3 +1,4 @@
+import { notificationChannels, broadcastChannels } from "@/config"
 import useApiQuery from "@/hooks/useApiQuery"
 import { server } from "@/utils/http"
 import { useMutation } from "react-query"
@@ -16,6 +17,8 @@ export default function usePreferencesQuery() {
       error,
       isLoading,
       updatePreferencesAsync,
+      notificationChannels,
+      broadcastChannels,
       isUpdating,
    }
 }
