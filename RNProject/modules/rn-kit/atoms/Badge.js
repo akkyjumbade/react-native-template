@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text } from '../..'
+import { Text } from '..'
 
 const StyledBadge = styled(Text)`
    background-color: ${props => props.color ?? 'white'};

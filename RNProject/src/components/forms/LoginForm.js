@@ -5,7 +5,7 @@ import TextInput from '@modules/rn-kit/molecules/TextInput'
 import React from 'react'
 import ErrorBoundary from '../errors/ErrorBoundary'
 import { useFormik } from 'formik'
-import ButtonPrimary from '@ui/atoms/ButtonPrimary'
+import ButtonPrimary from '@modules/rn-kit/atoms/ButtonPrimary'
 import {useNavigation} from "@react-navigation/core";
 
 

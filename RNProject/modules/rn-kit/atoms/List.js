@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import { Container, Text } from '../..'
+import { Container, Text } from '..'
 import { List_Item } from './List_Item'
 
 const List = ({ title, children, ...props }) => {

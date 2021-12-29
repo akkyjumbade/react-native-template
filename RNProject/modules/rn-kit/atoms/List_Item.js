@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { View } from 'react-native';
 import { ThemeContext } from 'styled-components';
-import { Container, Text } from '../..';
+import { Container, Text } from '..';
 import { styles } from './List';
 
 

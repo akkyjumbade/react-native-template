@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import useTranslation from '@/hooks/useTranslation'
 import ErrorBoundary from '@/components/errors/ErrorBoundary'
 import LoginForm from '@/components/forms/LoginForm'
-import Text from '@ui/atoms/Text'
+import Text from '@modules/rn-kit/atoms/Text'
 import Page from "@modules/rn-kit/layouts/Page";
 
 import { View } from "react-native";
