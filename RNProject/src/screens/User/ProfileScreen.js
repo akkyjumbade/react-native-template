@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import {connect, useDispatch, useSelector} from 'react-redux';
 import Page from '@modules/rn-kit/layouts/Page';
-import { Avatar, Center, Divider, HStack, List, useToast, VStack } from 'native-base';
+import { Avatar, Center, Divider, HStack, List, Switch, useToast, VStack } from 'native-base';
 import Text from '@modules/rn-kit/atoms/Text';
 import Icon from '@modules/rn-kit/atoms/Icon';
 import { useNavigation } from '@react-navigation/core';
@@ -12,11 +12,12 @@ import icons from '@/icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ButtonPrimary from '@modules/rn-kit/atoms/ButtonPrimary';
 import Button from '@modules/rn-kit/atoms/Button';
-import { APP_VERSION } from '@/config';
+import config, { APP_VERSION } from '@/config';
 import LogoutActionDialogue from '@/components/dialogues/LogoutActionDialogue';
 import ErrorBoundary from '@/components/errors/ErrorBoundary';
 import useTranslation from '@/hooks/useTranslation';
 import ProfilePhotoUpdate from '@/components/ProfilePhotoUpdate';
+import { alert } from '@modules/rn-kit/utils/alert';
 // import ErrorMessage from '@modules/rn-kit/molecules/ErrorMessage';
 // import { Button } from 'packages/rn-kit';
 const avatarPlaceholderImage = require('../../../assets/avatar_placeholder.jpeg')
@@ -27,6 +28,9 @@ const ProfileScreen = ({ user, isAuthenticated }) => {
    function loginAsGuest() {
 
    }
+   function inAppReviewDialogue() {
+      alert('Open in app review dialogue')
+   }
    if (!user) {
       return null
    }
@@ -36,7 +40,7 @@ const ProfileScreen = ({ user, isAuthenticated }) => {
    }
 
    return (
-      <Page  >
+      <Page scroll={true}>
          <Page.Container>
             <Page.Title>My Account</Page.Title>
          </Page.Container>
@@ -85,17 +89,72 @@ const ProfileScreen = ({ user, isAuthenticated }) => {
                      </List.Item>
                      ))}
                   </ErrorBoundary>
-                  <List.Item >
-                     <Text>{__('Orders')}</Text>
+                  <List.Item onPress={() => nav.navigate('billing')}>
+                     <HStack alignItems={'center'}>
+                        <View style={{ flex: 1 }}>
+                           <Text>{__('Billing')}</Text>
+                        </View>
+                        <View>
+                           <Text color={'gray'}>{__('Sample address, MH, 400703')}</Text>
+                        </View>
+                        <View>
+                           <icons.chevronRightIcon width={24} height={24} />
+                        </View>
+                     </HStack>
+                  </List.Item>
+                  <List.Item onPress={() => nav.navigate('profile.changePassword')}>
+                     <HStack alignItems={'center'}>
+                        <View style={{ flex: 1 }}>
+                           <Text>{__('Change password')}</Text>
+                        </View>
+                        <View>
+                           <Text color={'gray'}>{__('Last update: 3 months ago.')}</Text>
+                        </View>
+                        <View>
+                           <icons.chevronRightIcon width={24} height={24} />
+                        </View>
+                     </HStack>
+                  </List.Item>
+                  <List.Item onPress={() => nav.navigate('profile.changePassword')}>
+                     <HStack alignItems={'center'}>
+                        <View style={{ flex: 1 }}>
+                           <Text>{__('Dark mode?')}</Text>
+                        </View>
+                        <View>
+                           {/* <Text color={'gray'}>{__('Last update: 3 months ago.')}</Text> */}
+                        </View>
+                        <View>
+                           <Switch />
+                           {/* <icons.chevronRightIcon width={24} height={24} /> */}
+                        </View>
+                     </HStack>
                   </List.Item>
                   <List.Item onPress={_ => nav.navigate('preferences.notifications')}>
                      <Text>{__('Notification Preferences')}</Text>
+                  </List.Item>
+                  <List.Item >
+                     <Text>{__('Transactions')}</Text>
+                  </List.Item>
+               </List>
+               <List
+                  style={{ marginVertical: 15, borderWidth: 0 }}
+                  divider={<Divider />}
+                  space={1}
+                  >
+                  <List.Item >
+                     <Text bold fontSize={'15'}>{__('Help')}</Text>
                   </List.Item>
                   <List.Item onPress={_ => nav.navigate('page', { url: '/terms-and-conditions' })}>
                      <Text>{__('Terms & Conditions')}</Text>
                   </List.Item>
                   <List.Item onPress={_ => nav.navigate('page', { url: '/privacy-policy' })}>
                      <Text>{__('Privacy Policy')}</Text>
+                  </List.Item>
+                  <List.Item onPress={_ => nav.navigate('page', { url: '/faq' })}>
+                     <Text>{__('FAQ')}</Text>
+                  </List.Item>
+                  <List.Item onPress={inAppReviewDialogue}>
+                     <Text>{__('Give Feedback')}</Text>
                   </List.Item>
                </List>
             </View>
@@ -106,7 +165,7 @@ const ProfileScreen = ({ user, isAuthenticated }) => {
                   <Text>{__('Logged in as')}</Text>
                   <Text>{user.email}</Text>
                </VStack>
-               <Text>{__('version ') + APP_VERSION}</Text>
+               <Text>{__('version ') + config.appVersion}</Text>
             </VStack>
             <View style={{ marginBottom: 20 }}>
                <ErrorBoundary>

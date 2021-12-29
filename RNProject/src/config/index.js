@@ -26,3 +26,8 @@ export const linkingConfig = {
    //    },
    // },
 };
+
+const config = {
+   appVersion: 'v1.0.0-alpha',
+}
+export default config

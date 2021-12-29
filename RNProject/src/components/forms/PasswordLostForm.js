@@ -54,9 +54,9 @@ const PasswordLostForm = ({ initialValues = {} }) => {
             />
          </FormControl>
          <ButtonPrimary title={__('btn_password_request')} disabled={formik.isSubmitting} loading={formik.isSubmitting} onPress={() => formik.handleSubmit()} />
-         <View style={{ marginTop: 15, }}>
+         {/* <View style={{ marginTop: 15, }}>
             <ButtonOutline title={__('cancel')} disabled={formik.isSubmitting} loading={formik.isSubmitting} onPress={() => nav.goBack()} />
-         </View>
+         </View> */}
       </ErrorBoundary>
    );
 };
