@@ -19,7 +19,7 @@ export const FIREBASE_CONFIG = {
 
 
 export const linkingConfig = {
-   prefixes: ['https://thespot.com', 'thespot://'],
+   prefixes: ['https://rnproject.com', 'rnproject://'],
    // config: {
    //    screens: {
    //       Home: 'feed/:sort',

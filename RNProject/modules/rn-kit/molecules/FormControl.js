@@ -1,3 +1,4 @@
+import ErrorBoundary from '@/components/errors/ErrorBoundary';
 import React, { memo } from 'react'
 import styled from "styled-components/native";
 import Text from '../atoms/Text';
@@ -15,22 +16,24 @@ const ErrorMessage = styled.Text`
 
 const FormControl = ({ error, label, children, caption, ...props}) => {
    return (
-      <StyledFormControl >
-         {label && <Text size={14}>{label}</Text>}
-         {children}
-         {error ? (
-            <>
-            {error && (typeof error === 'string') ? (
-               <ErrorMessage>{error}</ErrorMessage>
+      <ErrorBoundary>
+         <StyledFormControl >
+            {label && <Text >{label}</Text>}
+            {children}
+            {error ? (
+               <>
+               {error && (typeof error === 'string') ? (
+                  <ErrorMessage>{error}</ErrorMessage>
+               ) : (
+                  <ErrorMessage>{error && error.join('. ')}</ErrorMessage>
+               )}
+               </>
             ) : (
-               <ErrorMessage>{error && error.join('. ')}</ErrorMessage>
+               null
             )}
-            </>
-         ) : (
-            null
-         )}
-         {caption && caption(props)}
-      </StyledFormControl>
+            {caption && caption(props)}
+         </StyledFormControl>
+      </ErrorBoundary>
    )
 }
 

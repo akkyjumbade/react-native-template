@@ -8,6 +8,9 @@ export const AlertContextProvider = () => (
 )
 
 export function alert(msg) {
+   if (__DEV__) {
+      alert(msg)
+   }
    console.log({ msg })
 }
 
