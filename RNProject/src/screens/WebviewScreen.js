@@ -5,23 +5,23 @@ import Page from '../components/layouts/Page'
 import { useSelector } from 'react-redux'
 import useTranslation from '../hooks/useTranslation'
 
-const DocumentScreen = (props) => {
+const WebviewScreen = (props) => {
    const auth = useSelector(state => state.auth)
    const __ = useTranslation()
    return (
       <Page>
-         <Text>{__('DocumentScreen')}</Text>
+         <Text>{__('WebviewScreen')}</Text>
          <Text>{JSON.stringify({ auth })}</Text>
       </Page>
    )
 }
 
-DocumentScreen.propTypes = {
+WebviewScreen.propTypes = {
    // prop: PropTypes.string
 }
 
-DocumentScreen.defaultProps = {
-   type: 'text'
+WebviewScreen.defaultProps = {
+   // type: 'text'
 }
 
-export default DocumentScreen
+export default WebviewScreen

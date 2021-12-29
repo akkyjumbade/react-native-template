@@ -10,12 +10,6 @@
          ],
          "@modules/*": [
             "./modules/*"
-         ],
-         "@ui/*": [
-            "./packages/rn-kit/src/*"
-         ],
-         "@rn-kit/*": [
-            "./packages/rn-kit/src/*"
          ]
       }
    },

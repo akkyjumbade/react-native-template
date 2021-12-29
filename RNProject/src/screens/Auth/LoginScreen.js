@@ -4,11 +4,11 @@ import useTranslation from '@/hooks/useTranslation'
 import ErrorBoundary from '@/components/errors/ErrorBoundary'
 import LoginForm from '@/components/forms/LoginForm'
 import Text from '@ui/atoms/Text'
-import Page from "@ui/layouts/Page";
+import Page from "@modules/rn-kit/layouts/Page";
 
 import { View } from "react-native";
-import ButtonOutline from "@ui/atoms/ButtonOutline";
-import Container from "@ui/layouts/Container";
+import ButtonOutline from "@modules/rn-kit/atoms/ButtonOutline";
+import Container from "@modules/rn-kit/layouts/Container";
 import {useNavigation} from "@react-navigation/core";
 import Logo from "@/components/Logo";
 

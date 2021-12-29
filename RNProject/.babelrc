@@ -20,8 +20,7 @@
                ".json"
             ],
             "alias": {
-               "@ui": "./packages/rn-kit/src",
-               "@rn-kit": "./packages/rn-kit/src",
+               "@modules": "./modules/",
                "@assets": "./assets",
                "@": "./src"
             }

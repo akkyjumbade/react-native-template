@@ -4,7 +4,7 @@ import { QueryClientProvider } from "react-query";
 import Bootstrap from "./bootstrap";
 import { queryClient } from "./utils/http";
 import { NetworkProvider } from 'react-native-offline';
-import ThemeContextProvider from "@ui/provider/ThemeContextProvider";
+import ThemeContextProvider from "@modules/rn-kit/provider/ThemeContextProvider";
 import { Provider } from "react-redux";
 import store from "@/store";
 

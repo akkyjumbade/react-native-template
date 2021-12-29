@@ -1,11 +1,11 @@
 import React from 'react'
 import { View } from 'react-native'
 import { useSelector } from 'react-redux'
-import useTranslation from '../hooks/useTranslation'
 import Page from "@modules/rn-kit/layouts/Page";
 import Text from "@modules/rn-kit/atoms/Text";
+import useTranslation from "@/hooks/useTranslation";
 
-const WelcomeScreen = (props) => {
+const LegalScreen = (props) => {
    const auth = useSelector(state => state.auth)
    const __ = useTranslation()
    return (
@@ -15,12 +15,12 @@ const WelcomeScreen = (props) => {
    )
 }
 
-WelcomeScreen.propTypes = {
+LegalScreen.propTypes = {
    // prop: PropTypes.string
 }
 
-WelcomeScreen.defaultProps = {
+LegalScreen.defaultProps = {
 
 }
 
-export default WelcomeScreen
+export default LegalScreen

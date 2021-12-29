@@ -1,7 +1,7 @@
 import React from 'react'
-import Text from '@rn-kit/atoms/Text'
-import ButtonPrimary from '@rn-kit/atoms/ButtonPrimary'
-import Page from "@ui/layouts/Page";
+import Text from '@modules/rn-kit/atoms/Text'
+import ButtonPrimary from '@modules/rn-kit/atoms/ButtonPrimary'
+import Page from "@modules/rn-kit/layouts/Page";
 
 const LoadingScreen = (props) => {
    //
