@@ -3,8 +3,12 @@ name: Android CI
 on:
   push:
     branches: [ main ]
+    tags: 
+        - v*
   pull_request:
     branches: [ main ]
+    tags: 
+        - v*
 
 jobs:
   install-and-test:
@@ -29,4 +33,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: app-release.apk
-          path: android/app/build/outputs/apk/release/
+          path: react-native-template/react-native-template/android/app/build/outputs/apk/release/
