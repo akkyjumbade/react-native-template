@@ -26,6 +26,7 @@
    "dependencies": {
       "@react-native-async-storage/async-storage": "^1.15.9",
       "@react-native-community/netinfo": "^7.1.7",
+      "@react-native-community/push-notification-ios": "^1.10.1",
       "@react-navigation/bottom-tabs": "^6.0.9",
       "@react-navigation/native": "^6.0.6",
       "@react-navigation/stack": "^6.0.11",
@@ -45,6 +46,7 @@
       "react-native-offline": "^6.0.0",
       "react-native-pager-view": "^5.4.9",
       "react-native-portalize": "^1.0.7",
+      "react-native-push-notification": "^8.1.1",
       "react-native-reanimated": "^2.3.1",
       "react-native-safe-area-context": "^3.3.2",
       "react-native-screens": "^3.10.1",

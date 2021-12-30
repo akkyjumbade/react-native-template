@@ -1,7 +1,7 @@
 {
    "name": "RNProject",
    "displayName": "RNProject",
-   "package": "com.RNProject",
+   "package": "com.rnproject",
    "android": {
       "versionCode": ""
    },
