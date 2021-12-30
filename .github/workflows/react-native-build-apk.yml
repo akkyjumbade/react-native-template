@@ -33,4 +33,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: app-release.apk
-          path: react-native-template/react-native-template/android/app/build/outputs/apk/release/
+          path: RNProject/android/app/build/outputs/apk/release/
