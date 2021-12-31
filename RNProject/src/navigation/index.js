@@ -107,24 +107,28 @@ const Navigation = ({ user, loading }) => {
    const isAuthenticated = useMemo(() => {
       return user
       // return false
+      // sdf
    }, [ user ])
+   console.log({ isAuthenticated })
 
    if (!isAuthenticated) {
-      <SafeAreaProvider>
-         <NavigationContainer linking={linkingConfig}>
-            <Host>
-               <Stack.Navigator screenOptions={screenOptions(theme)}>
-                  <Stack.Screen headerMode="none" name="welcome" options={{ title: '', headerShown: false }} component={LaunchScreen} />
-                  <Stack.Screen
-                     headerMode="none"
-                     options={{ title: '', headerShown: false }}
-                     name="auth"
-                     component={AuthStack}
-                  />
-               </Stack.Navigator>
-            </Host>
-         </NavigationContainer>
-      </SafeAreaProvider>
+      return (
+         <SafeAreaProvider>
+            <NavigationContainer linking={linkingConfig}>
+               <Host>
+                  <Stack.Navigator screenOptions={screenOptions(theme)}>
+                     <Stack.Screen headerMode="none" name="welcome" options={{ title: '', headerShown: false }} component={LaunchScreen} />
+                     <Stack.Screen
+                        headerMode="none"
+                        options={{ title: '', headerShown: false }}
+                        name="auth"
+                        component={AuthStack}
+                     />
+                  </Stack.Navigator>
+               </Host>
+            </NavigationContainer>
+         </SafeAreaProvider>
+      )
    }
 
    return (
@@ -132,7 +136,7 @@ const Navigation = ({ user, loading }) => {
          <NavigationContainer linking={linkingConfig}>
             <Host>
                <Stack.Navigator screenOptions={screenOptions(theme)}>
-                  <Stack.Screen name="home" options={{ title: '', headerShown: false }} component={HomeStack} />
+                  <Stack.Screen name="index" options={{ title: '', headerShown: false }} component={HomeStack} />
                   <Stack.Screen name="password_request" options={{ title: '' }} component={PasswordLostScreen} />
                   <Stack.Screen name="password_reset" options={{ title: '' }} component={PasswordChangeScreen} />
                   <Stack.Screen name="verification" options={{ title: '' }} component={VerifyOTPScreen} />
