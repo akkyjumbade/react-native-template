@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import {connect, useDispatch, useSelector} from 'react-redux';
 import Page from '@modules/rn-kit/layouts/Page';
-import { Avatar, Box, Center, Divider, HStack, List, useToast, VStack } from 'native-base';
+import { Avatar, Box, Center, Divider, HStack, List, Select, useToast, VStack } from 'native-base';
 import Text from '@modules/rn-kit/atoms/Text';
 import Icon from '@modules/rn-kit/atoms/Icon';
 import { useNavigation } from '@react-navigation/core';
@@ -18,18 +18,22 @@ import ErrorBoundary from '@/components/errors/ErrorBoundary';
 import useTranslation from '@/hooks/useTranslation';
 import ProfilePhotoUpdate from '@/components/ProfilePhotoUpdate';
 import { alert } from '@modules/rn-kit/utils/alert';
+import Card from '@/components/Card';
+import { useFormik } from 'formik';
+import CheckIcon from '@/icons/CheckIcon';
 // import ErrorMessage from '@modules/rn-kit/molecules/ErrorMessage';
 // import { Button } from 'packages/rn-kit';
 const avatarPlaceholderImage = require('../../../assets/avatar_placeholder.jpeg')
 
-const BillingScreen = ({ user, isAuthenticated }) => {
+const BillingScreen = ({ user, isAuthenticated, initialValues = {} }) => {
    const nav = useNavigation()
    const __ = useTranslation();
-
+   const formik = useFormik({
+      initialValues
+   })
    if (!user) {
       return null
    }
-   const { teams = null } = user
    if (!user) {
       return null
    }
@@ -46,13 +50,6 @@ const BillingScreen = ({ user, isAuthenticated }) => {
                   divider={<Divider />}
                   space={1}
                   >
-                  <ErrorBoundary>
-                     {teams && teams.map(tm => (
-                     <List.Item key={tm.id}>
-                        <Text>{tm.title}</Text>
-                     </List.Item>
-                     ))}
-                  </ErrorBoundary>
                   <List.Item onPress={() => nav.navigate('billing')}>
                      <HStack alignItems={'center'}>
                         <View style={{ flex: 1 }}>
@@ -92,39 +89,61 @@ const BillingScreen = ({ user, isAuthenticated }) => {
                         </View>
                      </HStack>
                   </List.Item>
-                  <List.Item onPress={() => nav.navigate('billing')}>
+                  <List.Item >
+
                      <HStack alignItems={'center'}>
-                        <View style={{ flex: 1 }}>
-                           <Text>{__('Billing')}</Text>
+                        <View style={{ flex: 1,  }}>
+                           <Text>{__('Billing (Default)')}</Text>
                         </View>
                         <View>
-                           <Text color={'gray'}>{__('Sample address, MH, 400703')}</Text>
-                        </View>
-                        <View>
-                           <icons.chevronRightIcon width={24} height={24} />
+                           <Select
+                              selectedValue={formik.values.default_billing_address_id}
+                              minWidth={200}
+                              accessibilityLabel={'Choose billing address'}
+                              placeholder={'Choose billing address'}
+                              // _selectedItem={{
+                              //    endIcon: <CheckIcon size="5" />,
+                              //  }}
+                              mt={1}
+                              onValueChange={selectedValue => {
+                                 if (selectedValue == '0') {
+                                    nav.navigate('address.add')
+                                    return
+                                 }
+                                 formik.setFieldValue('default_billing_address_id', selectedValue)
+                              }}
+
+                           >
+                              <Select.Item label="Choose" value="ux" />
+                              <Select.Item  leftIcon={() => (
+                                 <icons.clipboardListIcon width={20} height={20} />
+                              )} label="Add new address" value="0" />
+                           </Select>
                         </View>
                      </HStack>
-
                   </List.Item>
                   <Fragment>
-                     <VStack space={3}>
-                        <Box borderWidth={1}  shadow={'2'}>
+                     {/* <VStack style={{ marginTop: 15, }} space={3}>
+                        <Card >
+                           <Text>Address, </Text>
+                           <Text>City, state, postal_code </Text>
+                        </Card>
+                        <Card >
                            <Text>Address, </Text>
                            <Text>Address, </Text>
+                        </Card>
+                        <Card >
+                           <Text>Address, </Text>
+                           <Text>Address, </Text>
+                        </Card>
+                        <Card >
+                           <Text>Address, </Text>
+                           <Text>Address, </Text>
+                        </Card>
+                        <Box border="1" borderRadius="md">
+                           <Button title={'Add Address'} onPress={() => nav.navigate('address.add')} />
                         </Box>
-                        <Box borderWidth={1}  shadow={'2'}>
-                           <Text>Address, </Text>
-                           <Text>Address, </Text>
-                        </Box>
-                        <Box borderWidth={1}  shadow={'2'}>
-                           <Text>Address, </Text>
-                           <Text>Address, </Text>
-                        </Box>
-                        <Box borderWidth={1}  shadow={'2'}>
-                           <Text>Address, </Text>
-                           <Text>Address, </Text>
-                        </Box>
-                     </VStack>
+                     </VStack> */}
                   </Fragment>
                </List>
             </View>

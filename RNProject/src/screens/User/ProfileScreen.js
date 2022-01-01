@@ -83,11 +83,13 @@ const ProfileScreen = ({ user, isAuthenticated }) => {
                   space={1}
                   >
                   <ErrorBoundary>
-                     {teams && teams.map(tm => (
-                     <List.Item key={tm.id}>
-                        <Text>{tm.title}</Text>
-                     </List.Item>
-                     ))}
+                     <Fragment>
+                        {(teams?.length) && teams.map(tm => (
+                        <List.Item key={tm.id}>
+                           <Text>{tm.title}</Text>
+                        </List.Item>
+                        ))}
+                     </Fragment>
                   </ErrorBoundary>
                   <List.Item onPress={() => nav.navigate('billing')}>
                      <HStack alignItems={'center'}>
@@ -102,7 +104,7 @@ const ProfileScreen = ({ user, isAuthenticated }) => {
                         </View>
                      </HStack>
                   </List.Item>
-                  <List.Item onPress={() => nav.navigate('profile.changePassword')}>
+                  <List.Item onPress={() => nav.navigate('profile.change_password')}>
                      <HStack alignItems={'center'}>
                         <View style={{ flex: 1 }}>
                            <Text>{__('Change password')}</Text>
@@ -115,7 +117,7 @@ const ProfileScreen = ({ user, isAuthenticated }) => {
                         </View>
                      </HStack>
                   </List.Item>
-                  <List.Item onPress={() => nav.navigate('profile.changePassword')}>
+                  <List.Item onPress={console.log}>
                      <HStack alignItems={'center'}>
                         <View style={{ flex: 1 }}>
                            <Text>{__('Dark mode?')}</Text>
@@ -155,6 +157,9 @@ const ProfileScreen = ({ user, isAuthenticated }) => {
                   </List.Item>
                   <List.Item onPress={inAppReviewDialogue}>
                      <Text>{__('Give Feedback')}</Text>
+                  </List.Item>
+                  <List.Item onPress={_ => nav.navigate('about')}>
+                     <Text>{__('About')}</Text>
                   </List.Item>
                </List>
             </View>

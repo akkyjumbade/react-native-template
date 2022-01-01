@@ -28,7 +28,7 @@ yup.setLocale({
 });
 
 
-export default function PhoneNumberInput({ prepend, append, ...props }) {
+export default function NumberInput({ prepend, append, ...props }) {
    const config = useSelector(state => state.options)
    const togglePassword = () => {
 
@@ -37,12 +37,7 @@ export default function PhoneNumberInput({ prepend, append, ...props }) {
    return (
       <ErrorBoundary>
          <TextInput
-            keyboardType="phone-pad"
-            prepend={() => (
-               <Text style={{ marginLeft: 10, }} >
-                  {config?.countryPhoneCode}
-               </Text>
-            )}
+            keyboardType="number-pad"
             />
          {/* <HStack justifyContent={'space-between'}>
             <Text>{''}</Text>
@@ -52,9 +47,9 @@ export default function PhoneNumberInput({ prepend, append, ...props }) {
    )
 
 }
-PhoneNumberInput.defaultProps = {
+NumberInput.defaultProps = {
    // type: 'number',
 }
-PhoneNumberInput.propTypes = {
+NumberInput.propTypes = {
    name: PropTypes.string,
 }

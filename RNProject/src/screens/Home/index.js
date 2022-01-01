@@ -10,8 +10,6 @@ const HomeScreen = (props) => {
    const __ = useTranslation()
    return (
       <Page>
-         <Text>{JSON.stringify({ auth })}</Text>
-         <Text style={{ color: 'red' }}>{__('Welcome')}</Text>
       </Page>
    )
 }

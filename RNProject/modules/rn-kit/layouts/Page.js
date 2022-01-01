@@ -11,7 +11,7 @@ import Container from '@modules/rn-kit/layouts/Container'
 
 
 
-const StyledPage = styled(SafeAreaView)`
+const StyledPage = styled.SafeAreaView`
    flex: 1;
    flex-direction: column;
    height: 100%;

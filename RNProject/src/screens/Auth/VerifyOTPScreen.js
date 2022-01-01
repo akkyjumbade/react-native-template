@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import useTranslation from '../../hooks/useTranslation'
 import Page from "@modules/rn-kit/layouts/Page";
 
-const VerifyOTPScreen = (props) => {
+const VerificationScreen = (props) => {
    const auth = useSelector(state => state.auth)
    const __ = useTranslation()
    return (
@@ -16,12 +16,12 @@ const VerifyOTPScreen = (props) => {
    )
 }
 
-VerifyOTPScreen.propTypes = {
+VerificationScreen.propTypes = {
    // prop: PropTypes.string
 }
 
-VerifyOTPScreen.defaultProps = {
+VerificationScreen.defaultProps = {
    type: 'text'
 }
 
-export default VerifyOTPScreen
+export default VerificationScreen

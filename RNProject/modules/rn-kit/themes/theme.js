@@ -1,4 +1,4 @@
-import { fonts } from "."
+import themes, { fonts } from "."
 import colors from "./colors"
 
 export default {
@@ -6,6 +6,7 @@ export default {
       ...colors,
       primary: '#1C6DD0'
    },
+   htmlStyle: themes.htmlStyle,
    fontConfig: {
       Inter: {
          400: {
@@ -38,11 +39,30 @@ export default {
             },
             _description: {
                fontFamily: 'Inter-Regular'
-            }
+            },
          },
          defaultProps: {},
          variants: {},
          sizes: {},
+
+      },
+      Select: {
+         baseStyle: {
+            borderRadius: 10,
+            _actionSheetContent: {
+               borderRadius: 10,
+               borderWidth: 0,
+            },
+            borderWidth: 0,
+         },
+         defaultProps: {},
+         variants: {},
+         sizes: {},
+      },
+      SelectItem: {
+         baseStyle: {
+            borderRadius: 'lg'
+         }
       }
    }
    // fontPrimary: ''
