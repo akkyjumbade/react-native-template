@@ -11,10 +11,9 @@ import { Host } from 'react-native-portalize';
 import { linkingConfig } from '../config';
 import LoginScreen from '../screens/Auth/LoginScreen';
 import RegisterScreen from '../screens/Auth/RegisterScreen';
-import EditProfileScreen from '../screens/Auth/EditProfileScreen';
+import EditProfileScreen from '../screens/User/EditProfileScreen';
 import PasswordLostScreen from '../screens/Auth/PasswordLostScreen';
 import PasswordChangeScreen from '../screens/Auth/PasswordChangeScreen';
-import VerifyOTPScreen from '../screens/Auth/VerifyOTPScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import { horizontalAnimation } from './navigationTransitions';
 import { fonts } from '@modules/rn-kit/themes';
@@ -27,6 +26,11 @@ import ProfileScreen from '@/screens/User/ProfileScreen';
 import NotificationsScreen from '@/screens/User/NotificationsScreen';
 import BillingScreen from '@/screens/User/BillingScreen';
 import NotificationsPreferenceScreen from '@/screens/User/NotificationsPreferenceScreen';
+import VerificationScreen from '@/screens/Auth/VerifyOTPScreen';
+import Dashboard from '@/screens/Dashboard';
+import WebviewScreen from '@/screens/WebviewScreen';
+import AddressFormScreen from '@/screens/User/AddressFormScreen';
+import AboutScreen from '@/screens/AboutScreen';
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -45,8 +49,11 @@ const screenOptions = (theme = null) => ({
    headerTintColor: '#4c5561',
    ...horizontalAnimation,
 })
-const tabNavOptions = () => {
-   return screenOptions()
+const tabNavOptions = (args) => {
+   return {
+      ...screenOptions(),
+      ...args
+   }
 }
 
 const tabBarOptions = {
@@ -60,7 +67,7 @@ const AuthStack = ({ theme }) => {
          <Stack.Screen options={{ title: '',  }} name="login" component={LoginScreen} />
          <Stack.Screen options={{ title: '', }} name="password_request" component={PasswordLostScreen} />
          <Stack.Screen options={{ title: '',  }} name="password_reset" component={PasswordChangeScreen} />
-         <Stack.Screen options={{ title: '',  }} name="verification" component={VerifyOTPScreen} />
+         <Stack.Screen options={{ title: '',  }} name="verification" component={VerificationScreen} />
       </Stack.Navigator>
    )
 }
@@ -70,12 +77,12 @@ const HomeStack = props => {
    return (
       <Tabs.Navigator
          tabBar={_props => <BottomTabNavigation {..._props} />}
-         screenOptions={tabNavOptions()}
+         screenOptions={tabNavOptions({ headerShow: false })}
       >
          <Tabs.Screen
             options={{title: '', headerLeft: () => null}}
             name="home"
-            component={HomeScreen}
+            component={ProfileScreen}
          />
          <Tabs.Screen
             options={{title: ''}}
@@ -101,6 +108,17 @@ const HomeStack = props => {
    );
 };
 
+const RootNavigator = props => (
+   <Stack.Navigator
+      mode="modal"
+      screenOptions={{
+         ...screenOptions(),
+         headerShown: false
+      }}>
+      {props.children}
+   </Stack.Navigator>
+)
+
 const Navigation = ({ user, loading }) => {
    const theme = useTheme()
    const LaunchScreen = WelcomeScreen
@@ -116,7 +134,7 @@ const Navigation = ({ user, loading }) => {
          <SafeAreaProvider>
             <NavigationContainer linking={linkingConfig}>
                <Host>
-                  <Stack.Navigator screenOptions={screenOptions(theme)}>
+                  <RootNavigator>
                      <Stack.Screen headerMode="none" name="welcome" options={{ title: '', headerShown: false }} component={LaunchScreen} />
                      <Stack.Screen
                         headerMode="none"
@@ -124,7 +142,7 @@ const Navigation = ({ user, loading }) => {
                         name="auth"
                         component={AuthStack}
                      />
-                  </Stack.Navigator>
+                  </RootNavigator>
                </Host>
             </NavigationContainer>
          </SafeAreaProvider>
@@ -137,14 +155,19 @@ const Navigation = ({ user, loading }) => {
             <Host>
                <Stack.Navigator screenOptions={screenOptions(theme)}>
                   <Stack.Screen name="index" options={{ title: '', headerShown: false }} component={HomeStack} />
+                  <Stack.Screen name="dashboard" options={{ title: '', headerShown: false }} component={Dashboard} />
                   <Stack.Screen name="password_request" options={{ title: '' }} component={PasswordLostScreen} />
                   <Stack.Screen name="password_reset" options={{ title: '' }} component={PasswordChangeScreen} />
-                  <Stack.Screen name="verification" options={{ title: '' }} component={VerifyOTPScreen} />
+                  <Stack.Screen name="verification" options={{ title: '' }} component={VerificationScreen} />
                   <Stack.Screen name="profile" options={{ title: '' }} component={ProfileScreen} />
                   <Stack.Screen name="billing" options={{ title: '' }} component={BillingScreen} />
+                  <Stack.Screen name="page" options={{ headerShown: true, title: '' }} component={WebviewScreen} />
                   <Stack.Screen name="preferences.notifications" options={{ title: '' }} component={NotificationsPreferenceScreen} />
+                  <Stack.Screen name="address.add" options={{ title: '' }} component={AddressFormScreen} />
+                  <Stack.Screen name="profile.info" options={{ title: '' }} component={EditProfileScreen} />
                   <Stack.Screen name="profile.edit" options={{ title: '' }} component={EditProfileScreen} />
-                  <Stack.Screen name="profile.changePassword" options={{ title: '' }} component={PasswordChangeScreen} />
+                  <Stack.Screen name="profile.change_password" options={{ title: '' }} component={PasswordChangeScreen} />
+                  <Stack.Screen name="about" options={{ title: '' }} component={AboutScreen} />
                </Stack.Navigator>
             </Host>
          </NavigationContainer>
