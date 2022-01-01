@@ -1,11 +1,13 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { applyMiddleware, combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import { persistStore, persistReducer } from 'redux-persist'
 import ReduxThunk from 'redux-thunk';
 import http, { server } from "../utils/http";
 import localStorage from "../utils/localStorage";
 import authReducer from "./auth/auth.reducer";
 import optionsReducer from "./options/options.reducer";
+import { composeWithDevTools } from 'redux-devtools-extension';
+
 
 const reduxProps = {
    api: http,
@@ -20,11 +22,13 @@ const rootReducer = combineReducers({
 const persistConfig = {
    key: 'root',
    storage: AsyncStorage,
-   whitelist: ['auth', 'config']
+   whitelist: ['auth', 'options']
 }
 export const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-const store = createStore(persistedReducer, applyMiddleware(ReduxThunk.withExtraArgument(reduxProps, reduxProps)));
+const store = createStore(persistedReducer, composeWithDevTools(
+   applyMiddleware(ReduxThunk.withExtraArgument(reduxProps, reduxProps))
+));
 export const persistor = persistStore(store)
 
 export default store;

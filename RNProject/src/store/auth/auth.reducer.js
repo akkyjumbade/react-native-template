@@ -2,11 +2,7 @@ import { T_SET_CURRENT_TEAM } from "./team.reducer";
 
 const initialState = {
    token: null,
-   user: {
-      isGuest: true,
-      id: 0,
-      teams: {}
-   },
+   user: null,
    currentTeam: null,
    is_authenticated: false,
 };
