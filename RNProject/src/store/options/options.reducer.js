@@ -9,7 +9,7 @@ const initialState = {
    appearance_theme: 'system',
    alert_types: configOptions.alertTypes,
    languages: configOptions.languages,
-   countryCode: 'INR',
+   country: 'IN',
    countryPhoneCode: '+91',
 };
 

@@ -24,10 +24,15 @@ import CheckIcon from '@/icons/CheckIcon';
 // import ErrorMessage from '@modules/rn-kit/molecules/ErrorMessage';
 // import { Button } from 'packages/rn-kit';
 const avatarPlaceholderImage = require('../../../assets/avatar_placeholder.jpeg')
+import timezones from '@/config/timezones'
+import { useLocale } from '@/providers/LocaleProvider';
+import * as RNLocalize from 'react-native-localize'
 
 const BillingScreen = ({ user, isAuthenticated, initialValues = {} }) => {
    const nav = useNavigation()
    const __ = useTranslation();
+   const config = useSelector(state => state.options)
+   const currencies = RNLocalize.getCurrencies()
    const formik = useFormik({
       initialValues
    })
@@ -56,7 +61,7 @@ const BillingScreen = ({ user, isAuthenticated, initialValues = {} }) => {
                            <Text>{__('Country')}</Text>
                         </View>
                         <View>
-                           <Text color={'gray'}>{__('IN')}</Text>
+                           <Text color={'gray'}>{config.country}</Text>
                         </View>
                         <View>
                            <icons.chevronRightIcon width={24} height={24} />
@@ -69,10 +74,25 @@ const BillingScreen = ({ user, isAuthenticated, initialValues = {} }) => {
                            <Text>{__('Default currency')}</Text>
                         </View>
                         <View>
-                           <Text color={'gray'}>{__('INR')}</Text>
-                        </View>
-                        <View>
-                           <icons.chevronRightIcon width={24} height={24} />
+                           {/* <Text color={'gray'}>{config.currency}</Text> */}
+                           <Select
+                              selectedValue={config.currency}
+                              minWidth={200}
+                              accessibilityLabel={'Choose currency'}
+                              placeholder={'Choose currency'}
+                              // _selectedItem={{
+                              //    endIcon: <CheckIcon size="5" />,
+                              //  }}
+                              mt={1}
+                              onValueChange={selectedValue => {
+                                 formik.setFieldValue('currency', selectedValue)
+                              }}
+
+                           >
+                              {currencies?.length && currencies.map(crn => (
+                              <Select.Item key={crn} label={crn} value={crn} />
+                              ))}
+                           </Select>
                         </View>
                      </HStack>
                   </List.Item>
@@ -82,10 +102,25 @@ const BillingScreen = ({ user, isAuthenticated, initialValues = {} }) => {
                            <Text>{__('Timezone')}</Text>
                         </View>
                         <View>
-                           <Text color={'gray'}>{__('Asia/Kolkata')}</Text>
-                        </View>
-                        <View>
-                           <icons.chevronRightIcon width={24} height={24} />
+                           <Select
+                              selectedValue={config.timezone}
+                              minWidth={200}
+                              accessibilityLabel={'Choose timezone'}
+                              placeholder={'Choose timezone'}
+                              // _selectedItem={{
+                              //    endIcon: <CheckIcon size="5" />,
+                              //  }}
+                              mt={1}
+                              onValueChange={selectedValue => {
+                                 formik.setFieldValue('timezone', selectedValue)
+                              }}
+
+                           >
+                              {/* <Select.Item label="Choose" value="ux" /> */}
+                              {timezones && timezones.map(tz => (
+                              <Select.Item key={tz.value} label={tz.label} value={tz.value} />
+                              ))}
+                           </Select>
                         </View>
                      </HStack>
                   </List.Item>
@@ -106,11 +141,12 @@ const BillingScreen = ({ user, isAuthenticated, initialValues = {} }) => {
                               //  }}
                               mt={1}
                               onValueChange={selectedValue => {
-                                 if (selectedValue == '0') {
+                                 if (selectedValue === '0') {
                                     nav.navigate('address.add')
                                     return
+                                 } else {
+                                    formik.setFieldValue('default_billing_address_id', selectedValue)
                                  }
-                                 formik.setFieldValue('default_billing_address_id', selectedValue)
                               }}
 
                            >
@@ -137,11 +173,11 @@ const BillingScreen = ({ user, isAuthenticated, initialValues = {} }) => {
                <Text>{__('version ') + config.appVersion}</Text> */}
             </VStack>
             <View style={{ marginBottom: 20 }}>
-               {/* <ErrorBoundary>
-                  <LogoutActionDialogue renderButton={(btnprops) => (
-                     <Button title={'Logout'} {...btnprops} />
-                  )} />
-               </ErrorBoundary> */}
+               {formik.dirty && (
+               <ErrorBoundary>
+                  <ButtonPrimary disabled={!formik.dirty} title={'Update'} />
+               </ErrorBoundary>
+               )}
             </View>
          </Page.Container>
       </Page>

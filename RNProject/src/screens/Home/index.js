@@ -5,6 +5,7 @@ import Page from "@modules/rn-kit/layouts/Page";
 import Text from "@modules/rn-kit/atoms/Text";
 import useTranslation from "@/hooks/useTranslation";
 import ContentLoader, { Circle, Code, Facebook, Rect } from 'react-content-loader/native'
+import { useLocale } from '@/providers/LocaleProvider';
 
 const MyLoader = () => (
    <Fragment>
@@ -33,9 +34,13 @@ const DoorDashFavorite = props => (
 const HomeScreen = (props) => {
    const auth = useSelector(state => state.auth)
    const __ = useTranslation()
+   const locale = useLocale()
+   const options = useSelector(({ options}) => (options))
    return (
       <Page scroll={true}>
          <Page.Container>
+            <Text>{JSON.stringify({ locale })}</Text>
+            <Text>{JSON.stringify({ options })}</Text>
             <DoorDashFavorite />
             <Facebook />
             <Code />
