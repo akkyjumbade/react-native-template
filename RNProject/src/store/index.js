@@ -6,6 +6,8 @@ import http, { server } from "../utils/http";
 import localStorage from "../utils/localStorage";
 import authReducer from "./auth/auth.reducer";
 import optionsReducer from "./options/options.reducer";
+import { reducer as network } from 'react-native-offline';
+
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 
@@ -17,6 +19,7 @@ const reduxProps = {
 }
 const rootReducer = combineReducers({
    auth: authReducer,
+   // network,
    options: optionsReducer,
 })
 const persistConfig = {

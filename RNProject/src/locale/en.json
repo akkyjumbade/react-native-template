@@ -1,5 +1,6 @@
 {
    "offline_title": "You are offline.",
+   "offline_description": "Check your internet connection and try again.",
    "welcome_note": "Recent transactions",
    "recent_transactions": "Recent transactions",
    "rewards": "Rewards",

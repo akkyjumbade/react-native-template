@@ -12,13 +12,11 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 const App = () => {
    return (
       <React.Fragment>
-         <NetworkProvider pingInBackground={true} >
+         <NetworkProvider pingInBackground={true} pingOnlyIfOffline={true} pingInterval={500} >
             <QueryClientProvider client={queryClient}>
                <Provider store={store}>
                   <ThemeContextProvider>
                      <Bootstrap />
-                     {/* <GestureHandlerRootView>
-                     </GestureHandlerRootView> */}
                   </ThemeContextProvider>
                </Provider>
             </QueryClientProvider>
