@@ -11,6 +11,7 @@ import useApiQuery from '@/hooks/useApiQuery';
 import Empty from '@/components/Empty';
 import ButtonPrimary from '@modules/rn-kit/atoms/ButtonPrimary';
 import Text from '@modules/rn-kit/atoms/Text';
+import Alert from '@modules/rn-kit/molecules/Alert';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { List_Item } from '@modules/rn-kit/atoms/List_Item';
@@ -50,45 +51,51 @@ const NotificationsPreferenceScreen = ({ options, user, token }) => {
 
    return (
       <Page scroll={true} loading={isLoading}>
-
-         <Page.Container style={{ marginBottom: 30, }}>
-            {broadcastChannels && broadcastChannels.map(({ value: group, label }) => (
-               <Fragment>
-                  <HStack>
-                     <View style={{ flex: 1, marginBottom: 15 }}>
-                        <Text fontSize={'lg'} bold>{label}</Text>
+         <Page.Container style={{  marginBottom: 30, }}>
+            <Page.Title>Notifications</Page.Title>
+            <Alert title={'Notifications disabled!'} />
+            {notificationChannels?.map(row => (
+               <Fragment
+                  key={`channel_id_${row.channelId}`}
+               >
+                  <VStack space={3}>
+                     <VStack style={{ flex: 1 }}>
+                        <View>
+                           <Text bold>{row.channelName}</Text>
+                        </View>
+                        <Text>{row.channelDescription}</Text>
+                     </VStack>
+                     <View style={{ paddingHorizontal: 0 }}>
+                        {/* <Text>{JSON.stringify({ broadcastChannels })}</Text> */}
+                        <List rounded={'lg'} borderWidth={0} paddingHorizontal={0} divider={<Divider />} style={{ marginBottom: 30 }}>
+                           {broadcastChannels?.map(chnl => (
+                              <List.Item
+                                 key={`channel_${chnl.value}`}
+                                 style={{ paddingHorizontal: 0 }}
+                                 paddingLeft={0}
+                              >
+                                 <HStack>
+                                    <VStack style={{ flex: 1 }}>
+                                       <Text>{chnl.label}</Text>
+                                    </VStack>
+                                    <View style={{ paddingHorizontal: 15 }}>
+                                       {/* <ToggleButtonClick  /> */}
+                                       <Switch onToggle={(val) => onToggle({
+                                          broadcast_channel: chnl.value,
+                                          value: val,
+                                          channel: chnl,
+                                          channel_id: chnl.channelId,
+                                       })} />
+                                    </View>
+                                 </HStack>
+                              </List.Item>
+                           ))}
+                        </List>
                      </View>
-                     <View >
-                        <Text >{isUpdating ? 'Updating...' : ''}</Text>
-                     </View>
-                  </HStack>
-                  <List key={group} rounded={'lg'} divider={<Divider />} style={{ marginBottom: 30 }}>
-                     {notificationChannels?.map(row => (
-                        <List.Item
-                           key={`channel_id_${row.channelId}`}
-                        >
-                           <HStack>
-                              <VStack style={{ flex: 1 }}>
-                                 <View>
-                                    <Text bold>{row.channelName}</Text>
-                                 </View>
-                                 <Text>{row.channelDescription}</Text>
-                              </VStack>
-                              <View style={{ paddingHorizontal: 15 }}>
-                                 {/* <ToggleButtonClick  /> */}
-                                 <Switch onToggle={(val) => onToggle({
-                                    broadcast_channel: group,
-                                    value: val,
-                                    channel: row,
-                                    channel_id: row.channelId,
-                                 })} />
-                              </View>
-                           </HStack>
-                        </List.Item>
-                     ))}
-                  </List>
+                  </VStack>
                </Fragment>
             ))}
+
          </Page.Container>
       </Page>
    );

@@ -104,6 +104,16 @@ const ProfileScreen = ({ user, isAuthenticated }) => {
                         </View>
                      </HStack>
                   </List.Item>
+                  {/* <List.Item onPress={() => nav.navigate('security')}>
+                     <HStack alignItems={'center'}>
+                        <View style={{ flex: 1 }}>
+                           <Text>{__('Security')}</Text>
+                        </View>
+                        <View>
+                           <icons.chevronRightIcon width={24} height={24} />
+                        </View>
+                     </HStack>
+                  </List.Item> */}
                   <List.Item onPress={() => nav.navigate('profile.change_password')}>
                      <HStack alignItems={'center'}>
                         <View style={{ flex: 1 }}>
