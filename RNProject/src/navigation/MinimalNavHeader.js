@@ -1,21 +1,20 @@
+import icons from '@/icons'
 import React from 'react'
-import { Pressable, StyleSheet, TouchableOpacity, View } from 'react-native'
+import { Pressable, SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native'
 import { Portal } from 'react-native-portalize'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { Icon } from 'uikit'
-import { Text } from 'uikit'
+// import { SafeAreaView } from 'react-native-safe-area-context'
 
 const BackButton = ({ navigation }) => {
    return (
       <View style={styles.backbutton}>
-         <Icon  name="x" size={24} onPress={_ => navigation.goBack() } />
+         <icons.chevronLeftIcon name="x" width={24} height={24} onPress={_ => navigation.goBack() } />
       </View>
    )
 }
 const styles = StyleSheet.create({
    header: {
-      backgroundColor: 'rgba(255, 255, 255, 0)', 
-      // backgroundColor: 'red', 
+      backgroundColor: 'rgba(255, 255, 255, 0)',
+      // backgroundColor: 'red',
       position: 'absolute',
       zIndex: 9999,
       // top: 100,

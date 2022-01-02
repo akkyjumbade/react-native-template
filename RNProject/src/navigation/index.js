@@ -31,6 +31,7 @@ import Dashboard from '@/screens/Dashboard';
 import WebviewScreen from '@/screens/WebviewScreen';
 import AddressFormScreen from '@/screens/User/AddressFormScreen';
 import AboutScreen from '@/screens/AboutScreen';
+import MinimalNavHeader from './MinimalNavHeader';
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -80,7 +81,7 @@ const HomeStack = props => {
          screenOptions={tabNavOptions({ headerShow: false })}
       >
          <Tabs.Screen
-            options={{title: '', headerLeft: () => null}}
+            options={{title: 'Welome guest', headerShown: true }}
             name="home"
             component={HomeScreen}
          />
