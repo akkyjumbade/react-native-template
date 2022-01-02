@@ -122,29 +122,9 @@ const BillingScreen = ({ user, isAuthenticated, initialValues = {} }) => {
                         </View>
                      </HStack>
                   </List.Item>
-                  <Fragment>
-                     {/* <VStack style={{ marginTop: 15, }} space={3}>
-                        <Card >
-                           <Text>Address, </Text>
-                           <Text>City, state, postal_code </Text>
-                        </Card>
-                        <Card >
-                           <Text>Address, </Text>
-                           <Text>Address, </Text>
-                        </Card>
-                        <Card >
-                           <Text>Address, </Text>
-                           <Text>Address, </Text>
-                        </Card>
-                        <Card >
-                           <Text>Address, </Text>
-                           <Text>Address, </Text>
-                        </Card>
-                        <Box border="1" borderRadius="md">
-                           <Button title={'Add Address'} onPress={() => nav.navigate('address.add')} />
-                        </Box>
-                     </VStack> */}
-                  </Fragment>
+                  <List.Item >
+                     <Text>{__('Transactions')}</Text>
+                  </List.Item>
                </List>
             </View>
          </Center>

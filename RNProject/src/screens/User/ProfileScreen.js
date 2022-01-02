@@ -89,7 +89,7 @@ const ProfileScreen = ({ user, isAuthenticated, options }) => {
                   </View>
                </HStack>
                <List
-                  style={{ marginVertical: 15, borderWidth: 0 }}
+                  style={{ marginBottom: 15, borderWidth: 0 }}
                   divider={<Divider />}
                   space={1}
                   >
@@ -152,9 +152,7 @@ const ProfileScreen = ({ user, isAuthenticated, options }) => {
                   <List.Item onPress={_ => nav.navigate('preferences.notifications')}>
                      <Text>{__('Notification Preferences')}</Text>
                   </List.Item>
-                  <List.Item >
-                     <Text>{__('Transactions')}</Text>
-                  </List.Item>
+
                </List>
                <List
                   style={{ marginVertical: 15, borderWidth: 0 }}

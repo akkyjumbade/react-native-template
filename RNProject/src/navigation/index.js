@@ -82,7 +82,7 @@ const HomeStack = props => {
          <Tabs.Screen
             options={{title: '', headerLeft: () => null}}
             name="home"
-            component={ProfileScreen}
+            component={HomeScreen}
          />
          <Tabs.Screen
             options={{title: ''}}
