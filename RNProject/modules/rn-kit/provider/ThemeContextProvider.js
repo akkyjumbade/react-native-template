@@ -1,24 +1,35 @@
-import React, { memo } from 'react'
+import React, { memo, useMemo } from 'react'
 import { ThemeProvider } from 'styled-components'
 import theme from '../themes/theme'
-import {StatusBar} from "react-native";
+import darkTheme from '../themes/dark-theme'
+import {StatusBar, Text} from "react-native";
 import { extendTheme, NativeBaseProvider } from 'native-base';
+import { useSelector } from 'react-redux';
 
 const ThemeContextProvider = ({ children, theme: providedTheme }) => {
+   // get is dark mode from options
+   const isDarkMode = useSelector(state => state.options.appearance_theme === 'dark')
+   const themeSelected = useMemo(() => {
+      if (isDarkMode) {
+         return darkTheme
+      }
+      return theme
+   }, [ isDarkMode ])
    if (!providedTheme) {
       return null
    }
+
    return (
       <React.Fragment>
          <StatusBar
             animated={true}
-            backgroundColor={providedTheme.colors?.primary ?? 'black'}
+            backgroundColor={themeSelected.colors?.primary ?? 'black'}
             hidden={false}
             barStyle={'dark-content'}
             showHideTransition={'fade'}
          />
-         <ThemeProvider theme={providedTheme}>
-            <NativeBaseProvider theme={extendTheme(providedTheme)}>
+         <ThemeProvider theme={themeSelected}>
+            <NativeBaseProvider theme={extendTheme(themeSelected)}>
                {children}
             </NativeBaseProvider>
          </ThemeProvider>
