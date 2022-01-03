@@ -1,5 +1,4 @@
 export default {
-   textColor: 'black',
    gray: 'gray',
    black: 'black',
    dark: 'black',
@@ -13,4 +12,6 @@ export default {
    white: 'white',
    default: 'lightgray',
    info: 'skyblue',
+   pageBg: 'white',
+   textColor: '#191919',
 }

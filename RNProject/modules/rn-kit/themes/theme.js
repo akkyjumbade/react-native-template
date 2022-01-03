@@ -63,7 +63,15 @@ export default {
          baseStyle: {
             borderRadius: 'lg'
          }
-      }
+      },
+      Divider: {
+         baseStyle: {
+            borderColor: 'gray'
+         },
+         defaultProps: {},
+         variants: {},
+         sizes: {},
+     }
    }
    // fontPrimary: ''
 }

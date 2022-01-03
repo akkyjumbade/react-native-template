@@ -1,10 +1,13 @@
+import { mode } from "native-base/lib/typescript/theme/tools"
 import themes, { fonts } from "."
 import colors from "./colors"
 
 export default {
    colors: {
       ...colors,
-      primary: 'gray'
+      primary: 'gray',
+      pageBg: '#151515',
+      textColor: '#eee',
    },
    htmlStyle: themes.htmlStyle,
    fontConfig: {
@@ -63,7 +66,17 @@ export default {
          baseStyle: {
             borderRadius: 'lg'
          }
-      }
+      },
+      Divider: {
+         baseStyle: {
+            bg: 'blue'
+         },
+         defaultProps: {
+            // borderColor: 'red'
+         },
+         variants: {},
+         sizes: {},
+     }
    }
    // fontPrimary: ''
 }

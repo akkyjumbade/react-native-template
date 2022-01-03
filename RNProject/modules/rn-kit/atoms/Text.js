@@ -7,6 +7,7 @@ const StyledText = styled(BaseText)`
    ${props => {
       return css`
          font-family: ${props.bold ? fonts.bold : fonts.primary};
+         color: ${({ theme }) => theme.colors.textColor ?? 'black'};
       `
    }}
    letter-spacing: 0;

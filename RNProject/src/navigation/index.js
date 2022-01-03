@@ -32,24 +32,28 @@ import WebviewScreen from '@/screens/WebviewScreen';
 import AddressFormScreen from '@/screens/User/AddressFormScreen';
 import AboutScreen from '@/screens/AboutScreen';
 import MinimalNavHeader from './MinimalNavHeader';
+import SettingsScreen from '@/screens/Settings/SettingsScreen';
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
 
-const screenOptions = (theme = null) => ({
-   // headerShown: false,
-   headerTitleStyle: {
-      fontFamily: fonts.heading,
-   },
-   // headerTransparent: true,
-   headerStyle: {
-      backgroundColor: 'white',
-      shadowColor: '#fff',
-      elevation: 0,
-   },
-   headerTintColor: '#4c5561',
-   ...horizontalAnimation,
-})
+const screenOptions = (theme = null) => {
+   console.log({ theme })
+   return {
+      // headerShown: false,
+      headerTitleStyle: {
+         fontFamily: fonts.heading,
+      },
+      // headerTransparent: true,
+      headerStyle: {
+         backgroundColor: theme?.colors?.pageBg ?? 'gray',
+         shadowColor: '#fff',
+         elevation: 0,
+      },
+      headerTintColor: '#4c5561',
+      ...horizontalAnimation,
+   }
+}
 const tabNavOptions = (args) => {
    return {
       ...screenOptions(),
@@ -61,7 +65,8 @@ const tabBarOptions = {
 
 }
 
-const AuthStack = ({ theme }) => {
+const AuthStack = () => {
+   const theme = useTheme()
    return (
       <Stack.Navigator screenOptions={screenOptions(theme)}>
          <Stack.Screen options={{ headerShown: false, title: 'Register', }} name="register" component={RegisterScreen} />
@@ -75,10 +80,15 @@ const AuthStack = ({ theme }) => {
 
 const HomeStack = props => {
    const theme = useTheme()
+   let defaultNavOptions = {
+      headerStyle: {
+         backgroundColor: theme?.colors?.pageBg ?? 'gray',
+      },
+   }
    return (
       <Tabs.Navigator
          tabBar={_props => <BottomTabNavigation {..._props} />}
-         screenOptions={tabNavOptions({ headerShow: false })}
+         screenOptions={tabNavOptions({ headerShow: false, ...defaultNavOptions })}
       >
          <Tabs.Screen
             options={{title: 'Welome guest', headerShown: true }}
@@ -163,6 +173,7 @@ const Navigation = ({ user, loading }) => {
                   <Stack.Screen name="profile" options={{ title: '' }} component={ProfileScreen} />
                   <Stack.Screen name="billing" options={{ title: '' }} component={BillingScreen} />
                   <Stack.Screen name="page" options={{ headerShown: true, title: '' }} component={WebviewScreen} />
+                  <Stack.Screen name="preferences" options={{ title: '' }} component={SettingsScreen} />
                   <Stack.Screen name="preferences.notifications" options={{ title: '' }} component={NotificationsPreferenceScreen} />
                   <Stack.Screen name="address.add" options={{ title: '' }} component={AddressFormScreen} />
                   <Stack.Screen name="profile.info" options={{ title: '' }} component={EditProfileScreen} />

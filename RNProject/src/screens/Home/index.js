@@ -39,8 +39,8 @@ const HomeScreen = (props) => {
    return (
       <Page scroll={true}>
          <Page.Container>
-            <Text>{JSON.stringify({ locale })}</Text>
-            <Text>{JSON.stringify({ options })}</Text>
+            {/* <Text>{JSON.stringify({ locale })}</Text>
+            <Text>{JSON.stringify({ options })}</Text> */}
             <DoorDashFavorite />
             <Facebook />
             <Code />

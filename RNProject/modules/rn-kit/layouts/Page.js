@@ -19,14 +19,13 @@ const StyledPage = styled.SafeAreaView`
       if (props.bg) {
          return props.bg
       }
-      return props.theme.colors.white
+      return props.theme.colors.pageBg
    }};
    ${props => {
-      if(props.centerMode) {
+      if (props.centerMode) {
          return css`
             justify-content: center;
             flex-direction: column;
-            background-color: white;
             `
       }
    }}

@@ -125,6 +125,16 @@ const ProfileScreen = ({ user, isAuthenticated, options }) => {
                         </View>
                      </HStack>
                   </List.Item> */}
+                  <List.Item onPress={() => nav.navigate('preferences')}>
+                     <HStack alignItems={'center'}>
+                        <View style={{ flex: 1 }}>
+                           <Text>{__('Preferences')}</Text>
+                        </View>
+                        <View>
+                           <icons.chevronRightIcon width={24} height={24} />
+                        </View>
+                     </HStack>
+                  </List.Item>
                   <List.Item onPress={() => nav.navigate('profile.change_password')}>
                      <HStack alignItems={'center'}>
                         <View style={{ flex: 1 }}>
@@ -138,24 +148,9 @@ const ProfileScreen = ({ user, isAuthenticated, options }) => {
                         </View>
                      </HStack>
                   </List.Item>
-                  <List.Item onPress={console.log}>
-                     <HStack alignItems={'center'}>
-                        <View style={{ flex: 1 }}>
-                           <Text>{__('Dark mode?')}</Text>
-                        </View>
-                        <View>
-                           <Switch isChecked={selectedTheme === 'dark'} onToggle={toggleDarkModel} />
-                           {/* <icons.chevronRightIcon width={24} height={24} /> */}
-                        </View>
-                     </HStack>
-                  </List.Item>
-                  <List.Item onPress={_ => nav.navigate('preferences.notifications')}>
-                     <Text>{__('Notification Preferences')}</Text>
-                  </List.Item>
-
                </List>
                <List
-                  style={{ marginVertical: 15, borderWidth: 0 }}
+                  style={{ marginBottom: 15, borderWidth: 0 }}
                   divider={<Divider />}
                   space={1}
                   >
