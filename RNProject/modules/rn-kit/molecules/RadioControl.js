@@ -2,8 +2,9 @@ import { Radio } from 'native-base'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, View } from 'react-native'
-import { Text } from '../..'
+import Text from '@modules/rn-kit/atoms/Text'
 import styled from 'styled-components/native'
+import { forwardRef } from 'react'
 
 const StyledRadio = styled(Radio)`
    border-color: gray;
@@ -11,8 +12,7 @@ const StyledRadio = styled(Radio)`
    border-radius: 100px;
    padding: 0;
    margin: 0;
-   align-items: center;
-   justify-content: center;
+   align-items: flex-start;
    flex-direction: column;
    width: 23px;
    height: 23px;
@@ -20,15 +20,15 @@ const StyledRadio = styled(Radio)`
 const styles = StyleSheet.create({
    field_list: {
       flexDirection: 'column',
-      alignItems: 'center',
+      alignItems: 'flex-start',
    },
    field_inline: {
       flexDirection: 'row',
-      alignItems: 'center',
+      alignItems: 'flex-start',
    },
 })
 
-export default function RadioControl(props) {
+const RadioControl = (props) => {
    const { label, } = props
 
    return (
@@ -44,28 +44,27 @@ export default function RadioControl(props) {
 }
 
 export const RadioGroup = props => {
-   const options = props.options
-   const { inline = false, value } = props
+   const { options, value, onChange, name } = props
    let style = styles.field_list
-   if (inline) {
-      style = styles.field_inline
-   }
    if (!options) {
       return null
    }
-   function onChange(ev) {
-      if (props.onChange) {
-         props.onChange(ev)
-
-      }
-   }
    return (
       <View style={style}>
-         {options.map((opt, optindex) => (
-            <View style={{ marginRight: 4, }} key={optindex + opt.value}>
-               <RadioControl selected={value === opt.value} {...opt} onPress={() => onChange(opt)} />
-            </View>
-         ))}
+         <Radio.Group
+            name={name}
+            accessibilityLabel={name}
+            value={value}
+            onChange={(nextValue) => {
+               onChange && onChange(nextValue)
+            }}
+         >
+            {options.map((opt, optindex) => (
+               <Radio colorScheme={opt.value === value ? 'yellow' : ''} value={opt.value} my={0.5} >
+                  {opt.label}
+               </Radio>
+            ))}
+         </Radio.Group>
       </View>
    )
 }
@@ -73,4 +72,10 @@ export const RadioGroup = props => {
 RadioControl.propTypes = {
    ...Radio.propTypes,
    label: PropTypes.string,
+   name: PropTypes.string,
 }
+
+
+export default forwardRef((props, ref) => (
+   <RadioControl {...props} ref={ref} />
+))

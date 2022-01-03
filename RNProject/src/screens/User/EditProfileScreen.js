@@ -4,7 +4,7 @@ import { View } from 'react-native'
 import { connect, useSelector } from 'react-redux'
 import Page from "@modules/rn-kit/layouts/Page";
 import useTranslation from '@/hooks/useTranslation';
-import { Center, Divider, HStack, List } from 'native-base';
+import { Center, Divider, HStack, List, VStack } from 'native-base';
 import icons from '@/icons';
 import { useNavigation } from '@react-navigation/native';
 import { Button, Text } from '@modules/rn-kit';
@@ -18,6 +18,10 @@ import { useModalize } from 'react-native-modalize/lib/utils/use-modalize';
 import UpdateNameForm from '@/components/forms/UpdateNameForm';
 import UpdateEmailForm from '@/components/forms/UpdateEmailForm';
 import UpdatePhoneNumberForm from '@/components/forms/UpdatePhoneNumberForm';
+import GenderChoiceControl from '@modules/rn-kit/molecules/GenderChoiceControl';
+import DatePicker from '@modules/rn-kit/molecules/DatePicker';
+import { ButtonPrimary } from '@modules/rn-kit/atoms';
+import { useFormik } from 'formik';
 
 const forms = {
    name: UpdateNameForm,
@@ -70,6 +74,13 @@ const EditProfileScreen = ({ user }) => {
    const nav = useNavigation()
    const { ref: formFef, open, close } = useModalize()
    const [ selectedField, setSelectedField ] = useState(null)
+
+   const formik = useFormik({
+      initialValues: user,
+      onSubmit(values, action) {
+
+      }
+   })
 
    const editForm = ({ name, value }) => {
       setSelectedField({
@@ -127,20 +138,28 @@ const EditProfileScreen = ({ user }) => {
                         </View>
                      </HStack>
                   </List.Item>
-                  <List.Item onPress={() => nav.navigate('profile.edit', { field: 'gender', })}>
+                  <List.Item >
                      <HStack alignItems={'center'}>
                         <View style={{ flex: 1 }}>
-                           <Text>{__('gender')}</Text>
+                           <Text>{__('birth_date')}</Text>
                         </View>
                         <View>
-                           <Text color={'gray'}>{user.gender}</Text>
-                        </View>
-                        <View>
-                           <icons.chevronRightIcon width={24} height={24} />
+                           <DatePicker value={formik.values.birth_date} onChange={val => formik.setFieldValue('birth_date', val)} />
                         </View>
                      </HStack>
                   </List.Item>
+                  <List.Item onPress={() => nav.navigate('profile.edit', { field: 'gender', })}>
+                     <VStack alignItems={'center'}>
+                        <FormControl label={'Gender'}>
+                           <GenderChoiceControl value={formik.values.gender} onChange={val => formik.setFieldValue('gender', val)} />
+                        </FormControl>
+                     </VStack>
+                  </List.Item>
                </List>
+               {/* <Text>{JSON.stringify(formik.values)}</Text> */}
+            </View>
+            <View>
+               <ButtonPrimary disabled={!formik.dirty} title={'Save'} />
             </View>
          </Center>
          <Portal>
