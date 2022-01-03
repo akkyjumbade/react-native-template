@@ -13,6 +13,7 @@ import EmailInput from '@modules/rn-kit/molecules/EmailInput'
 import { View } from 'native-base'
 import { PhoneNumberInput } from '@modules/rn-kit/molecules'
 import useRegisterQuery from '@/api/useRegisterQuery'
+import { Button } from '@modules/rn-kit'
 
 
 const RegisterForm = ({ initialValues = {}, }) => {
@@ -59,6 +60,7 @@ const RegisterForm = ({ initialValues = {}, }) => {
          <View style={{ marginBottom: 30, marginTop: 5, }}>
             <Text>{__('accept_terms_line')}</Text>
          </View>
+         <Button title={'Verify'} onPress={_ => nav.navigate('verification')} />
          <ButtonPrimary
             title={__('btn_register')}
             disabled={!formik.dirty || (formik.isSubmitting)}

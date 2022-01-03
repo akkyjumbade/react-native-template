@@ -14,6 +14,7 @@ export default function OtpInput({ value, onChange, }) {
          codeInputFieldStyle={styles.underlineStyleBase}
          codeInputHighlightStyle={styles.underlineStyleHighLighted}
          onCodeFilled={(code => {
+            onChange && onChange(code)
             console.log(`Code is ${code}, you are good to go!`)
          })}
       />
