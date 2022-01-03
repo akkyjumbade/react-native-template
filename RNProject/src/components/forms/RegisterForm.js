@@ -11,18 +11,37 @@ import {useNavigation} from "@react-navigation/core";
 import useTranslation from '@/hooks/useTranslation'
 import EmailInput from '@modules/rn-kit/molecules/EmailInput'
 import { View } from 'native-base'
+import { PhoneNumberInput } from '@modules/rn-kit/molecules'
+import useRegisterQuery from '@/api/useRegisterQuery'
 
 
 const RegisterForm = ({ initialValues = {}, }) => {
    const nav = useNavigation()
    const __ = useTranslation()
-   const onSubmit = async (values) => {
-      // return await http()
-   }
+   const registerQuery = useRegisterQuery({
+      onSuccess() {
+
+      },
+      onError() {
+
+      },
+   })
    const formik = useFormik({
       initialValues,
-      // onSubmit:
+      async onSubmit(values, action) {
+         action.setSubmitting(true)
+         try {
+            await registerQuery.mutateAsync(values)
+         } catch (error) {
+
+         } finally {
+            action.setSubmitting(false)
+         }
+      }
    })
+   const submitRegisterForm = async (values) => {
+      formik.handleSubmit()
+   }
    return (
       <ErrorBoundary>
          <FormControl label={__('name')} >
@@ -31,13 +50,20 @@ const RegisterForm = ({ initialValues = {}, }) => {
          <FormControl label={__('email')} >
             <EmailInput value={formik.values.email} onChangeText={formik.handleChange('email')} placeholder={''}  />
          </FormControl>
+         <FormControl label={__('phone')} >
+            <PhoneNumberInput value={formik.values.phone} onChangeText={formik.handleChange('phone')} placeholder={''}  />
+         </FormControl>
          <FormControl label={__('password')} >
-            <TextInput value={formik.values.password} onChangeText={formik.handleChange('password')} placeholder={'password'}  />
+            <PasswordInput strict={true} value={formik.values.password} onChangeText={formik.handleChange('password')} placeholder={'password'}  />
          </FormControl>
          <View style={{ marginBottom: 30, marginTop: 5, }}>
             <Text>{__('accept_terms_line')}</Text>
          </View>
-         <ButtonPrimary title={__('btn_register')} onPress={() => nav.navigate('login')} />
+         <ButtonPrimary
+            title={__('btn_register')}
+            disabled={!formik.dirty || (formik.isSubmitting)}
+            loading={formik.isSubmitting}
+            onPress={submitRegisterForm} />
       </ErrorBoundary>
    )
 }

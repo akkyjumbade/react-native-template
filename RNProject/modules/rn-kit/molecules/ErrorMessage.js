@@ -1,7 +1,7 @@
 import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components/native'
-import { Text } from '..'
+import { Text } from '../atoms'
 import colors from '../themes/colors'
 import Collapsable from './Collapsable'
 

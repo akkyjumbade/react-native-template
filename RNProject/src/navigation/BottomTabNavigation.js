@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { connect } from 'react-redux'
 import useTranslation from '../hooks/useTranslation'
 import { useTheme } from 'styled-components'
-import { Text } from '@modules/rn-kit'
+import { Text } from '@modules/rn-kit/atoms'
 import colors from '@modules/rn-kit/themes/colors'
 
 const StyledBottomView = styled.View`

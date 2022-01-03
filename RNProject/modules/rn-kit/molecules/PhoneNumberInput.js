@@ -30,9 +30,6 @@ yup.setLocale({
 
 export default function PhoneNumberInput({ prepend, append, ...props }) {
    const config = useSelector(state => state.options)
-   const togglePassword = () => {
-
-   }
 
    return (
       <ErrorBoundary>

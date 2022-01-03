@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components/native'
-import { Text } from '../..'
+import Text from '../atoms/Text'
 // import Label from '../atoms/'
 const StyledCheckbox = styled(View)`
    margin-left: -15px;

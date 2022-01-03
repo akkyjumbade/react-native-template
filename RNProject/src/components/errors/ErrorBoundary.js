@@ -1,4 +1,4 @@
-import { Text } from '@modules/rn-kit';
+import { Text } from '@modules/rn-kit/atoms';
 import { View } from 'native-base';
 import React from 'react'
 

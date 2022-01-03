@@ -26,7 +26,7 @@ const LoginForm = ({ initialValues = {}, }) => {
          <FormControl label={'Password'} >
             <TextInput values={formik.values.password} onChangeText={formik.handleChange('password')} placeholder={'password'}  />
          </FormControl>
-         <ButtonPrimary title={'LOGIN'} onPress={() => nav.navigate('Home')} />
+         <ButtonPrimary title={'LOGIN'} onPress={() => nav.navigate('home')} />
       </ErrorBoundary>
    )
 }

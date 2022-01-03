@@ -7,8 +7,14 @@ const StyledText = styled(BaseText)`
    ${props => {
       return css`
          font-family: ${props.bold ? fonts.bold : fonts.primary};
-         color: ${({ theme }) => theme.colors.textColor ?? 'black'};
       `
+   }}
+   ${({ theme }) => {
+      if (theme.colors?.textColor) {
+         return css`
+            color: ${({ theme }) => theme.colors.textColor};
+         `
+      }
    }}
    letter-spacing: 0;
 `

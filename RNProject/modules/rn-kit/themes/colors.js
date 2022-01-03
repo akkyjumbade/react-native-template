@@ -13,5 +13,5 @@ export default {
    default: 'lightgray',
    info: 'skyblue',
    pageBg: 'white',
-   textColor: '#191919',
+   // textColor: '#191919',
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { ActivityIndicator, View } from 'react-native';
 import { useTheme } from 'styled-components';
 import styled from "styled-components/native";
-import { Text } from '..';
+import { Text } from '../atoms';
 
 const StyledLoading = styled.View`
    font-size: 16px;
