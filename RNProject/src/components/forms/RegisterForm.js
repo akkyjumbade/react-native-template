@@ -55,12 +55,12 @@ const RegisterForm = ({ initialValues = {}, }) => {
             <PhoneNumberInput value={formik.values.phone} onChangeText={formik.handleChange('phone')} placeholder={''}  />
          </FormControl>
          <FormControl label={__('password')} >
-            <PasswordInput strict={true} value={formik.values.password} onChangeText={formik.handleChange('password')} placeholder={'password'}  />
+            <PasswordInput strict={true} value={formik.values.password} onChangeText={formik.handleChange('password')}   />
          </FormControl>
          <View style={{ marginBottom: 30, marginTop: 5, }}>
             <Text>{__('accept_terms_line')}</Text>
          </View>
-         <Button title={'Verify'} onPress={_ => nav.navigate('verification')} />
+         {/* <Button title={'Verify'} onPress={_ => nav.navigate('verification')} /> */}
          <ButtonPrimary
             title={__('btn_register')}
             disabled={!formik.dirty || (formik.isSubmitting)}

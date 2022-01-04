@@ -16,7 +16,9 @@ const PasswordLostScreen = (props) => {
    const auth = useSelector(state => state.auth)
    const __ = useTranslation()
    const nav = useNavigation()
-
+   function proceed() {
+      nav.navigate('password_reset')
+   }
    return (
       <Page>
          <Page.Container>
@@ -25,9 +27,6 @@ const PasswordLostScreen = (props) => {
          <Center style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center', padding: 15 }}>
             <View style={{ flex: 1, justifyContent: 'center' }}>
                <PasswordLostForm />
-               <View style={{ marginVertical: 15 }}>
-                  {/* <Button title={__('btn_guest_login')} onPress={loginAsGuest} /> */}
-               </View>
             </View>
          </Center>
          <Page.Container>

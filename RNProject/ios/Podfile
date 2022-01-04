@@ -7,6 +7,8 @@ target 'RNProject' do
   config = use_native_modules!
 
    # Convert all permission pods into static libraries
+   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
    pre_install do |installer|
       Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
 

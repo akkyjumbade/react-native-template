@@ -78,7 +78,7 @@ const VerificationScreen = ({ user }) => {
          <Page.Container>
             <Page.Title>Verification</Page.Title>
             <Text style={{ marginBottom: 0 }}>{__('verification_description')}</Text>
-            <Text bold style={{ marginBottom: 15 }}>{user?.phone ?? 'xx580'}</Text>
+            <Text bold style={{ marginBottom: 15 }}>{user?.phone ?? 'xxxxxxx580'}</Text>
             <VStack style={{ height: 'auto' }}>
                <View >
                   {isLoading ? (

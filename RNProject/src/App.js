@@ -1,4 +1,6 @@
 import React, { memo } from "react";
+import { enableFreeze } from 'react-native-screens';
+
 import * as Sentry from "@sentry/react-native";
 import { QueryClientProvider } from "react-query";
 import Bootstrap from "./bootstrap";
@@ -11,6 +13,8 @@ import 'react-native-gesture-handler';
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import config from "./config";
 
+enableFreeze(true)
+
 Sentry.init({
    dsn: config.SENTRY_DSN,
    // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
@@ -21,17 +25,19 @@ Sentry.init({
 const App = () => {
    return (
       <React.Fragment>
-         <NetworkProvider pingInBackground={true} pingOnlyIfOffline={true} pingInterval={500} >
-            <QueryClientProvider client={queryClient}>
-               <Provider store={store}>
-                  <ThemeContextProvider>
-                     <Bootstrap />
-                  </ThemeContextProvider>
-               </Provider>
-            </QueryClientProvider>
-         </NetworkProvider>
+         {/* <GestureHandlerRootView> */}
+            <NetworkProvider pingInBackground={true} pingOnlyIfOffline={true} pingInterval={500} >
+               <QueryClientProvider client={queryClient}>
+                  <Provider store={store}>
+                     <ThemeContextProvider>
+                        <Bootstrap />
+                     </ThemeContextProvider>
+                  </Provider>
+               </QueryClientProvider>
+            </NetworkProvider>
+         {/* </GestureHandlerRootView> */}
       </React.Fragment>
    )
 }
 
-export default Sentry.wrap(App)
+export default App
