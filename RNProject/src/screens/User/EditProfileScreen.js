@@ -7,7 +7,8 @@ import useTranslation from '@/hooks/useTranslation';
 import { Center, Divider, HStack, List, VStack } from 'native-base';
 import icons from '@/icons';
 import { useNavigation } from '@react-navigation/native';
-import { Button, Text } from '@modules/rn-kit';
+import { Button, } from '@modules/rn-kit';
+import { Text, } from '@modules/rn-kit/atoms';
 import ErrorBoundary from '@/components/errors/ErrorBoundary';
 import { Portal } from 'react-native-portalize';
 import FormControl from '@modules/rn-kit/molecules/FormControl';
@@ -91,8 +92,8 @@ const EditProfileScreen = ({ user }) => {
 
    return (
       <Page loading={!user}>
-
          <Center style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center', paddingHorizontal: 15 }}>
+            <Page.Title>Edit profile</Page.Title>
             <View style={{ flex: 1}}>
                <List
                   style={{ marginVertical: 15, borderWidth: 0 }}

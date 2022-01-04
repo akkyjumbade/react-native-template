@@ -33,6 +33,8 @@ import AddressFormScreen from '@/screens/User/AddressFormScreen';
 import AboutScreen from '@/screens/AboutScreen';
 import MinimalNavHeader from './MinimalNavHeader';
 import SettingsScreen from '@/screens/Settings/SettingsScreen';
+import SecurityDashboardScreen from '@/screens/User/SecurityDashboardScreen';
+import ReferScreen from '@/screens/User/ReferScreen';
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -172,6 +174,8 @@ const Navigation = ({ user, loading }) => {
                   <Stack.Screen name="verification" options={{ title: '' }} component={VerificationScreen} />
                   <Stack.Screen name="profile" options={{ title: '' }} component={ProfileScreen} />
                   <Stack.Screen name="billing" options={{ title: '' }} component={BillingScreen} />
+                  <Stack.Screen name="security" options={{ title: '' }} component={SecurityDashboardScreen} />
+                  <Stack.Screen name="refer" options={{ title: '' }} component={ReferScreen} />
                   <Stack.Screen name="page" options={{ headerShown: true, title: '' }} component={WebviewScreen} />
                   <Stack.Screen name="preferences" options={{ title: '' }} component={SettingsScreen} />
                   <Stack.Screen name="preferences.notifications" options={{ title: '' }} component={NotificationsPreferenceScreen} />
