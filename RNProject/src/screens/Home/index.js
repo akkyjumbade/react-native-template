@@ -28,7 +28,7 @@ const DoorDashFavorite = props => (
    >
      <Rect x="0" y="304" rx="4" ry="4" width="271" height="9" />
      <Rect x="0" y="323" rx="3" ry="3" width="119" height="6" />
-     <Rect x="0" y="77" rx="10" ry="10" width="388" height="217" />
+     <Rect x="0" y="0" rx="10" ry="10" width="388" height="217" />
    </ContentLoader>
 )
 const HomeScreen = (props) => {
@@ -37,8 +37,9 @@ const HomeScreen = (props) => {
    const locale = useLocale()
    const options = useSelector(({ options}) => (options))
    return (
-      <Page scroll={true}>
-         <Page.Container>
+      <Page scroll={true} centerMode={false}>
+         {/* <Text>sdfsdf</Text> */}
+         <Page.Container style={{ alignSelf: 'flex-start', flex: 1,  }}>
             {/* <Text>{JSON.stringify({ locale })}</Text>
             <Text>{JSON.stringify({ options })}</Text> */}
             <DoorDashFavorite />

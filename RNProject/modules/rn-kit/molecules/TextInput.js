@@ -17,7 +17,7 @@ const StyledTextInput = styled.TextInput`
    padding: 0;
    font-size: 17px;
    flex: 1;
-   font-family: ${fonts.primary} ;
+   font-family: ${fonts.primary};
    color: black;
 `
 

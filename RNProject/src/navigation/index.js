@@ -36,6 +36,8 @@ import SettingsScreen from '@/screens/Settings/SettingsScreen';
 import SecurityDashboardScreen from '@/screens/User/SecurityDashboardScreen';
 import ReferScreen from '@/screens/User/ReferScreen';
 import RewardsScreen from '@/screens/User/RewardsScreen';
+import SearchScreen from '@/screens/SearchScreen';
+import HomeNavigationBar from './HomeNavigationBar';
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -87,6 +89,7 @@ const HomeStack = props => {
       headerStyle: {
          backgroundColor: theme?.colors?.pageBg ?? 'gray',
       },
+      header: navprops => <HomeNavigationBar {...navprops} />
    }
    return (
       <Tabs.Navigator
@@ -173,6 +176,7 @@ const Navigation = ({ user, loading }) => {
                   <Stack.Screen name="password_request" options={{ title: '' }} component={PasswordLostScreen} />
                   <Stack.Screen name="password_reset" options={{ title: '' }} component={PasswordChangeScreen} />
                   <Stack.Screen name="verification" options={{ title: '' }} component={VerificationScreen} />
+                  <Stack.Screen name="search" options={{ title: '' }} component={SearchScreen} />
                   <Stack.Screen name="profile" options={{ title: '' }} component={ProfileScreen} />
                   <Stack.Screen name="billing" options={{ title: '' }} component={BillingScreen} />
                   <Stack.Screen name="security" options={{ title: '' }} component={SecurityDashboardScreen} />
