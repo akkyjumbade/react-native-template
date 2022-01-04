@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 import { connect, useSelector } from 'react-redux'
 import useTranslation from '../../hooks/useTranslation'
 import Page from "@modules/rn-kit/layouts/Page";
 import { Button, ButtonPrimary } from '@modules/rn-kit/atoms'
 import { FormControl } from '@modules/rn-kit/molecules'
+import Text from '@modules/rn-kit/atoms/Text'
 import OtpInput from '@modules/rn-kit/atoms/OtpInput'
 import { useMutation } from 'react-query'
 import http from '@/utils/http'
@@ -76,6 +77,8 @@ const VerificationScreen = ({ user }) => {
       <Page >
          <Page.Container>
             <Page.Title>Verification</Page.Title>
+            <Text style={{ marginBottom: 0 }}>{__('verification_description')}</Text>
+            <Text bold style={{ marginBottom: 15 }}>{user?.phone ?? 'xx580'}</Text>
             <VStack style={{ height: 'auto' }}>
                <View >
                   {isLoading ? (

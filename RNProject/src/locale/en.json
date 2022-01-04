@@ -16,6 +16,7 @@
    "birth_date": "Birth date",
    "password": "Password",
    "market_menu": "Explore",
+   "verification_description": "To create an account let's first verify that this your number",
    "btn_register": "Create account",
    "already_registered": "Already registered? Login here",
    "accept_terms_line": "By creating account you are agreed to the terms and conditions of our app.",
