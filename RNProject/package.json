@@ -15,6 +15,7 @@
       "start": "react-native start",
       "test": "jest",
       "lint": "eslint .",
+      "license": "yarn licenses generate-disclaimer > LICENSE",
       "devtools": "react-devtools",
       "podinstall": "cd ios && pod install && cd ..",
       "format": "prettier --write \"./src/**/*.{js,md,yml}\"",
