@@ -115,7 +115,7 @@ const ProfileScreen = ({ user, isAuthenticated, options }) => {
                         </View>
                      </HStack>
                   </List.Item>
-                  {/* <List.Item onPress={() => nav.navigate('security')}>
+                  <List.Item onPress={() => nav.navigate('security')}>
                      <HStack alignItems={'center'}>
                         <View style={{ flex: 1 }}>
                            <Text>{__('Security')}</Text>
@@ -124,7 +124,7 @@ const ProfileScreen = ({ user, isAuthenticated, options }) => {
                            <icons.chevronRightIcon width={24} height={24} />
                         </View>
                      </HStack>
-                  </List.Item> */}
+                  </List.Item>
                   <List.Item onPress={() => nav.navigate('preferences')}>
                      <HStack alignItems={'center'}>
                         <View style={{ flex: 1 }}>
@@ -135,23 +135,20 @@ const ProfileScreen = ({ user, isAuthenticated, options }) => {
                         </View>
                      </HStack>
                   </List.Item>
-                  <List.Item onPress={() => nav.navigate('profile.change_password')}>
+                  <List.Item onPress={() => nav.navigate('refer')}>
                      <HStack alignItems={'center'}>
                         <View style={{ flex: 1 }}>
-                           <Text>{__('Change password')}</Text>
-                        </View>
-                        <View>
-                           <Text color={'gray'}>{__('Last update: 3 months ago.')}</Text>
+                           <Text>{__('Refer & earn')}</Text>
                         </View>
                         <View>
                            <icons.chevronRightIcon width={24} height={24} />
                         </View>
                      </HStack>
                   </List.Item>
-                  <List.Item onPress={() => nav.navigate('refer')}>
+                  <List.Item onPress={() => nav.navigate('rewards')}>
                      <HStack alignItems={'center'}>
                         <View style={{ flex: 1 }}>
-                           <Text>{__('Refer & earn')}</Text>
+                           <Text>{__('Rewards')}</Text>
                         </View>
                         <View>
                            <icons.chevronRightIcon width={24} height={24} />

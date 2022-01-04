@@ -35,6 +35,7 @@ import MinimalNavHeader from './MinimalNavHeader';
 import SettingsScreen from '@/screens/Settings/SettingsScreen';
 import SecurityDashboardScreen from '@/screens/User/SecurityDashboardScreen';
 import ReferScreen from '@/screens/User/ReferScreen';
+import RewardsScreen from '@/screens/User/RewardsScreen';
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -105,7 +106,7 @@ const HomeStack = props => {
          <Tabs.Screen
             options={{title: ''}}
             name="dashboard"
-            component={HomeScreen}
+            component={Dashboard}
          />
          <Tabs.Screen
             options={{title: 'Notifications'}}
@@ -176,6 +177,8 @@ const Navigation = ({ user, loading }) => {
                   <Stack.Screen name="billing" options={{ title: '' }} component={BillingScreen} />
                   <Stack.Screen name="security" options={{ title: '' }} component={SecurityDashboardScreen} />
                   <Stack.Screen name="refer" options={{ title: '' }} component={ReferScreen} />
+                  <Stack.Screen name="rewards" options={{ title: '' }} component={RewardsScreen} />
+                  <Stack.Screen name="rewards.show" options={{ title: '' }} component={RewardsScreen} />
                   <Stack.Screen name="page" options={{ headerShown: true, title: '' }} component={WebviewScreen} />
                   <Stack.Screen name="preferences" options={{ title: '' }} component={SettingsScreen} />
                   <Stack.Screen name="preferences.notifications" options={{ title: '' }} component={NotificationsPreferenceScreen} />

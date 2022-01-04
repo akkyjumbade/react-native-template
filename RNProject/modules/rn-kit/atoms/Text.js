@@ -16,6 +16,14 @@ const StyledText = styled(BaseText)`
          `
       }
    }}
+   ${(props) => {
+      if (props.heading) {
+         return css`
+            font-size: 22px;
+            font-weight: bold;
+         `
+      }
+   }}
    letter-spacing: 0;
 `
 
