@@ -6,3 +6,6 @@
 ### Packages
 - rn-kit
 - billing
+
+### Credits
+- https://github.com/zoontek/react-native-permissions

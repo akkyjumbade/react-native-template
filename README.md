@@ -9,3 +9,6 @@ Create React Native project with below command
 ```
 npx react-native init MyAppName --template https://github.com/akkyjumbade/react-native-template
 ```
+
+### Credits
+- https://github.com/zoontek/react-native-permissions
