@@ -1,10 +1,11 @@
 import React from 'react'
 import HTMLView from 'react-native-htmlview'
-import { htmlStyles } from '../../../../src/style/style'
+import { useTheme } from 'styled-components'
 
 export default function HTMLInterface({ value }) {
+   const { htmlStyle } = useTheme()
    const data = value
    return (
-      <HTMLView stylesheet={htmlStyles} value={data} />
+      <HTMLView stylesheet={htmlStyle} value={data} />
    )
 }

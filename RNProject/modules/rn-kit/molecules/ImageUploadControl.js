@@ -1,8 +1,8 @@
 import React from 'react'
 import {Image, View, StyleSheet} from "react-native";
-import {Text} from "../../index";
-import ErrorBoundary from "../../../../src/components/ErrorBoundary";
 import {TouchableOpacity} from "react-native-gesture-handler";
+import ErrorBoundary from '@/components/errors/ErrorBoundary';
+import { Text } from '../atoms';
 
 const placeholderImage = {
    uri: 'https://unsplash.it/400x400'

@@ -11,7 +11,7 @@ import Container from '@modules/rn-kit/layouts/Container'
 
 
 
-const StyledPage = styled(SafeAreaView)`
+const StyledPage = styled.SafeAreaView`
    flex: 1;
    flex-direction: column;
    height: 100%;
@@ -19,14 +19,13 @@ const StyledPage = styled(SafeAreaView)`
       if (props.bg) {
          return props.bg
       }
-      return props.theme.colors.white
+      return props.theme.colors.pageBg
    }};
    ${props => {
-      if(props.centerMode) {
+      if (props.centerMode) {
          return css`
             justify-content: center;
             flex-direction: column;
-            background-color: white;
             `
       }
    }}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useColorScheme, View, StyleSheet, } from 'react-native'
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { Text } from '../..';
+import { Text, } from '../atoms';
 
 const Section = ({children, title}) => {
    const isDarkMode = useColorScheme() === 'dark';

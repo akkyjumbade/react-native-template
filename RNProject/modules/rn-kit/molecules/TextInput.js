@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components/native'
 import { TextInput as BaseTextInput } from 'react-native';
 import { fonts } from '../themes';
+import { HStack } from 'native-base';
 
 const StyledInputField = styled.View`
    flex-direction: row;
@@ -24,9 +25,11 @@ const StyledTextInput = styled.TextInput`
 export default function TextInput({ prepend, append,...props }) {
    return (
       <StyledInputField>
-         {prepend && prepend()}
-         <StyledTextInput {...props} />
-         {append && append()}
+         <HStack space={2} alignItems={'center'}>
+            {prepend && prepend()}
+            <StyledTextInput {...props} />
+            {append && append()}
+         </HStack>
       </StyledInputField>
    )
 }

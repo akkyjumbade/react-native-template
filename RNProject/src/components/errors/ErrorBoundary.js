@@ -1,4 +1,4 @@
-import { Text } from '@modules/rn-kit';
+import { Text } from '@modules/rn-kit/atoms';
 import { View } from 'native-base';
 import React from 'react'
 
@@ -14,10 +14,10 @@ export default class ErrorBoundary extends React.Component {
       return { hasError: true, error };
    }
 
-   componentDidCatch(error, errorInfo) {
-      // You can also log the error to an error reporting service
-      // logErrorToMyService(error, errorInfo);
-   }
+   // componentDidCatch(error, errorInfo) {
+   //    // You can also log the error to an error reporting service
+   //    // logErrorToMyService(error, errorInfo);
+   // }
 
    render() {
       if (this.state.hasError && __DEV__) {

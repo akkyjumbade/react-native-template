@@ -12,6 +12,8 @@ target 'RNProject' do
     :hermes_enabled => false
   )
 
+  pod 'RNSentry', :path => '../node_modules/@sentry/react-native'
+
   target 'RNProjectTests' do
     inherit! :complete
     # Pods for testing

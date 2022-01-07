@@ -7,7 +7,7 @@ import EyeOff from '@/icons/EyeOff'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import ErrorBoundary from '@/components/errors/ErrorBoundary'
 
-const PasswordInput = ({ prepend, ...props }) => {
+const PasswordInput = ({ prepend, strict = false, ...props }) => {
    const [ toggleEye, setToggleEye ] = useState(true)
    function togglePassword() {
       setToggleEye(prev => !prev)

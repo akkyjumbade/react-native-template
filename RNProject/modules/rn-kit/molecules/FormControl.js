@@ -1,7 +1,7 @@
 import ErrorBoundary from '@/components/errors/ErrorBoundary';
 import React, { memo } from 'react'
 import styled from "styled-components/native";
-import Text from '../atoms/Text';
+import { Text, } from '../atoms';
 
 const StyledFormControl = styled.View`
    font-size: 16px;

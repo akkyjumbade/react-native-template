@@ -1,7 +1,7 @@
 import React from 'react'
 import { SafeAreaView, View } from 'react-native'
 import { Icon } from '../..'
-import { colors } from '../../../../src/style/style'
+import { colors } from '@/style/style'
 import { Heading } from '../atoms/Text'
 
 const OfflineException = props => {

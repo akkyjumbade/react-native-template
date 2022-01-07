@@ -1,4 +1,3 @@
-export { default as Text } from './atoms/Text'
 export { default as Button } from './atoms/Button'
 export { default as ButtonOutline } from './atoms/ButtonOutline'
 export { default as ButtonPrimary } from './atoms/ButtonPrimary'

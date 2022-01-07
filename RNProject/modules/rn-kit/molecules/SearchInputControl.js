@@ -1,7 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
 import TextInput from './TextInput'
-import {Icon} from 'uikit'
 
 const SearchInputControl = (props) => {
    //
@@ -9,14 +8,13 @@ const SearchInputControl = (props) => {
       <View>
          <View>
             <TextInput
-               prepend={() => (
-                  <Icon name="search" color={'#000'} size={24} style={{ marginTop: 3, left: 3, }} />
-               )}
+               // prepend={() => (
+               //    <Icon name="search" color={'#000'} size={24} style={{ marginTop: 3, left: 3, }} />
+               // )}
                {...props}
-               append={() => (
-                  <Icon name="x" color={'#666'} size={24} style={{ marginTop: -2, marginLeft: -6 }} />
-               )}
-
+               // append={() => (
+               //    <Icon name="x" color={'#666'} size={24} style={{ marginTop: -2, marginLeft: -6 }} />
+               // )}
                placeholder={props.placeholder} />
          </View>
       </View>

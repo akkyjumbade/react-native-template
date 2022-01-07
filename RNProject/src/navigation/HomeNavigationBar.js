@@ -73,6 +73,7 @@ const HomeNavigationBar = ({ theme, navigation, ...props }) => {
 export default connect(state => ({
    theme: state.config.appearance_theme,
 }))(HomeNavigationBar)
+
 const styles = StyleSheet.create({
    bagde: {
       marginRight: 0,

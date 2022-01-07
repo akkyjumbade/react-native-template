@@ -1,10 +1,9 @@
 export default {
-   textColor: 'black',
    gray: 'gray',
    black: 'black',
    dark: 'black',
    label: '#f1f1f1',
-   primary: 'orange',
+   primary: '#1C6DD0',
    secondary: 'lightgray',
    success: 'gren',
    warning: 'yellow',
@@ -13,4 +12,6 @@ export default {
    white: 'white',
    default: 'lightgray',
    info: 'skyblue',
+   pageBg: 'white',
+   // textColor: '#191919',
 }

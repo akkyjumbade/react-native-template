@@ -1,4 +1,4 @@
-import http from "../../utils/http"
+import http from "@/utils/http"
 import { T_AUTH_LOGOUT, T_AUTH_SET, T_AUTH_TOKEN, T_LOGIN, T_SET_ADDRESSES } from "./auth.reducer"
 
 
@@ -41,6 +41,34 @@ export const auth_login_action = token => {
          } else {
             dispatch({ type: T_AUTH_SET, payload: null })
          }
+         console.warn({ error, params }, error.response?.data)
+
+      }
+   }
+}
+
+const guestUser = {
+   name: 'Guest',
+   email: 'guest@xxxxx.xxx',
+   phone: 'XXXXXXXXXX',
+   isGuest: true,
+   avatar: require('@assets/avatar_placeholder.jpeg'),
+   id: 0,
+}
+export const auth_guest_login_action = (token = '__GUEST_TOKEN__') => {
+   return async (dispatch, getState, params) => {
+      try {
+         await params.cacheStore.save({
+            key: '@token',
+            data: token,
+         })
+         dispatch({
+            type: T_AUTH_TOKEN,
+            payload: token
+         })
+         dispatch({ type: T_AUTH_SET, payload: guestUser })
+         dispatch({ type: T_LOGIN, payload: guestUser })
+      } catch (error) {
          console.warn({ error, params }, error.response?.data)
 
       }

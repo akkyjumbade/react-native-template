@@ -1,5 +1,6 @@
 import React from "react"
 import { useState } from "react"
+import { Alert } from "react-native"
 
 export const AlertContext = React.createContext()
 
@@ -9,7 +10,7 @@ export const AlertContextProvider = () => (
 
 export function alert(msg) {
    if (__DEV__) {
-      alert(msg)
+      Alert.alert(msg)
    }
    console.log({ msg })
 }

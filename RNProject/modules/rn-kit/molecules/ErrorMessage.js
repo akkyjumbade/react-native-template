@@ -1,8 +1,8 @@
 import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components/native'
-import { Text } from '../..'
-import { colors } from '../../../../src/style/style'
+import { Text } from '../atoms'
+import colors from '../themes/colors'
 import Collapsable from './Collapsable'
 
 const StyledError = styled.View`
