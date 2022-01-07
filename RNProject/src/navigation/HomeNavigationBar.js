@@ -59,7 +59,9 @@ const HomeNavigationBar = ({ theme, navigation, ...props }) => {
             </View>
             <View>
                <HStack alignItems="center">
-                  <icons.bell />
+                  <TouchableOpacity onPress={_ => navigation.navigate('notifications')}>
+                     <icons.bell color={'white'} />
+                  </TouchableOpacity>
                </HStack>
             </View>
          </HStack>

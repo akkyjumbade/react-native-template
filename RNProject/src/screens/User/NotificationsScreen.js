@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import {connect, useSelector} from 'react-redux';
@@ -30,10 +30,17 @@ const NotificationsScreen = ({ user }) => {
          notification: item
       })
    }
+   const notificationsCount = useMemo(() => {
+      if (notifications?.total) {
+         return notifications?.total
+      }
+      return 0
+   }, [ notifications ])
+
    return (
       <Page scroll={false} >
          <Page.Container>
-            <Page.Title>{__('Notifications') + ` (${notifications?.total})`}</Page.Title>
+            <Page.Title>{__('Notifications')} {notificationsCount ? `(${notificationsCount})` : ''}</Page.Title>
             <FlatList
                data={notifications?.data}
                ListEmptyComponent={() => (

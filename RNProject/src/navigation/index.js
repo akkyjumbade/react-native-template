@@ -184,6 +184,8 @@ const Navigation = ({ user, loading }) => {
                   <Stack.Screen name="rewards" options={{ title: '' }} component={RewardsScreen} />
                   <Stack.Screen name="rewards.show" options={{ title: '' }} component={RewardsScreen} />
                   <Stack.Screen name="page" options={{ headerShown: true, title: '' }} component={WebviewScreen} />
+                  <Stack.Screen name="notifications" options={{ title: '' }} component={NotificationsScreen} />
+                  <Stack.Screen name="notifications.show" options={{ title: '' }} component={NotificationsScreen} />
                   <Stack.Screen name="preferences" options={{ title: '' }} component={SettingsScreen} />
                   <Stack.Screen name="preferences.notifications" options={{ title: '' }} component={NotificationsPreferenceScreen} />
                   <Stack.Screen name="address.add" options={{ title: '' }} component={AddressFormScreen} />

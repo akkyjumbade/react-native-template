@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-import { enableFreeze } from 'react-native-screens';
 
 import * as Sentry from "@sentry/react-native";
 import { QueryClientProvider } from "react-query";
@@ -13,14 +12,7 @@ import 'react-native-gesture-handler';
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import config from "./config";
 
-enableFreeze(true)
-
-Sentry.init({
-   dsn: config.SENTRY_DSN,
-   // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
-   // We recommend adjusting this value in production.
-   tracesSampleRate: 1.0,
-});
+// enableFreeze(true)
 
 const App = () => {
    return (
