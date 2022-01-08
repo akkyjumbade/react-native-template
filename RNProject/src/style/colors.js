@@ -4,7 +4,7 @@ export default {
    black: 'black',
    dark: 'black',
    label: '#f1f1f1',
-   primary: 'blue',
+   primary: '#47ffc4',
    secondary: 'gray',
    success: 'gren',
    warning: 'yellow',

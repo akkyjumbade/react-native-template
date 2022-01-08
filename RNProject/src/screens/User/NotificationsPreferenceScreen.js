@@ -16,8 +16,6 @@ import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { List_Item } from '@modules/rn-kit/atoms/List_Item';
 import usePreferencesQuery from '@/api/usePreferencesQuery';
-import { Button } from '@modules/rn-kit';
-import PushNotification from 'react-native-push-notification'
 // import { ToggleButtonClick } from 'native-base/lib/typescript/components/composites/Typeahead/useTypeahead/types';
 
 
@@ -50,25 +48,12 @@ const NotificationsPreferenceScreen = ({ options, user, token }) => {
 
       })
    }
-   function sendSampleNotification() {
-      PushNotification.localNotification({
-         message: 'Sample ',
-         title: 'Sample title',
-         channelId: 'default',
-         playSound: true,
-         soundName: 'default',
-         // actions: ["ReplyInput"],
-         // reply_placeholder_text: "Write your response...",
-         // reply_button_text: "Reply",
-      })
-   }
 
    return (
       <Page scroll={true} loading={isLoading}>
          <Page.Container style={{  marginBottom: 30, }}>
             <Page.Title>Notifications</Page.Title>
             <Alert title={'Notifications disabled!'} />
-            {/* <Button title={'Sample'} onPress={() => sendSampleNotification()} /> */}
             {notificationChannels?.map(row => (
                <Fragment
                   key={`channel_id_${row.channelId}`}

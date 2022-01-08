@@ -60,7 +60,7 @@ export const RadioGroup = props => {
             }}
          >
             {options.map((opt, optindex) => (
-               <Radio colorScheme={opt.value === value ? 'yellow' : ''} value={opt.value} my={0.5} >
+               <Radio key={'radio__' + opt.value} colorScheme={opt.value === value ? 'yellow' : ''} value={opt.value} my={0.5} >
                   {opt.label}
                </Radio>
             ))}

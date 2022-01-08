@@ -92,8 +92,8 @@ const EditProfileScreen = ({ user }) => {
 
    return (
       <Page loading={!user}>
-
          <Center style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center', paddingHorizontal: 15 }}>
+            <Page.Title>Edit profile</Page.Title>
             <View style={{ flex: 1}}>
                <List
                   style={{ marginVertical: 15, borderWidth: 0 }}

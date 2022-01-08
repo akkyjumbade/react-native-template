@@ -1,11 +1,9 @@
-import React, { Fragment, memo, useContext, useEffect, useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import 'react-native-gesture-handler';
 import { createStackNavigator, } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { connect, useSelector } from 'react-redux';
-
-import { ThemeContext } from 'styled-components/native';
+import { connect, } from 'react-redux';
 
 import { Host } from 'react-native-portalize';
 import { linkingConfig } from '../config';
@@ -31,8 +29,13 @@ import Dashboard from '@/screens/Dashboard';
 import WebviewScreen from '@/screens/WebviewScreen';
 import AddressFormScreen from '@/screens/User/AddressFormScreen';
 import AboutScreen from '@/screens/AboutScreen';
-import MinimalNavHeader from './MinimalNavHeader';
 import SettingsScreen from '@/screens/Settings/SettingsScreen';
+import SecurityDashboardScreen from '@/screens/User/SecurityDashboardScreen';
+import ReferScreen from '@/screens/User/ReferScreen';
+import RewardsScreen from '@/screens/User/RewardsScreen';
+import SearchScreen from '@/screens/SearchScreen';
+import HomeNavigationBar from './HomeNavigationBar';
+import NotificationDetailScreen from '@/screens/User/NotificationDetailScreen';
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -61,9 +64,6 @@ const tabNavOptions = (args) => {
    }
 }
 
-const tabBarOptions = {
-
-}
 
 const AuthStack = () => {
    const theme = useTheme()
@@ -84,6 +84,7 @@ const HomeStack = props => {
       headerStyle: {
          backgroundColor: theme?.colors?.pageBg ?? 'gray',
       },
+      header: navprops => <HomeNavigationBar {...navprops} />
    }
    return (
       <Tabs.Navigator
@@ -103,7 +104,7 @@ const HomeStack = props => {
          <Tabs.Screen
             options={{title: ''}}
             name="dashboard"
-            component={HomeScreen}
+            component={Dashboard}
          />
          <Tabs.Screen
             options={{title: 'Notifications'}}
@@ -170,9 +171,15 @@ const Navigation = ({ user, loading }) => {
                   <Stack.Screen name="password_request" options={{ title: '' }} component={PasswordLostScreen} />
                   <Stack.Screen name="password_reset" options={{ title: '' }} component={PasswordChangeScreen} />
                   <Stack.Screen name="verification" options={{ title: '' }} component={VerificationScreen} />
+                  <Stack.Screen name="search" options={{ title: '' }} component={SearchScreen} />
                   <Stack.Screen name="profile" options={{ title: '' }} component={ProfileScreen} />
                   <Stack.Screen name="billing" options={{ title: '' }} component={BillingScreen} />
+                  <Stack.Screen name="security" options={{ title: '' }} component={SecurityDashboardScreen} />
+                  <Stack.Screen name="refer" options={{ title: '' }} component={ReferScreen} />
+                  <Stack.Screen name="rewards" options={{ title: '' }} component={RewardsScreen} />
+                  <Stack.Screen name="rewards.show" options={{ title: '' }} component={RewardsScreen} />
                   <Stack.Screen name="page" options={{ headerShown: true, title: '' }} component={WebviewScreen} />
+                  <Stack.Screen name="notifications.show" options={{ title: '' }} component={NotificationDetailScreen} />
                   <Stack.Screen name="preferences" options={{ title: '' }} component={SettingsScreen} />
                   <Stack.Screen name="preferences.notifications" options={{ title: '' }} component={NotificationsPreferenceScreen} />
                   <Stack.Screen name="address.add" options={{ title: '' }} component={AddressFormScreen} />

@@ -115,7 +115,7 @@ const ProfileScreen = ({ user, isAuthenticated, options }) => {
                         </View>
                      </HStack>
                   </List.Item>
-                  {/* <List.Item onPress={() => nav.navigate('security')}>
+                  <List.Item onPress={() => nav.navigate('security')}>
                      <HStack alignItems={'center'}>
                         <View style={{ flex: 1 }}>
                            <Text>{__('Security')}</Text>
@@ -124,24 +124,11 @@ const ProfileScreen = ({ user, isAuthenticated, options }) => {
                            <icons.chevronRightIcon width={24} height={24} />
                         </View>
                      </HStack>
-                  </List.Item> */}
+                  </List.Item>
                   <List.Item onPress={() => nav.navigate('preferences')}>
                      <HStack alignItems={'center'}>
                         <View style={{ flex: 1 }}>
                            <Text>{__('Preferences')}</Text>
-                        </View>
-                        <View>
-                           <icons.chevronRightIcon width={24} height={24} />
-                        </View>
-                     </HStack>
-                  </List.Item>
-                  <List.Item onPress={() => nav.navigate('profile.change_password')}>
-                     <HStack alignItems={'center'}>
-                        <View style={{ flex: 1 }}>
-                           <Text>{__('Change password')}</Text>
-                        </View>
-                        <View>
-                           <Text color={'gray'}>{__('Last update: 3 months ago.')}</Text>
                         </View>
                         <View>
                            <icons.chevronRightIcon width={24} height={24} />

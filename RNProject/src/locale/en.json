@@ -61,5 +61,10 @@
    "menu-create-team": "Create Business account",
    "update-btn": "Update",
    "email_change_notice": "You should not change your email address!",
+   "response.logged_out": "Logged out successfully.",
+   "login_back": "Just kidding, i remembered.",
+   "market_menu": "Explore",
+   "btn_save_address": "Save address",
+   "btn_cancel": "Cancel",
    "Register": "Create account"
 }

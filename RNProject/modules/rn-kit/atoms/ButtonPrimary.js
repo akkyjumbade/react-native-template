@@ -23,7 +23,7 @@ const ButtonPrimary = (props) => {
 
    let labelStyle = {
       backgroundColor: 'transparent',
-      color: 'black',
+      // color: 'white',
       fontSize: 17,
    }
    if (props.size === 'lg') {

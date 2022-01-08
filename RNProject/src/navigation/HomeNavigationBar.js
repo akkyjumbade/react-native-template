@@ -3,12 +3,13 @@ import { useNavigation } from '@react-navigation/core'
 import React, { useMemo } from 'react'
 import { Platform, StyleSheet, View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { colors } from '../style/style'
-import { Text, Flex, Icon} from 'uikit'
 import { connect, useSelector } from 'react-redux';
-import { Badge } from 'native-base';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { themes } from '../style'
+import { Badge, HStack } from 'native-base';
+import { SafeAreaView } from 'react-native';
+import { useTheme } from 'styled-components/native'
+import colors from '@modules/rn-kit/themes/colors'
+import { Text } from '@modules/rn-kit/atoms';
+import icons from '@/icons';
 
 
 const SearchBar = ({ initialValue, location }) => {
@@ -16,64 +17,60 @@ const SearchBar = ({ initialValue, location }) => {
    // const { location } = useLocationComplete()
    function onClick() {
       // alert('Select location')
-      nav.navigate('GeoLocation')
+      nav.navigate('search')
       // showModal()
    }
    return (
-      <TouchableOpacity style={{ marginTop: 6 }} onPress={onClick}>
-         <Flex dir="row" alignItems="center">
-            <Icon name="search" size={20} color={colors.dark} style={{ marginRight: 10, }} />
+      <TouchableOpacity style={{ marginTop: 12 }} onPress={onClick}>
+         <HStack alignItems="center" space={3}>
+            {/* <Icon name="search" size={20} color={colors.dark} style={{ marginRight: 10, }} /> */}
+            <icons.search width={26} height={26} />
             <View>
-               <Text style={{ color: colors.dark, }} >{location.q || 'Choose location'}</Text>
-               <Text style={{ color: colors.dark, }} size={11}>Your location</Text>
+               <Text bold >{location?.q || 'Choose location'}</Text>
+               <Text fontSize={'xs'}>Your location</Text>
             </View>
-         </Flex>
+         </HStack>
       </TouchableOpacity>
    )
 }
 let statusHeight = Platform.select({
-   ios: 90,
+   ios: 110,
    android: 70,
 })
 
 const HomeNavigationBar = ({ theme, navigation, ...props }) => {
    const location = useSelector(state => state.location)
-   const notificationsCount = useSelector(state => state.notifications.unreadNotificationsCount)
-   const cartItems = useSelector(state => state.cart.items)
-   const cartCount = useMemo(() => {
-      return cartItems && Object.values(cartItems).length
-   }, [cartItems])
-   const selectedTheme = themes[theme]
+   // const notificationsCount = useSelector(state => state.notifications.unreadNotificationsCount)
+   // const cartItems = useSelector(state => state.cart.items)
+   // const cartCount = useMemo(() => {
+   //    return cartItems && Object.values(cartItems).length
+   // }, [cartItems])
+   const selectedTheme = useTheme()
    // const statusbarHeight = useMemo(() => {
    //    return statusHeight
    // }, [])
 
    // const statusbarHeight = Sta
    return (
-      <SafeAreaView style={{ backgroundColor: selectedTheme.colors?.primary, height: statusHeight, flexDirection: 'column', justifyContent: 'flex-start' }}>
-         <Flex style={{ paddingHorizontal: 15, }} justifyContent="space-between">
+      <SafeAreaView style={{ backgroundColor: selectedTheme.colors?.primary, height: statusHeight, }}>
+         <HStack style={{ paddingHorizontal: 15, alignItems: 'center' }} alignItems={'center'} justifyContent="space-between">
             <View>
                <SearchBar location={location} />
             </View>
             <View>
-               {/* <Text>sdfs sdf sd</Text> */}
+               <TouchableOpacity onPress={() => navigation.navigate('notifications')}>
+                  <icons.bell />
+               </TouchableOpacity>
+               {/* <HStack alignItems="center">
+               </HStack> */}
             </View>
-            <View>
-               <Flex dir="row" alignItems="center">
-                  {/* <Icon badge={notificationsCount} onPress={() => navigation.navigate('Notifications')} lib="feather" name="bell" size={26} color={colors.white} style={{ marginRight: 15, }} /> */}
-                  <View style={{ marginLeft: 15, marginTop: 5 }}>
-                     <Icon onPress={() => navigation.navigate('Menus')} lib="ant" name="bars" size={26} color={colors.dark} style={{ marginRight: 10, }} />
-                  </View>
-               </Flex>
-            </View>
-         </Flex>
+         </HStack>
       </SafeAreaView>
    )
 }
 export default connect(state => ({
-   theme: state.config.appearance_theme,
+   theme: state.options.appearance_theme,
 }))(HomeNavigationBar)
-
 const styles = StyleSheet.create({
    bagde: {
       marginRight: 0,

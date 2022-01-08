@@ -3,7 +3,7 @@ export default {
    black: 'black',
    dark: 'black',
    label: '#f1f1f1',
-   primary: '#1C6DD0',
+   primary: '#47ffc4',
    secondary: 'lightgray',
    success: 'gren',
    warning: 'yellow',
