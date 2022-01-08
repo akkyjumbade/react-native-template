@@ -43,6 +43,7 @@ export const notificationChannels = [
       channelName: 'Promotions',
       channelDescription: 'Promotions & Newsletters',
       importance: 'DEFAULT',
+      soundName: 'notification_sound.mp3',
    },
 ]
 

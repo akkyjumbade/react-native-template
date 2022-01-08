@@ -9,6 +9,7 @@ import ThemeContextProvider from "@modules/rn-kit/provider/ThemeContextProvider"
 import { Provider } from "react-redux";
 import store from "@/store";
 import { SENTRY_DSN } from "../.env";
+import { registerPushNotification } from "./services/PushNotificationService";
 
 Sentry.init({
    dsn: SENTRY_DSN,
@@ -16,6 +17,8 @@ Sentry.init({
    // We recommend adjusting this value in production.
    tracesSampleRate: 1.0,
 });
+
+registerPushNotification()
 
 const App = () => {
    return (

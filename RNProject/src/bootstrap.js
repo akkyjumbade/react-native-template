@@ -11,6 +11,9 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { StatusBar } from 'react-native'
 import RNBootSplash from "react-native-bootsplash";
 import {useIsConnected} from "react-native-offline";
+import { registerPushNotificationChannels } from './services/PushNotificationService'
+import { notificationChannels } from './config'
+import LocaleContextProvider from './providers/LocaleProvider'
 
 
 const Bootstrap = () => {
@@ -22,23 +25,26 @@ const Bootstrap = () => {
          setStatus('READY')
       }
       RNBootSplash.hide({ fade: true });
+      registerPushNotificationChannels(notificationChannels)
    }, [ isOnline ])
 
    return (
       <SafeAreaProvider >
          {/* <StatusBar translucent={true} /> */}
          <ErrorBoundary>
-            {status === 'LOADING' || status === 'INIT' ? (
-               <LoadingScreen />
-            ) : (
-               <Fragment>
-                  {isOnline ? (
-                     <Navigation />
-                  ) : (
-                     <OfflineScreen />
-                  )}
-               </Fragment>
-            )}
+            <LocaleContextProvider>
+               {status === 'LOADING' || status === 'INIT' ? (
+                  <LoadingScreen />
+               ) : (
+                  <Fragment>
+                     {isOnline ? (
+                        <Navigation />
+                     ) : (
+                        <OfflineScreen />
+                     )}
+                  </Fragment>
+               )}
+            </LocaleContextProvider>
          </ErrorBoundary>
       </SafeAreaProvider>
    )
