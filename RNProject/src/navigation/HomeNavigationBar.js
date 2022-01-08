@@ -21,13 +21,13 @@ const SearchBar = ({ initialValue, location }) => {
       // showModal()
    }
    return (
-      <TouchableOpacity style={{ marginTop: 6 }} onPress={onClick}>
+      <TouchableOpacity style={{ marginTop: 12 }} onPress={onClick}>
          <HStack alignItems="center" space={3}>
             {/* <Icon name="search" size={20} color={colors.dark} style={{ marginRight: 10, }} /> */}
             <icons.search width={26} height={26} />
             <View>
-               <Text >{location?.q || 'Choose location'}</Text>
-               <Text >Your location</Text>
+               <Text bold >{location?.q || 'Choose location'}</Text>
+               <Text fontSize={'xs'}>Your location</Text>
             </View>
          </HStack>
       </TouchableOpacity>
@@ -52,17 +52,17 @@ const HomeNavigationBar = ({ theme, navigation, ...props }) => {
 
    // const statusbarHeight = Sta
    return (
-      <SafeAreaView style={{ backgroundColor: selectedTheme.colors?.primary, height: statusHeight, flexDirection: 'column', justifyContent: 'flex-start' }}>
-         <HStack style={{ paddingHorizontal: 15, }} alignItems={'center'} justifyContent="space-between">
+      <SafeAreaView style={{ backgroundColor: selectedTheme.colors?.primary, height: statusHeight, }}>
+         <HStack style={{ paddingHorizontal: 15, alignItems: 'center' }} alignItems={'center'} justifyContent="space-between">
             <View>
                <SearchBar location={location} />
             </View>
             <View>
-               <HStack alignItems="center">
-                  <TouchableOpacity onPress={_ => navigation.navigate('notifications')}>
-                     <icons.bell color={'white'} />
-                  </TouchableOpacity>
-               </HStack>
+               <TouchableOpacity onPress={() => navigation.navigate('notifications')}>
+                  <icons.bell />
+               </TouchableOpacity>
+               {/* <HStack alignItems="center">
+               </HStack> */}
             </View>
          </HStack>
       </SafeAreaView>

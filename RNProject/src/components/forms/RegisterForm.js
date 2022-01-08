@@ -55,7 +55,7 @@ const RegisterForm = ({ initialValues = {}, }) => {
             <PhoneNumberInput value={formik.values.phone} onChangeText={formik.handleChange('phone')} placeholder={''}  />
          </FormControl>
          <FormControl label={__('password')} >
-            <PasswordInput strict={true} value={formik.values.password} onChangeText={formik.handleChange('password')}   />
+            <PasswordInput strict={true} value={formik.values.password} onChangeText={formik.handleChange('password')} placeholder={'password'}  />
          </FormControl>
          <View style={{ marginBottom: 30, marginTop: 5, }}>
             <Text>{__('accept_terms_line')}</Text>

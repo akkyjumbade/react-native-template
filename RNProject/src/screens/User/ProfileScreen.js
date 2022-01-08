@@ -135,26 +135,6 @@ const ProfileScreen = ({ user, isAuthenticated, options }) => {
                         </View>
                      </HStack>
                   </List.Item>
-                  <List.Item onPress={() => nav.navigate('refer')}>
-                     <HStack alignItems={'center'}>
-                        <View style={{ flex: 1 }}>
-                           <Text>{__('Refer & earn')}</Text>
-                        </View>
-                        <View>
-                           <icons.chevronRightIcon width={24} height={24} />
-                        </View>
-                     </HStack>
-                  </List.Item>
-                  <List.Item onPress={() => nav.navigate('rewards')}>
-                     <HStack alignItems={'center'}>
-                        <View style={{ flex: 1 }}>
-                           <Text>{__('Rewards')}</Text>
-                        </View>
-                        <View>
-                           <icons.chevronRightIcon width={24} height={24} />
-                        </View>
-                     </HStack>
-                  </List.Item>
                </List>
                <List
                   style={{ marginBottom: 15, borderWidth: 0 }}

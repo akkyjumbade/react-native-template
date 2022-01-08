@@ -4,7 +4,7 @@ import { TextInput as BaseTextInput } from 'react-native';
 import { default as BaseDatePicker } from 'react-native-modern-datepicker';
 import colors from '../themes/colors';
 import ButtonOutline from '../atoms/ButtonOutline';
-import Text from '../atoms/Text';
+import { Text, } from '../atoms';
 // import { Text } from '..';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Portal } from 'react-native-portalize';

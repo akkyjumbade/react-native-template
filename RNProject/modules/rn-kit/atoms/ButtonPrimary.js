@@ -9,7 +9,7 @@ import { StyledBaseButton } from '../themes/common';
 
 const StyledButton = styled(StyledBaseButton)`
    background-color: ${({ theme, loading = false }) => {
-      if (loading) {
+      if(loading) {
          return 'gray'
       }
       return theme.colors.primary
@@ -23,7 +23,7 @@ const ButtonPrimary = (props) => {
 
    let labelStyle = {
       backgroundColor: 'transparent',
-      color: 'white',
+      // color: 'white',
       fontSize: 17,
    }
    if (props.size === 'lg') {

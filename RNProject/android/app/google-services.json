@@ -1,68 +1,68 @@
 {
-  "project_info": {
-    "project_number": "886513176670",
-    "project_id": "mobile-app-cbe45",
-    "storage_bucket": "mobile-app-cbe45.appspot.com"
-  },
-  "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:886513176670:android:e9bead7c0f9fdbc4c6e4cf",
-        "android_client_info": {
-          "package_name": "com.JuxtApp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "886513176670-sj1dmqj9gh0vl4nkppju7b6lb9fulmlc.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDx0ed5T8c4BQpoMNR4wNzzR394D5FsnaE"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "886513176670-sj1dmqj9gh0vl4nkppju7b6lb9fulmlc.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:886513176670:android:fd9a66b99e3341d6c6e4cf",
-        "android_client_info": {
-          "package_name": "com.rnproject"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "886513176670-sj1dmqj9gh0vl4nkppju7b6lb9fulmlc.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDx0ed5T8c4BQpoMNR4wNzzR394D5FsnaE"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "886513176670-sj1dmqj9gh0vl4nkppju7b6lb9fulmlc.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    }
-  ],
-  "configuration_version": "1"
-}
+   "project_info": {
+     "project_number": "886513176670",
+     "project_id": "mobile-app-cbe45",
+     "storage_bucket": "mobile-app-cbe45.appspot.com"
+   },
+   "client": [
+     {
+       "client_info": {
+         "mobilesdk_app_id": "1:886513176670:android:e9bead7c0f9fdbc4c6e4cf",
+         "android_client_info": {
+           "package_name": "com.JuxtApp"
+         }
+       },
+       "oauth_client": [
+         {
+           "client_id": "886513176670-sj1dmqj9gh0vl4nkppju7b6lb9fulmlc.apps.googleusercontent.com",
+           "client_type": 3
+         }
+       ],
+       "api_key": [
+         {
+           "current_key": "AIzaSyDx0ed5T8c4BQpoMNR4wNzzR394D5FsnaE"
+         }
+       ],
+       "services": {
+         "appinvite_service": {
+           "other_platform_oauth_client": [
+             {
+               "client_id": "886513176670-sj1dmqj9gh0vl4nkppju7b6lb9fulmlc.apps.googleusercontent.com",
+               "client_type": 3
+             }
+           ]
+         }
+       }
+     },
+     {
+       "client_info": {
+         "mobilesdk_app_id": "1:886513176670:android:fd9a66b99e3341d6c6e4cf",
+         "android_client_info": {
+           "package_name": "com.rnproject"
+         }
+       },
+       "oauth_client": [
+         {
+           "client_id": "886513176670-sj1dmqj9gh0vl4nkppju7b6lb9fulmlc.apps.googleusercontent.com",
+           "client_type": 3
+         }
+       ],
+       "api_key": [
+         {
+           "current_key": "AIzaSyDx0ed5T8c4BQpoMNR4wNzzR394D5FsnaE"
+         }
+       ],
+       "services": {
+         "appinvite_service": {
+           "other_platform_oauth_client": [
+             {
+               "client_id": "886513176670-sj1dmqj9gh0vl4nkppju7b6lb9fulmlc.apps.googleusercontent.com",
+               "client_type": 3
+             }
+           ]
+         }
+       }
+     }
+   ],
+   "configuration_version": "1"
+ }

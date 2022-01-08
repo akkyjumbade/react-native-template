@@ -1,4 +1,4 @@
-import http from "../../utils/http"
+import http from "@/utils/http"
 import { T_AUTH_LOGOUT, T_AUTH_SET, T_AUTH_TOKEN, T_LOGIN, T_SET_ADDRESSES } from "./auth.reducer"
 
 

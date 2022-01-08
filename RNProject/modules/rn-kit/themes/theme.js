@@ -4,7 +4,7 @@ import colors from "./colors"
 export default {
    colors: {
       ...colors,
-      primary: '#1C6DD0'
+      primary: '#47ffc4'
    },
    htmlStyle: themes.htmlStyle,
    fontConfig: {

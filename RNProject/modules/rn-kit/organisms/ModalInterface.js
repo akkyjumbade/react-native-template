@@ -4,7 +4,7 @@ import { Fragment } from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
 import styled from 'styled-components'
 import Button from '../atoms/Button'
-import Text from '../atoms/Text'
+import { Text, } from '../atoms'
 
 const StyledModalInterface = styled.View`
    padding: 15px;

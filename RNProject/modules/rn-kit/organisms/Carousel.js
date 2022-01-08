@@ -1,7 +1,7 @@
 import {  View } from 'native-base'
 import React from 'react'
 import { Image,ScrollView,StyleSheet } from 'react-native'
-import { SCREEN } from '../../../../src/config'
+import { SCREEN } from '@/config'
 import CoreCarousel from 'react-native-snap-carousel';
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions'
 

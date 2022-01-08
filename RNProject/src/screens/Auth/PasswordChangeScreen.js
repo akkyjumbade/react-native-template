@@ -20,7 +20,7 @@ const PasswordChangeScreen = (props) => {
    return (
       <Page>
          <Page.Container>
-            <Page.Title>{__('Change password')}</Page.Title>
+            <Page.Title>Change password</Page.Title>
          </Page.Container>
          <Center style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center', padding: 15 }}>
             <View style={{ flex: 1, justifyContent: 'center' }}>

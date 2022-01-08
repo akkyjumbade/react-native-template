@@ -10,7 +10,7 @@ import {useNavigation} from "@react-navigation/core";
 import useTranslation from '@/hooks/useTranslation'
 import PhoneNumberInput from '@modules/rn-kit/molecules/PhoneNumberInput'
 import OTPInputView from '@twotalltotems/react-native-otp-input'
-import OtpInput from '@modules/rn-kit/atoms/OtpInput'
+import OtpInput from '@modules/rn-kit/molecules/OtpInput'
 
 
 

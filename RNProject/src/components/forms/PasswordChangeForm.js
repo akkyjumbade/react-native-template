@@ -31,10 +31,16 @@ const PasswordChangeForm = ({initialValues = {}}) => {
                onChangeText={formik.handleChange('otp')}
             />
          </FormControl>
-         <FormControl label={__('Password')}>
+         <FormControl label={__('New Password')}>
             <TextInput
-               values={formik.values.password}
-               onChangeText={formik.handleChange('password')}
+               values={formik.values.new_password}
+               onChangeText={formik.handleChange('new_password')}
+            />
+         </FormControl>
+         <FormControl label={__('Confirm New Password')}>
+            <TextInput
+               values={formik.values.confirm_password}
+               onChangeText={formik.handleChange('confirm_password')}
             />
          </FormControl>
          <ButtonPrimary title={__('btn_change_password')} onPress={() => nav.navigate('home')} />

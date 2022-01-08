@@ -1,6 +1,6 @@
 import LottieView from 'lottie-react-native'
 import React, { Fragment, useEffect } from 'react'
-import Text from '../atoms/Text'
+import { Text, } from '../atoms'
 const animationFile = require('../themes/dark_mode_toggle_animation.json')
 
 const SwitchControl = ({ value, onChange }) => {
