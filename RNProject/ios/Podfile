@@ -14,6 +14,8 @@ target 'RNProject' do
 
   pod 'RNSentry', :path => '../node_modules/@sentry/react-native'
 
+  pod 'TouchID', :path => '../node_modules/react-native-touch-id'
+
   target 'RNProjectTests' do
     inherit! :complete
     # Pods for testing

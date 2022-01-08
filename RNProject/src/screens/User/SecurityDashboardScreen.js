@@ -7,24 +7,35 @@ import Text from '@modules/rn-kit/atoms/Text';
 import { useNavigation } from '@react-navigation/core';
 import icons from '@/icons';
 import useTranslation from '@/hooks/useTranslation';
+import useBiometrics from '@/hooks/useBiometrics';
 // import ErrorMessage from '@modules/rn-kit/molecules/ErrorMessage';
 // import { Button } from 'packages/rn-kit';
-const avatarPlaceholderImage = require('../../../assets/avatar_placeholder.jpeg')
 
 const SecurityDashboardScreen = ({ user, isAuthenticated, options }) => {
    const nav = useNavigation()
    const __ = useTranslation();
    const colorScheme = useColorScheme()
    const dispatch = useDispatch()
+   const { authenticate } = useBiometrics()
    console.log({ colorScheme })
 
    if (!user) {
       return null
    }
    const { teams = null } = user
+   function configureBiometricAuthentication() {
+      // alert('To be implemented');
+      authenticate().then(response => {
+         alert("Authentication successful.")
+      }).catch(error => {
+         alert(error.message)
+      });
+
+   }
    if (!user) {
       return null
    }
+
 
    return (
       <Page scroll={true}>
@@ -46,6 +57,26 @@ const SecurityDashboardScreen = ({ user, isAuthenticated, options }) => {
                         </View>
                         <View>
                            <Text color={'gray'}>{__('Last update: 3 months ago.')}</Text>
+                        </View>
+                        <View>
+                           <icons.chevronRightIcon width={24} height={24} />
+                        </View>
+                     </HStack>
+                  </List.Item>
+                  <List.Item onPress={() => nav.navigate('profile.change_password')}>
+                     <HStack alignItems={'center'}>
+                        <View style={{ flex: 1 }}>
+                           <Text>{__('Set PIN')}</Text>
+                        </View>
+                        <View>
+                           <icons.chevronRightIcon width={24} height={24} />
+                        </View>
+                     </HStack>
+                  </List.Item>
+                  <List.Item onPress={configureBiometricAuthentication}>
+                     <HStack alignItems={'center'}>
+                        <View style={{ flex: 1 }}>
+                           <Text>{__('Unlock with Biometric')}</Text>
                         </View>
                         <View>
                            <icons.chevronRightIcon width={24} height={24} />
