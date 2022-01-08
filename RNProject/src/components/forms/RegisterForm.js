@@ -60,7 +60,7 @@ const RegisterForm = ({ initialValues = {}, }) => {
          <View style={{ marginBottom: 30, marginTop: 5, }}>
             <Text>{__('accept_terms_line')}</Text>
          </View>
-         <Button title={'Verify'} onPress={_ => nav.navigate('verification')} />
+         {/* <Button title={'Verify'} onPress={_ => nav.navigate('verification')} /> */}
          <ButtonPrimary
             title={__('btn_register')}
             disabled={!formik.dirty || (formik.isSubmitting)}
