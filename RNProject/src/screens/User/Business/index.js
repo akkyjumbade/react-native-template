@@ -31,13 +31,13 @@ const HeroSection = () => {
       <View>
          <ImageBackground source={banner} style={{ width, height: 150, position: 'relative' }}>
             <Text color="transparent">Hero </Text>
-            <Avatar style={styles.avatar} size={'lg'}  source={require('../../../assets/avatar_placeholder.jpeg')} />
+            {/* <Avatar style={styles.avatar} size={'lg'}  source={require('../../../../assets/avatar_placeholder.jpeg')} /> */}
          </ImageBackground>
       </View>
    )
 }
 
-const Dashboard = (props) => {
+const BusinessScreen = (props) => {
    const { user, navigation } = props
 
    return (
@@ -71,10 +71,10 @@ const Dashboard = (props) => {
    )
 }
 
-Dashboard.propTypes = {
+BusinessScreen.propTypes = {
    // prop: PropTypes.string
 }
-Dashboard.defaultProps = {
+BusinessScreen.defaultProps = {
    // type: 'text'
 }
 // redux connect with component
@@ -86,4 +86,4 @@ const mapActionsToProps = (dispatch) => {
       // action: payload => dispatch({ type: '',... })
    }
 }
-export default connect(mapStateToProps, mapActionsToProps)(Dashboard)
+export default connect(mapStateToProps, mapActionsToProps)(BusinessScreen)

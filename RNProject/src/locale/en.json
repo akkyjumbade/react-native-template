@@ -44,6 +44,7 @@
    "state": "State / Province",
    "postal_code": "Postal code / Zip",
    "change-password": "Change password",
+   "btn_change_password": "Change password",
    "linked-accounts": "Linked accounts",
    "terms-menu": "Terms & Conditions",
    "privacy-policy": "Privacy policy",

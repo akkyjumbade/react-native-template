@@ -36,6 +36,8 @@ import RewardsScreen from '@/screens/User/RewardsScreen';
 import SearchScreen from '@/screens/SearchScreen';
 import HomeNavigationBar from './HomeNavigationBar';
 import NotificationDetailScreen from '@/screens/User/NotificationDetailScreen';
+import Business from '@/screens/User/Business';
+import MembersScreen from '@/screens/User/Business/MembersScreen';
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -178,6 +180,8 @@ const Navigation = ({ user, loading }) => {
                   <Stack.Screen name="refer" options={{ title: '' }} component={ReferScreen} />
                   <Stack.Screen name="rewards" options={{ title: '' }} component={RewardsScreen} />
                   <Stack.Screen name="rewards.show" options={{ title: '' }} component={RewardsScreen} />
+                  <Stack.Screen name="business" options={{ title: '' }} component={Business} />
+                  <Stack.Screen name="business.members" options={{ title: '' }} component={MembersScreen} />
                   <Stack.Screen name="page" options={{ headerShown: true, title: '' }} component={WebviewScreen} />
                   <Stack.Screen name="notifications.show" options={{ title: '' }} component={NotificationDetailScreen} />
                   <Stack.Screen name="preferences" options={{ title: '' }} component={SettingsScreen} />
