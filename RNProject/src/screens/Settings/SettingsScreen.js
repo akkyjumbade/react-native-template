@@ -44,6 +44,15 @@ const SettingsScreen = ({ user, isAuthenticated, options }) => {
    function inAppReviewDialogue() {
       alert('Open in app review dialogue')
    }
+
+   function onLangaugeClick() {
+      nav.navigate('set_locale')
+   }
+
+   function onRegionClick() {
+      nav.navigate('set_region')
+   }
+
    if (!user) {
       return null
    }
@@ -65,7 +74,7 @@ const SettingsScreen = ({ user, isAuthenticated, options }) => {
                   space={1}
                   >
 
-                  <List.Item onPress={() => nav.navigate('profile.change_password')}>
+                  <List.Item onPress={onRegionClick}>
                      <HStack alignItems={'center'}>
                         <View style={{ flex: 1 }}>
                            <Text>{__('Region')}</Text>
@@ -78,7 +87,7 @@ const SettingsScreen = ({ user, isAuthenticated, options }) => {
                         </View>
                      </HStack>
                   </List.Item>
-                  <List.Item onPress={() => nav.navigate('profile.change_password')}>
+                  <List.Item onPress={onLangaugeClick}>
                      <HStack alignItems={'center'}>
                         <View style={{ flex: 1 }}>
                            <Text>{__('Language')}</Text>
