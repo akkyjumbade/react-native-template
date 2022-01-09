@@ -1,12 +1,14 @@
 import ErrorBoundary from '@/components/errors/ErrorBoundary';
-import GeoLocationProvider from '@/providers/GeoLocationProvider';
+import { useGeoLocation } from '@/providers/GeoLocationProvider';
 import MapOverlayWidget from '@/widgets/MapOverlayWidget';
 import { Text } from 'native-base';
-import React, { useEffect, useRef, useState } from 'react'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import MapView, { Circle, Marker, Overlay, PROVIDER_GOOGLE } from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
 import { Modalize } from 'react-native-modalize';
 import { Portal } from 'react-native-portalize';
+import Map from '@/components/Map/Map';
+// import googleMapsCustomTheme from '@/style/google_maps_theme_dark.json'
 
 const styles = StyleSheet.create({
    container: {
@@ -28,6 +30,7 @@ const styles = StyleSheet.create({
 export default ({ navigation }) => {
    const modalref = useRef()
    const { height } = useWindowDimensions()
+   const { setLocation } = useGeoLocation()
    const [ currentCoordinates, setCurrentCoordinates ] = useState({
       latitude: 37.78825,
       longitude: -122.4324,
@@ -43,38 +46,17 @@ export default ({ navigation }) => {
    useEffect(() => {
       setTimeout(() => {
          modalref.current?.open()
-      }, 1000);
+      }, 100);
       console.info({ modalref })
 
    }, [ modalref ])
 
    return (
-      <GeoLocationProvider>
-         <View style={styles.container}>
-            <MapView
-               // followsUserLocation={true}
-               provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-               style={styles.map}
-               region={currentCoordinates}
-               onUserLocationChange={onCoordinatesChange}
-               // userLocationPriority={'balanced'}
-               // onRegionChangeComplete={onCoordinatesChange}
-               zoomControlEnabled={true}
-            >
-               {/* <Marker
-                  pinColor={'black'}
-                  coordinate={markerCoordinates}
-               />
-               <Circle
-                  center={markerCoordinates}
-                  radius={100}
-               /> */}
-               {/* <ErrorBoundary>
-               </ErrorBoundary> */}
-            </MapView>
-            <MapOverlayWidget ref={modalref} currentCoordinates={currentCoordinates} onCancel={() => navigation.goBack()} />
-         </View>
-      </GeoLocationProvider>
+      <Fragment>
+         <Map
+         />
+         <MapOverlayWidget ref={modalref} />
+      </Fragment>
    )
 };
 

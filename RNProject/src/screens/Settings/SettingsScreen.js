@@ -117,6 +117,9 @@ const SettingsScreen = ({ user, isAuthenticated, options }) => {
                   <List.Item onPress={_ => nav.navigate('preferences.notifications')}>
                      <Text>{__('Notifications')}</Text>
                   </List.Item>
+                  <List.Item onPress={_ => nav.navigate('device_permissions')}>
+                     <Text>{__('Device permissions')}</Text>
+                  </List.Item>
 
                </List>
             </View>

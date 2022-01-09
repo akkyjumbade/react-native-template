@@ -10,23 +10,21 @@ import { useTheme } from 'styled-components/native'
 import colors from '@modules/rn-kit/themes/colors'
 import { Text } from '@modules/rn-kit/atoms';
 import icons from '@/icons';
+import { useGeoLocation } from '@/providers/GeoLocationProvider';
 
 
 const SearchBar = ({ initialValue, location }) => {
    const nav = useNavigation()
-   // const { location } = useLocationComplete()
    function onClick() {
-      // alert('Select location')
       nav.navigate('search')
-      // showModal()
    }
    return (
       <TouchableOpacity style={{ marginTop: 12 }} onPress={onClick}>
          <HStack alignItems="center" space={3}>
-            {/* <Icon name="search" size={20} color={colors.dark} style={{ marginRight: 10, }} /> */}
             <icons.search width={26} height={26} />
             <View>
-               <Text bold >{location?.q || 'Choose location'}</Text>
+               {/* <Text bold >{JSON.stringify(location)}</Text> */}
+               <Text bold >{location?.address_line || 'Choose location'}</Text>
                <Text fontSize={'xs'}>Your location</Text>
             </View>
          </HStack>
@@ -39,7 +37,8 @@ let statusHeight = Platform.select({
 })
 
 const HomeNavigationBar = ({ theme, navigation, ...props }) => {
-   const location = useSelector(state => state.location)
+   // const location = useSelector(state => state.location)
+   const { location } = useGeoLocation()
    // const notificationsCount = useSelector(state => state.notifications.unreadNotificationsCount)
    // const cartItems = useSelector(state => state.cart.items)
    // const cartCount = useMemo(() => {

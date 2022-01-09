@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
    },
    body: {
       padding: 15,
+      minHeight: 100
    },
    footer: {
       padding: 15,
@@ -79,24 +80,22 @@ const SearchLocationDialogue = React.forwardRef((props,ref) => {
 })
 
 const LocationForm = ({ onChange, value = {} }) => {
-   const [ address, setAddress ] = useState(() => value)
    const __ = useTranslation()
    const formik = useFormik({
       initialValues: value,
       validationSchema,
-      validateOnBlur: true
+      validateOnBlur: true,
    })
    useEffect(( ) => {
-      onChange && onChange(address)
-
-   }, [ address, ])
+      onChange && onChange(formik.values)
+   }, [ formik.values, ])
 
    return (
       <View>
          <FormControl label={__('address_line')} error={formik.errors?.address_line}>
             <TextInput value={formik.values.address_line} onChangeText={formik.handleChange('address_line')} placeholder={'Flat/House'} />
          </FormControl>
-         <FormControl label={__('address_line_2')} error={formik.errors?.address_line_2}>
+         <FormControl error={formik.errors?.address_line_2}>
             <TextInput value={formik.values.address_line_2} onChangeText={formik.handleChange('address_line_2')} placeholder={'Landmark'} />
          </FormControl>
          <FormControl label={__('city')} error={formik.errors?.city}>
@@ -125,7 +124,7 @@ const LocationForm = ({ onChange, value = {} }) => {
 }
 
 const MapOverlayWidget = React.forwardRef((props, ref) => {
-   const { currentCoordinates, onCancel, onConfirm } = props
+   const { currentCoordinates, onCancel, onConfirm, onChange } = props
    const nav = useNavigation()
    const searchRef = useRef()
    const { location, setLocation } = useGeoLocation()
@@ -147,8 +146,10 @@ const MapOverlayWidget = React.forwardRef((props, ref) => {
          <Portal>
             <Modalize ref={ref}
                adjustToContentHeight={true}
-               withHandle={false} withOverlay={false}
+               withHandle={false}
+               withOverlay={false}
                modalStyle={{ minHeight: 200 }}
+               // alwaysOpen={true}
                HeaderComponent={() => (
                   <View style={styles.header}>
                      <Text bold>DELIVERY LOCATION</Text>
@@ -182,7 +183,7 @@ const MapOverlayWidget = React.forwardRef((props, ref) => {
                         <icons.edit {..._props} />
                      </HStack>
                      )}>
-                     <ScrollView>
+                     <ScrollView >
                         <LocationForm value={location} onChange={setNewLocation} />
                      </ScrollView>
                   </Collapsable>
@@ -196,6 +197,8 @@ const MapOverlayWidget = React.forwardRef((props, ref) => {
 })
 MapOverlayWidget.defaultProps = {
    onCancel: () => alert('go back'),
-   onConfirm: () => alert('go back'),
+   onConfirm: () => {
+      alert('Confirm and go back')
+   }
 }
 export default MapOverlayWidget

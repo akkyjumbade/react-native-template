@@ -1,11 +1,21 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-const GeoLocationContext = createContext({})
+const initialCoordinates = {
+   latitude: 37.78825,
+   longitude: -122.4324,
+   latitudeDelta: 0.015,
+   longitudeDelta: 0.0121,
+}
+
+
+const GeoLocationContext = createContext({
+   coordinates: initialCoordinates
+})
 
 const GeoLocationProvider = ({ children }) => {
    const dispatch = useDispatch()
-   const [ coordinates, setCoordinates ] = useState({})
+   const [ coordinates, setCoordinates ] = useState(initialCoordinates)
    const [ location, setLocation ] = useState({})
    useEffect(() => {
       // dispatch

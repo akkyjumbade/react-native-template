@@ -43,6 +43,7 @@ import MapScreen from '@/screens/MapScreen';
 import LocationAutocompleteScreen from '@/screens/LocationAutocompleteScreen';
 import MapHeaderNavigation from './MapHeaderNavigation';
 import SetLocaleScreen from '@/screens/SetLocaleScreen';
+import DevicePermissionsScreen from '@/screens/DevicePermissionsScreen';
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -182,6 +183,7 @@ const Navigation = ({ user, loading }) => {
                   {/* <Stack.Screen name="search" options={{ title: '' }} component={SearchScreen} /> */}
                   <Stack.Screen name="profile" options={{ title: '' }} component={ProfileScreen} />
                   <Stack.Screen name="billing" options={{ title: '' }} component={BillingScreen} />
+                  <Stack.Screen name="device_permissions" options={{ title: '' }} component={DevicePermissionsScreen} />
                   <Stack.Screen name="security" options={{ title: '' }} component={SecurityDashboardScreen} />
                   <Stack.Screen name="refer" options={{ title: '' }} component={ReferScreen} />
                   <Stack.Screen name="rewards" options={{ title: '' }} component={RewardsScreen} />
