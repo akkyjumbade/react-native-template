@@ -42,6 +42,7 @@ import SetRegionScreen from '@/screens/SetRegionScreen';
 import MapScreen from '@/screens/MapScreen';
 import LocationAutocompleteScreen from '@/screens/LocationAutocompleteScreen';
 import MapHeaderNavigation from './MapHeaderNavigation';
+import SetLocaleScreen from '@/screens/SetLocaleScreen';
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -196,7 +197,7 @@ const Navigation = ({ user, loading }) => {
                   <Stack.Screen name="profile.edit" options={{ title: '' }} component={EditProfileScreen} />
                   <Stack.Screen name="profile.change_password" options={{ title: '' }} component={PasswordChangeScreen} />
                   <Stack.Screen name="about" options={{ title: '' }} component={AboutScreen} />
-                  <Stack.Screen name="set_locale" mode="modal" options={{ title: '' }} component={SetRegionScreen} />
+                  <Stack.Screen name="set_locale" mode="modal" options={{ title: '' }} component={SetLocaleScreen} />
                   <Stack.Screen name="set_region" mode="modal" options={{ title: '' }} component={SetRegionScreen} />
                </Stack.Navigator>
             </Host>

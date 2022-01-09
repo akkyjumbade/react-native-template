@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
    }
 });
 
-export default () => {
+export default ({ navigation }) => {
    const modalref = useRef()
    const { height } = useWindowDimensions()
    const [ currentCoordinates, setCurrentCoordinates ] = useState({
@@ -69,10 +69,10 @@ export default () => {
                   center={markerCoordinates}
                   radius={100}
                /> */}
-               <MapOverlayWidget ref={modalref} currentCoordinates={currentCoordinates} />
                {/* <ErrorBoundary>
                </ErrorBoundary> */}
             </MapView>
+            <MapOverlayWidget ref={modalref} currentCoordinates={currentCoordinates} onCancel={() => navigation.goBack()} />
          </View>
       </GeoLocationProvider>
    )

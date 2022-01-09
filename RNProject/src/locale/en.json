@@ -41,6 +41,7 @@
    "address_line": "Address",
    "address_line_2": "Address line 2",
    "city": "City",
+   "type": "Type",
    "state": "State / Province",
    "postal_code": "Postal code / Zip",
    "change-password": "Change password",

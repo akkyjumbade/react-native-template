@@ -38,6 +38,7 @@ export default function NumberInput({ prepend, append, ...props }) {
       <ErrorBoundary>
          <TextInput
             keyboardType="number-pad"
+            {...props}
             />
          {/* <HStack justifyContent={'space-between'}>
             <Text>{''}</Text>

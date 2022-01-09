@@ -6,23 +6,28 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 const styles = StyleSheet.create({
    header: {
-      backgroundColor: 'rgba(255, 255, 255, 1)',
+      backgroundColor: 'rgba(255, 255, 255, 0)',
       // backgroundColor: 'red',
-      // position: 'absolute',
+      borderBottomWidth: 0,
+      position: 'absolute',
       zIndex: 9999,
       // top: 100,
       // height: 100,
       left: 0,
       top: 0,
       width: '100%',
-      elevation: 10
+      // elevation: 0,
+      shadowOffset: 0,
+      shadowOpacity: 0,
+      paddingTop: 15,
    },
    backbutton: {
       backgroundColor: 'white',
       width: 40,
       height: 40,
       marginLeft: 15,
-      marginTop: 15,
+      marginTop: 0,
+
       borderRadius: 100,
       alignItems: 'center',
       justifyContent: 'center',
