@@ -39,6 +39,9 @@ import NotificationDetailScreen from '@/screens/User/NotificationDetailScreen';
 import Business from '@/screens/User/Business';
 import MembersScreen from '@/screens/User/Business/MembersScreen';
 import SetRegionScreen from '@/screens/SetRegionScreen';
+import MapScreen from '@/screens/MapScreen';
+import LocationAutocompleteScreen from '@/screens/LocationAutocompleteScreen';
+import MapHeaderNavigation from './MapHeaderNavigation';
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -174,7 +177,8 @@ const Navigation = ({ user, loading }) => {
                   <Stack.Screen name="password_request" options={{ title: '' }} component={PasswordLostScreen} />
                   <Stack.Screen name="password_reset" options={{ title: '' }} component={PasswordChangeScreen} />
                   <Stack.Screen name="verification" options={{ title: '' }} component={VerificationScreen} />
-                  <Stack.Screen name="search" options={{ title: '' }} component={SearchScreen} />
+                  <Stack.Screen name="search" options={{ title: '', header: nprops => <MapHeaderNavigation {...nprops} /> }} component={LocationAutocompleteScreen} />
+                  {/* <Stack.Screen name="search" options={{ title: '' }} component={SearchScreen} /> */}
                   <Stack.Screen name="profile" options={{ title: '' }} component={ProfileScreen} />
                   <Stack.Screen name="billing" options={{ title: '' }} component={BillingScreen} />
                   <Stack.Screen name="security" options={{ title: '' }} component={SecurityDashboardScreen} />

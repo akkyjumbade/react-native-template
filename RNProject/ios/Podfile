@@ -16,6 +16,10 @@ target 'RNProject' do
 
   pod 'TouchID', :path => '../node_modules/react-native-touch-id'
 
+   # React Native Maps dependencies
+   rn_maps_path = '../node_modules/react-native-maps'
+   pod 'react-native-google-maps', :path => rn_maps_path
+
   target 'RNProjectTests' do
     inherit! :complete
     # Pods for testing
