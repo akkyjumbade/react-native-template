@@ -14,6 +14,8 @@ import {useIsConnected} from "react-native-offline";
 import { registerPushNotificationChannels } from './services/PushNotificationService'
 import { notificationChannels } from './config'
 import LocaleContextProvider from './providers/LocaleProvider'
+import GeoLocationProvider from './providers/GeoLocationProvider'
+import DevicePermissionsProvider from './providers/DevicePermissionsProvider'
 
 
 const Bootstrap = () => {
@@ -32,19 +34,23 @@ const Bootstrap = () => {
       <SafeAreaProvider >
          {/* <StatusBar translucent={true} /> */}
          <ErrorBoundary>
-            <LocaleContextProvider>
-               {status === 'LOADING' || status === 'INIT' ? (
-                  <LoadingScreen />
-               ) : (
-                  <Fragment>
-                     {isOnline ? (
-                        <Navigation />
+            <DevicePermissionsProvider>
+               <LocaleContextProvider>
+                  <GeoLocationProvider>
+                     {status === 'LOADING' || status === 'INIT' ? (
+                        <LoadingScreen />
                      ) : (
-                        <OfflineScreen />
+                        <Fragment>
+                           {isOnline ? (
+                              <Navigation />
+                           ) : (
+                              <OfflineScreen />
+                           )}
+                        </Fragment>
                      )}
-                  </Fragment>
-               )}
-            </LocaleContextProvider>
+                  </GeoLocationProvider>
+               </LocaleContextProvider>
+            </DevicePermissionsProvider>
          </ErrorBoundary>
       </SafeAreaProvider>
    )

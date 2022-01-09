@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { Fragment, memo } from "react";
 import * as Sentry from "@sentry/react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { QueryClientProvider } from "react-query";
@@ -22,7 +22,7 @@ registerPushNotification()
 
 const App = () => {
    return (
-      <React.StrictMode>
+      <Fragment>
          <NetworkProvider>
             <QueryClientProvider client={queryClient}>
                <Provider store={store}>
@@ -32,7 +32,7 @@ const App = () => {
                </Provider>
             </QueryClientProvider>
          </NetworkProvider>
-      </React.StrictMode>
+      </Fragment>
    )
 }
 

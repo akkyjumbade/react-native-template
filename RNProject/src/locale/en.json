@@ -41,6 +41,7 @@
    "address_line": "Address",
    "address_line_2": "Address line 2",
    "city": "City",
+   "type": "Type",
    "state": "State / Province",
    "postal_code": "Postal code / Zip",
    "change-password": "Change password",
@@ -67,5 +68,9 @@
    "market_menu": "Explore",
    "btn_save_address": "Save address",
    "btn_cancel": "Cancel",
+   "push_notification": "Push notification",
+   "push_notification_description": "Recieve important alerts",
+   "geo_location": "GEO Location",
+   "geo_location_description": "Allow to serve better near you",
    "Register": "Create account"
 }

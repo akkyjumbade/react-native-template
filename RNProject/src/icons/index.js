@@ -21,6 +21,7 @@ import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
 import SearchIcon from './SearchIcon';
 import ExclaimationMarkIcon from './ExclaimationMarkIcon';
+import CheckIcon from './CheckIcon';
 
 const defaultStyle = {
    style: {
@@ -31,6 +32,7 @@ const defaultStyle = {
 }
 
 export default {
+   check: props => <CheckIcon {...defaultStyle} {...props} />,
    exclaimation: props => <ExclaimationMarkIcon {...defaultStyle} {...props} />,
    search: props => <SearchIcon {...defaultStyle} {...props} />,
    chevronLeftIcon: props => <ChevronLeftIcon {...defaultStyle} {...props} />,

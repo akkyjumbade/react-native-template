@@ -1,4 +1,5 @@
 import TouchID from 'react-native-touch-id';
+import { useDispatch } from 'react-redux';
 
 const config = {
    title: 'Authentication Required', // Android
@@ -13,8 +14,8 @@ const config = {
 }
 
 export default function useBiometrics() {
-
-   const msg = "to demo this react-native component"
+   const dispatch = useDispatch()
+   const msg = "Unlock securely with biometrics"
 
    async function authenticate() {
       try {
@@ -23,6 +24,7 @@ export default function useBiometrics() {
 
          }
          const response = await TouchID.authenticate(msg, config)
+         dispatch({ type: 'UPDATE_CONFIG', biometrics_enabled: true })
          return response
       } catch (error) {
          throw error

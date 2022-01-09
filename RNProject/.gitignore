@@ -60,4 +60,4 @@ buck-out/
 /ios/Pods/
 yarn.lock
 *.zip
-.env.js
+#.env.js
