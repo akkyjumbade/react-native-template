@@ -3,6 +3,7 @@ import store from "@/store";
 import { server } from "@/utils/http";
 import colors from "@modules/rn-kit/themes/colors";
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
+import deviceInfoModule from "react-native-device-info";
 import PushNotification, { Importance } from 'react-native-push-notification';
 
 const defaultProps = {
@@ -38,67 +39,70 @@ export const triggerNotification = (payload) => {
 
 // Must be outside of any component LifeCycle (such as `componentDidMount`).
 export const registerPushNotification = () => {
-   PushNotification.configure({
-      // (optional) Called when Token is generated (iOS and Android)
-      onRegister: function (token) {
-         const bearerToken = store.getState().auth.token
-         if (bearerToken) {
-            server({ token: bearerToken }).post(`/api/me/update_push_notification`, {
-               ...token
-            }).catch(error => {
-               console.log("TOKEN ERROR:", error);
-            }).finally(() => {
+   deviceInfoModule.isEmulator().catch(() => {
 
-            })
-         }
-         console.log("TOKEN:", token);
-      },
+      PushNotification.configure({
+         // (optional) Called when Token is generated (iOS and Android)
+         onRegister: function (token) {
+            const bearerToken = store.getState().auth.token
+            if (bearerToken) {
+               server({ token: bearerToken }).post(`/api/me/update_push_notification`, {
+                  ...token
+               }).catch(error => {
+                  console.log("TOKEN ERROR:", error);
+               }).finally(() => {
 
-      // (required) Called when a remote is received or opened, or local notification is opened
-      onNotification: function (notification) {
-         console.log("NOTIFICATION:", notification);
-
-         // process the notification
-         triggerNotification({
-            ...notification,
-         })
+               })
+            }
+            console.log("TOKEN:", token);
+         },
 
          // (required) Called when a remote is received or opened, or local notification is opened
-         notification.finish(PushNotificationIOS.FetchResult.NoData);
-      },
+         onNotification: function (notification) {
+            console.log("NOTIFICATION:", notification);
 
-      // (optional) Called when Registered Action is pressed and invokeApp is false, if true onNotification will be called (Android)
-      onAction: function (notification) {
-         console.log("ACTION:", notification.action);
-         console.log("NOTIFICATION:", notification);
+            // process the notification
+            triggerNotification({
+               ...notification,
+            })
 
-         // process the action
-      },
+            // (required) Called when a remote is received or opened, or local notification is opened
+            notification.finish(PushNotificationIOS.FetchResult.NoData);
+         },
 
-      // (optional) Called when the user fails to register for remote notifications. Typically occurs when APNS is having issues, or the device is a simulator. (iOS)
-      onRegistrationError: function (err) {
-         console.error(err.message, err);
-      },
+         // (optional) Called when Registered Action is pressed and invokeApp is false, if true onNotification will be called (Android)
+         onAction: function (notification) {
+            console.log("ACTION:", notification.action);
+            console.log("NOTIFICATION:", notification);
 
-      // IOS ONLY (optional): default: all - Permissions to register.
-      permissions: {
-         alert: true,
-         badge: true,
-         sound: true,
-      },
+            // process the action
+         },
 
-      // Should the initial notification be popped automatically
-      // default: true
-      popInitialNotification: true,
+         // (optional) Called when the user fails to register for remote notifications. Typically occurs when APNS is having issues, or the device is a simulator. (iOS)
+         onRegistrationError: function (err) {
+            console.error(err.message, err);
+         },
 
-      /**
-       * (optional) default: true
-       * - Specified if permissions (ios) and token (android and ios) will requested or not,
-       * - if not, you must call PushNotificationsHandler.requestPermissions() later
-       * - if you are not using remote notification or do not have Firebase installed, use this:
-       *     requestPermissions: Platform.OS === 'ios'
-       */
-      requestPermissions: true,
+         // IOS ONLY (optional): default: all - Permissions to register.
+         permissions: {
+            alert: true,
+            badge: true,
+            sound: true,
+         },
+
+         // Should the initial notification be popped automatically
+         // default: true
+         popInitialNotification: true,
+
+         /**
+          * (optional) default: true
+          * - Specified if permissions (ios) and token (android and ios) will requested or not,
+          * - if not, you must call PushNotificationsHandler.requestPermissions() later
+          * - if you are not using remote notification or do not have Firebase installed, use this:
+          *     requestPermissions: Platform.OS === 'ios'
+          */
+         requestPermissions: true,
+      })
    })
 }
 
