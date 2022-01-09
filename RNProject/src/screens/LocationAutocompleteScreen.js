@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
    },
    map: {
       ...StyleSheet.absoluteFillObject,
+      elevation: 0,
    },
    overlayStyle: {
       backgroundColor: 'transparent',
@@ -51,12 +52,12 @@ export default () => {
       <GeoLocationProvider>
          <View style={styles.container}>
             <MapView
-               followsUserLocation={true}
+               // followsUserLocation={true}
                provider={PROVIDER_GOOGLE} // remove if not using Google Maps
                style={styles.map}
-               initialRegion={currentCoordinates}
+               region={currentCoordinates}
                onUserLocationChange={onCoordinatesChange}
-               userLocationPriority={'balanced'}
+               // userLocationPriority={'balanced'}
                // onRegionChangeComplete={onCoordinatesChange}
                zoomControlEnabled={true}
             >
@@ -68,9 +69,9 @@ export default () => {
                   center={markerCoordinates}
                   radius={100}
                /> */}
-               <ErrorBoundary>
-                  <MapOverlayWidget ref={modalref} currentCoordinates={currentCoordinates} />
-               </ErrorBoundary>
+               <MapOverlayWidget ref={modalref} currentCoordinates={currentCoordinates} />
+               {/* <ErrorBoundary>
+               </ErrorBoundary> */}
             </MapView>
          </View>
       </GeoLocationProvider>

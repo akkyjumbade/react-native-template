@@ -1,30 +1,21 @@
 import icons from '@/icons'
 import React, { Fragment } from 'react'
-import { Pressable, SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native'
+import { Pressable, StyleSheet, TouchableOpacity, View } from 'react-native'
 import { Portal } from 'react-native-portalize'
-// import { SafeAreaView } from 'react-native-safe-area-context'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
-const BackButton = ({ navigation }) => {
-   function goBack() {
-      navigation.goBack()
-   }
-   return (
-      <View style={styles.backbutton}>
-         <icons.chevronLeftIcon name="x" width={24} height={24} onPress={goBack} />
-      </View>
-   )
-}
 const styles = StyleSheet.create({
    header: {
-      backgroundColor: 'rgba(255, 255, 255, 0)',
+      backgroundColor: 'rgba(255, 255, 255, 1)',
       // backgroundColor: 'red',
-      position: 'absolute',
+      // position: 'absolute',
       zIndex: 9999,
       // top: 100,
       // height: 100,
       left: 0,
       top: 0,
       width: '100%',
+      elevation: 10
    },
    backbutton: {
       backgroundColor: 'white',
@@ -35,14 +26,25 @@ const styles = StyleSheet.create({
       borderRadius: 100,
       alignItems: 'center',
       justifyContent: 'center',
+      // elevation: 200
       // flexDirection: 'row'
    }
 })
 
+const BackButton = ({ navigation }) => {
+   return (
+      <View style={styles.backbutton}>
+         <icons.chevronLeftIcon name="x" width={24} height={24} />
+      </View>
+   )
+}
+
 const MapHeaderNavigation = ({ navigation }) => {
    return (
-      <SafeAreaView style={[styles.header]}>
-         <BackButton navigation={navigation} />
+      <SafeAreaView style={[styles.header]} elevation={20}>
+         <Pressable onPress={_ => navigation.goBack()}>
+            <BackButton />
+         </Pressable>
          {/* <Pressable onPressIn={_ => alert('sdff')}>
             <Text>Press arew</Text>
          </Pressable> */}

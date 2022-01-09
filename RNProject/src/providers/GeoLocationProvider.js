@@ -5,14 +5,17 @@ const GeoLocationContext = createContext({})
 
 const GeoLocationProvider = ({ children }) => {
    const dispatch = useDispatch()
-   const [ currentCoordinates, setCurrentCoordinates ] = useState({})
+   const [ coordinates, setCoordinates ] = useState({})
+   const [ location, setLocation ] = useState({})
    useEffect(() => {
       // dispatch
    }, [])
 
    const values = {
-      currentCoordinates,
-      setCurrentCoordinates
+      coordinates,
+      location,
+      setCoordinates,
+      setLocation,
    }
 
    return (
@@ -24,13 +27,10 @@ const GeoLocationProvider = ({ children }) => {
 
 export const useGeoLocation = () => {
    const context = useContext(GeoLocationContext)
-   function getCoordinates() {
+   function askLocation() {
 
    }
-   return {
-      ...context,
-      getCoordinates,
-   }
+   return context
 }
 
 export default GeoLocationProvider
