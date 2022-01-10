@@ -39,6 +39,11 @@ import NotificationDetailScreen from '@/screens/User/NotificationDetailScreen';
 import Business from '@/screens/User/Business';
 import MembersScreen from '@/screens/User/Business/MembersScreen';
 import SetRegionScreen from '@/screens/SetRegionScreen';
+import MapScreen from '@/screens/MapScreen';
+import LocationAutocompleteScreen from '@/screens/LocationAutocompleteScreen';
+import MapHeaderNavigation from './MapHeaderNavigation';
+import SetLocaleScreen from '@/screens/SetLocaleScreen';
+import DevicePermissionsScreen from '@/screens/DevicePermissionsScreen';
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -174,9 +179,11 @@ const Navigation = ({ user, loading }) => {
                   <Stack.Screen name="password_request" options={{ title: '' }} component={PasswordLostScreen} />
                   <Stack.Screen name="password_reset" options={{ title: '' }} component={PasswordChangeScreen} />
                   <Stack.Screen name="verification" options={{ title: '' }} component={VerificationScreen} />
-                  <Stack.Screen name="search" options={{ title: '' }} component={SearchScreen} />
+                  <Stack.Screen name="search" options={{ title: '', header: nprops => <MapHeaderNavigation {...nprops} /> }} component={LocationAutocompleteScreen} />
+                  {/* <Stack.Screen name="search" options={{ title: '' }} component={SearchScreen} /> */}
                   <Stack.Screen name="profile" options={{ title: '' }} component={ProfileScreen} />
                   <Stack.Screen name="billing" options={{ title: '' }} component={BillingScreen} />
+                  <Stack.Screen name="device_permissions" options={{ title: '' }} component={DevicePermissionsScreen} />
                   <Stack.Screen name="security" options={{ title: '' }} component={SecurityDashboardScreen} />
                   <Stack.Screen name="refer" options={{ title: '' }} component={ReferScreen} />
                   <Stack.Screen name="rewards" options={{ title: '' }} component={RewardsScreen} />
@@ -192,7 +199,7 @@ const Navigation = ({ user, loading }) => {
                   <Stack.Screen name="profile.edit" options={{ title: '' }} component={EditProfileScreen} />
                   <Stack.Screen name="profile.change_password" options={{ title: '' }} component={PasswordChangeScreen} />
                   <Stack.Screen name="about" options={{ title: '' }} component={AboutScreen} />
-                  <Stack.Screen name="set_locale" mode="modal" options={{ title: '' }} component={SetRegionScreen} />
+                  <Stack.Screen name="set_locale" mode="modal" options={{ title: '' }} component={SetLocaleScreen} />
                   <Stack.Screen name="set_region" mode="modal" options={{ title: '' }} component={SetRegionScreen} />
                </Stack.Navigator>
             </Host>

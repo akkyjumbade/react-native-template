@@ -5,3 +5,6 @@ include ':@sentry_react-native'
 project(':@sentry_react-native').projectDir = new File(rootProject.projectDir, '../node_modules/@sentry/react-native/android')
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'
+
+include ':react-native-maps'
+project(':react-native-maps').projectDir = new File('../node_modules/react-native-maps/lib/android')

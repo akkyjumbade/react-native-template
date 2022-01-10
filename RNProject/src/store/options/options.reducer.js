@@ -11,6 +11,7 @@ const initialState = {
    languages: configOptions.languages,
    country: 'IN',
    countryPhoneCode: '+91',
+   biometrics_enabled: false,
 };
 
 export const actionTypes = {

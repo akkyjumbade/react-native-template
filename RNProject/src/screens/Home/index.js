@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { View } from 'react-native'
+import { Pressable, View } from 'react-native'
 import { useSelector } from 'react-redux'
 import Page from "@modules/rn-kit/layouts/Page";
 import Text from "@modules/rn-kit/atoms/Text";
@@ -31,7 +31,7 @@ const DoorDashFavorite = props => (
      <Rect x="0" y="77" rx="10" ry="10" width="388" height="217" />
    </ContentLoader>
 )
-const HomeScreen = (props) => {
+const HomeScreen = ({ navigation }) => {
    const auth = useSelector(state => state.auth)
    const __ = useTranslation()
    const locale = useLocale()
@@ -39,8 +39,7 @@ const HomeScreen = (props) => {
    return (
       <Page scroll={true}>
          <Page.Container>
-            {/* <Text>{JSON.stringify({ locale })}</Text>
-            <Text>{JSON.stringify({ options })}</Text> */}
+
             <DoorDashFavorite />
             <Facebook />
             <Code />

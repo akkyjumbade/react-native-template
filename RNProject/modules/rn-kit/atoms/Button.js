@@ -25,6 +25,12 @@ const Button = (props) => {
          fontSize: 18,
       }
    }
+   if (props.small) {
+      labelStyle = {
+         ...labelStyle,
+         fontSize: 13,
+      }
+   }
    return (
       <StyledButton intent={intent} {...props} onPress={onPress} >
          <HStack space={2} alignItems={'center'}>

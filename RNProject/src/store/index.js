@@ -9,6 +9,7 @@ import optionsReducer from "./options/options.reducer";
 import { reducer as network } from 'react-native-offline';
 
 import { composeWithDevTools } from 'redux-devtools-extension';
+import permissionsReducer from "./auth/permissions.reducer";
 
 
 const reduxProps = {
@@ -20,12 +21,13 @@ const reduxProps = {
 const rootReducer = combineReducers({
    auth: authReducer,
    // network,
+   permissions: permissionsReducer,
    options: optionsReducer,
 })
 const persistConfig = {
    key: 'root',
    storage: AsyncStorage,
-   whitelist: ['auth', 'options']
+   whitelist: ['auth', 'options', 'permissions']
 }
 export const persistedReducer = persistReducer(persistConfig, rootReducer)
 
