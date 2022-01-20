@@ -10,3 +10,4 @@ if (Platform.OS !== 'web') {
 
 }
 AppRegistry.registerComponent(appName, () => App);
+
