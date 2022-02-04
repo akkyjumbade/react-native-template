@@ -1,17 +1,18 @@
 import store from "@/store"
 import { auth_login_action } from "@/store/auth/auth.actions"
 import http, { server } from "@/utils/http"
+import { useFormik } from "formik"
 import { useToast } from 'native-base'
 
 import { useMutation, useQueryClient } from "react-query"
 
-export function useLoginQuery({ initialValues = {} }) {
+export function useLoginQuery({ initialValues = {} } = {}) {
    const queryClient = useQueryClient()
    const toast = useToast()
    // TODO: get push notification token stored and send to every login request
 
    let url = `/api/login`
-   const { mutateAsync, isLoading, } useMutation(async (payload) => {
+   const { mutateAsync, } = useMutation(async (payload) => {
       console.info({ url, payload})
       return await http().post(url, {
          ...payload,
@@ -20,7 +21,7 @@ export function useLoginQuery({ initialValues = {} }) {
       onSuccess: ({ data, }) => {
          queryClient.invalidateQueries()
          const { ok, token } = data
-         if(data && ok) {
+         if (data && ok) {
             store.dispatch(auth_login_action(token))
          }
          // console.info({ data })
@@ -43,7 +44,7 @@ export function useLoginQuery({ initialValues = {} }) {
             toast.show({
                title: message,
             })
-         } catch(error) {
+         } catch (error) {
             toast.show({
                title: error.message
             })
@@ -57,11 +58,20 @@ export function useLoginQuery({ initialValues = {} }) {
 
 
 export default function useLogin({  initialValues = {} }) {
-   const { mutate, } = use
+   const { mutateAsync, } = useMutation(async payload => {
+      return await server().post(`/api/login`, payload)
+   })
    const formik = useFormik({
       initialValues,
-      onSubmit(values, action) {
+      async onSubmit(values, action) {
+         action.setSubmitting(true)
+         try {
+            await mutateAsync(values)
+         } catch (error) {
 
+         } finally {
+            action.setSubmitting(false)
+         }
       }
    })
    return formik

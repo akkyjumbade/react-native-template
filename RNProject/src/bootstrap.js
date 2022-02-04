@@ -16,6 +16,7 @@ import { notificationChannels } from './config'
 import LocaleContextProvider from './providers/LocaleProvider'
 import GeoLocationProvider from './providers/GeoLocationProvider'
 import DevicePermissionsProvider from './providers/DevicePermissionsProvider'
+import AuthenticationContextProvider from './providers/AuthenticationContextProvider'
 
 
 const Bootstrap = () => {
@@ -34,23 +35,25 @@ const Bootstrap = () => {
       <SafeAreaProvider >
          {/* <StatusBar translucent={true} /> */}
          <ErrorBoundary>
-            <DevicePermissionsProvider>
-               <LocaleContextProvider>
-                  <GeoLocationProvider>
-                     {status === 'LOADING' || status === 'INIT' ? (
-                        <LoadingScreen />
-                     ) : (
-                        <Fragment>
-                           {isOnline ? (
-                              <Navigation />
-                           ) : (
-                              <OfflineScreen />
-                           )}
-                        </Fragment>
-                     )}
-                  </GeoLocationProvider>
-               </LocaleContextProvider>
-            </DevicePermissionsProvider>
+            <AuthenticationContextProvider>
+               <DevicePermissionsProvider>
+                  <LocaleContextProvider>
+                     <GeoLocationProvider>
+                        {status === 'LOADING' || status === 'INIT' ? (
+                           <LoadingScreen />
+                        ) : (
+                           <Fragment>
+                              {isOnline ? (
+                                 <Navigation />
+                              ) : (
+                                 <OfflineScreen />
+                              )}
+                           </Fragment>
+                        )}
+                     </GeoLocationProvider>
+                  </LocaleContextProvider>
+               </DevicePermissionsProvider>
+            </AuthenticationContextProvider>
          </ErrorBoundary>
       </SafeAreaProvider>
    )

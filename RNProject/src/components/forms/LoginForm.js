@@ -13,10 +13,8 @@ import { useLoginQuery } from '@/api/login'
 const LoginForm = ({ initialValues = {}, }) => {
    const nav = useNavigation()
    const __ = useTranslation()
-   const onSubmit = async (values) => {
-      // return await http()
-   }
-   const loginForm = useLoginQuery()
+
+   const loginForm = useLoginQuery({ })
 
    return (
       <ErrorBoundary>
