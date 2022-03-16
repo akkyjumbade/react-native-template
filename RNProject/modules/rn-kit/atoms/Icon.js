@@ -1,12 +1,12 @@
 import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import PropTypes from 'prop-types'
-import FeatherIcon from 'react-native-vector-icons/Feather'
 
 const Icon = ({ name, lib, size, badge, ...props }) => {
+   // const CustomIconElement = icons
    return (
       <TouchableOpacity style={{ position: 'relative', }}>
-         <FeatherIcon name={name} {...props} />
+         {/* <FeatherIcon name={name} {...props} /> */}
       </TouchableOpacity>
    )
 }

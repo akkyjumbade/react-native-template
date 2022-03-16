@@ -33,7 +33,6 @@ const Bootstrap = () => {
 
    return (
       <SafeAreaProvider >
-         {/* <StatusBar translucent={true} /> */}
          <ErrorBoundary>
             <AuthenticationContextProvider>
                <DevicePermissionsProvider>

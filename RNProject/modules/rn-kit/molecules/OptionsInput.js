@@ -95,7 +95,6 @@ export default function OptionsInput(props) {
                {/* <Text>{JSON.stringify(selectedOption)}</Text> */}
                {renderField && renderField({ selectedOption, })}
             </View>
-            {/* <Icon size={20} lib="fa" name={props.rightIcon} style={styles.arrowIcon} /> */}
          </TouchableOpacity>
 
          <Portal>

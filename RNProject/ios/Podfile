@@ -14,7 +14,7 @@ target 'RNProject' do
       if pod.name.eql?('RNPermissions') || pod.name.start_with?('Permission-')
          def pod.build_type;
             # Uncomment the line corresponding to your CocoaPods version
-            # Pod::BuildType.static_library # >= 1.9
+            Pod::BuildType.static_library # >= 1.9
             # Pod::Target::BuildType.static_library # < 1.9
          end
       end
@@ -47,7 +47,6 @@ target 'RNProject' do
    # pod 'Permission-SpeechRecognition', :path => "#{permissions_path}/SpeechRecognition"
    # pod 'Permission-StoreKit', :path => "#{permissions_path}/StoreKit"
 
-  pod 'RNSentry', :path => '../node_modules/@sentry/react-native'
 
   pod 'TouchID', :path => '../node_modules/react-native-touch-id'
 

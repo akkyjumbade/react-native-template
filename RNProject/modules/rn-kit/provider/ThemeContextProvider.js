@@ -21,13 +21,6 @@ const ThemeContextProvider = ({ children, theme: providedTheme }) => {
 
    return (
       <React.Fragment>
-         <StatusBar
-            animated={true}
-            backgroundColor={themeSelected.colors?.primary ?? 'black'}
-            hidden={false}
-            barStyle={'dark-content'}
-            showHideTransition={'fade'}
-         />
          <ThemeProvider theme={themeSelected}>
             <NativeBaseProvider theme={extendTheme(themeSelected)}>
                {children}

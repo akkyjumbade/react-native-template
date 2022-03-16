@@ -74,15 +74,11 @@ const BillingScreen = ({ user, isAuthenticated, initialValues = {} }) => {
                            <Text>{__('Default currency')}</Text>
                         </View>
                         <View>
-                           {/* <Text color={'gray'}>{config.currency}</Text> */}
                            <Select
                               selectedValue={config.currency}
                               minWidth={200}
                               accessibilityLabel={'Choose currency'}
                               placeholder={'Choose currency'}
-                              // _selectedItem={{
-                              //    endIcon: <CheckIcon size="5" />,
-                              //  }}
                               mt={1}
                               onValueChange={selectedValue => {
                                  formik.setFieldValue('currency', selectedValue)

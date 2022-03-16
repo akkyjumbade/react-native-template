@@ -8,13 +8,7 @@ const SearchInputControl = (props) => {
       <View>
          <View>
             <TextInput
-               // prepend={() => (
-               //    <Icon name="search" color={'#000'} size={24} style={{ marginTop: 3, left: 3, }} />
-               // )}
                {...props}
-               // append={() => (
-               //    <Icon name="x" color={'#666'} size={24} style={{ marginTop: -2, marginLeft: -6 }} />
-               // )}
                placeholder={props.placeholder} />
          </View>
       </View>

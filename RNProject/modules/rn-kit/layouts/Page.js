@@ -3,15 +3,16 @@ import { ScrollView } from 'react-native'
 import styled, {css} from 'styled-components/native'
 import PropTypes from 'prop-types'
 import LoadingSpinner from "@modules/rn-kit/atoms/Loading";
-import { View } from 'native-base'
+import { StatusBar, View } from 'native-base'
 import { SafeAreaView } from 'react-native-safe-area-context';
 // import { Container, } from '..';
 import Text from '@modules/rn-kit/atoms/Text'
 import Container from '@modules/rn-kit/layouts/Container'
+import { useTheme } from 'styled-components';
 
 
 
-const StyledPage = styled.SafeAreaView`
+const StyledPage = styled(SafeAreaView)`
    flex: 1;
    flex-direction: column;
    height: 100%;
@@ -40,7 +41,8 @@ const Title = ({children}) => {
    )
 }
 
-export default function Page({ loading = false, fullScreen = false, scroll = false, children, ...props }) {
+export default function Page({ loading = false, fullScreen = false, scroll = false, children, hideStatusbar = false, ...props }) {
+   const theme = useTheme()
    if (props.error) {
       <StyledPage {...props} centerMode={true} fullScreen={false} scroll={false}>
          <Fragment>
@@ -50,18 +52,28 @@ export default function Page({ loading = false, fullScreen = false, scroll = fal
 
    }
    return (
-      <StyledPage style={{ flex: 1,  }} edges={['right', 'bottom', 'left', 'top']} mode="margin" {...props}>
-         {/* {loading && <LoadingSpinner overlay={true} />} */}
-         {scroll ? (
-            <ScrollView >
-               {children}
-            </ScrollView>
-         ) : (
-            <Fragment>
-               {children}
-            </Fragment>
-         )}
-      </StyledPage>
+      <Fragment>
+         <StatusBar
+            animated={true}
+            backgroundColor={theme.colors?.primary ?? 'black'}
+            // hidden={hideStatusbar}
+            // translucent={hideStatusbar}
+            barStyle={'dark-content'}
+            showHideTransition={'slide'}
+         />
+         <StyledPage style={{ flex: 1,  }} edges={['right', 'bottom', 'left', 'top']} mode="margin" {...props}>
+            {/* {loading && <LoadingSpinner overlay={true} />} */}
+            {scroll ? (
+               <ScrollView >
+                  {children}
+               </ScrollView>
+            ) : (
+               <Fragment>
+                  {children}
+               </Fragment>
+            )}
+         </StyledPage>
+      </Fragment>
    )
 }
 

@@ -1,5 +1,4 @@
 import React, { Fragment, memo } from "react";
-import * as Sentry from "@sentry/react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { QueryClientProvider } from "react-query";
 import Bootstrap from "./bootstrap";
@@ -10,13 +9,6 @@ import { Provider } from "react-redux";
 import store from "@/store";
 import { SENTRY_DSN } from "../.env";
 import { registerPushNotification } from "./services/PushNotificationService";
-
-Sentry.init({
-   dsn: SENTRY_DSN,
-   // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
-   // We recommend adjusting this value in production.
-   tracesSampleRate: 1.0,
-});
 
 registerPushNotification()
 
@@ -36,4 +28,4 @@ const App = () => {
    )
 }
 
-export default Sentry.wrap(App)
+export default App

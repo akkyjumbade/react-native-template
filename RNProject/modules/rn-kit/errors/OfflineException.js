@@ -8,7 +8,7 @@ const OfflineException = props => {
    return (
    <SafeAreaView style={[{ flex: 1, alignItems: 'center', justifyContent: 'center' }]}>
       <View style={{ marginVertical: 40, alignItems: 'center', justifyContent: 'center', }}>
-         <Icon color={colors.gray} name="wifi" size={50} style={{ marginBottom: 20, }} lib="FontAwesome5" />
+         <Icon color={colors.gray} name="wifi" size={50} style={{ marginBottom: 20, }} />
          <Heading>You are offline!</Heading>
       </View>
    </SafeAreaView>

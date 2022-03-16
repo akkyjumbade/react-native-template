@@ -4,8 +4,10 @@ import http, { server } from "@/utils/http"
 
 const { useMutation, useQueryClient } = require("react-query")
 
-export default function useAddressQuery({ onSuccess, onError }) {
+export function useAddressQuery({ onSuccess, onError, initialValues = {} }) {
    const queryClient = useQueryClient()
+   const toast = useToast()
+
    return useMutation(async (payload) => {
       let url = `/api/me/addresses`
       if (payload.id) {
@@ -29,5 +31,13 @@ export default function useAddressQuery({ onSuccess, onError }) {
          console.info(error)
          queryClient.invalidateQueries()
       },
+   })
+   const form = useFormik({
+      initialValues,
+      async onSubmit(values, action) {
+         try {
+
+         }
+      }
    })
 }

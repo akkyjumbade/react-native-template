@@ -47,10 +47,6 @@ const TabBarItem = ({ onClick, icon, label, activeTab, nav }) => {
    }
    return (
    <StyledTabItem active={activeTab} style={styles.tabItem} onPress={onClick} >
-      {/* <Icon lib={'FontAwesome5'} size={24} onPress={onClick} {...activeIconColor} style={[styles.tabIcon, ]} name={icon} /> */}
-      {/* {activeTab && (
-         <Text >{label}</Text>
-      )} */}
       {1 && (
          <Text >{label}</Text>
       )}

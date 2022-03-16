@@ -3,36 +3,26 @@ import styled from "styled-components/native";
 import PropTypes from 'prop-types'
 import Text from './Text';
 import { HStack } from 'native-base';
-import { StyledBaseButton } from '../themes/common';
+import { getButtonLabelProps, StyledBaseButton } from '../themes/common';
+import { StyleSheet, View } from 'react-native';
+import { Spinner } from './Loading';
 
 const StyledButton = styled(StyledBaseButton)`
-   background-color: ${({ intent, theme }) => theme.colors[intent]};
    color: black;
 `
 
 const Button = (props) => {
-   const { title, onPress, intent, leftIcon } = props
+   const { title, onPress, intent, leftIcon, loading } = props
 
 
-   let labelStyle = {
-      backgroundColor: 'transparent',
-      color: 'black',
-      fontSize: 17,
-   }
-   if (props.size === 'lg') {
-      labelStyle = {
-         ...labelStyle,
-         fontSize: 18,
-      }
-   }
-   if (props.small) {
-      labelStyle = {
-         ...labelStyle,
-         fontSize: 13,
-      }
-   }
+   let labelStyle = getButtonLabelProps({ ...props, loading })
    return (
       <StyledButton intent={intent} {...props} onPress={onPress} >
+         {loading && (
+            <View style={{ ...StyleSheet.absoluteFillObject, top: 13 }}>
+               <Spinner />
+            </View>
+         )}
          <HStack space={2} alignItems={'center'}>
             {leftIcon && leftIcon()}
             <Text style={{ ...labelStyle, }}>{title}</Text>

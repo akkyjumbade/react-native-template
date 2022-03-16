@@ -1,3 +1,5 @@
+import React from 'react'
+import CheckIcon from "@/icons/CheckIcon"
 import themes, { fonts } from "."
 import colors from "./colors"
 
@@ -34,44 +36,54 @@ export default {
             rounded: 'lg',
             shadow: 3,
             _title: {
-               fontFamily: 'Inter-Regular',
+               fontFamily: 'CircularStd-Book',
                fontWeight: 400,
             },
             _description: {
-               fontFamily: 'Inter-Regular'
-            },
+               fontFamily: 'CircularStd-Book'
+            }
          },
          defaultProps: {},
          variants: {},
          sizes: {},
-
       },
       Select: {
          baseStyle: {
-            borderRadius: 10,
-            _actionSheetContent: {
-               borderRadius: 10,
-               borderWidth: 0,
+            borderRadius: 13,
+            // overflow: 'hidden',
+            fontSize: 13,
+            customDropdownIconProps: {
+              size: 6,
+              mr: 2,
             },
-            borderWidth: 0,
+            _actionSheetContent: {
+               borderRadius: 20,
+            },
          },
-         defaultProps: {},
-         variants: {},
-         sizes: {},
+         defaultProps: {
+            variant: 'unstyled',
+            optimized: true,
+            placeholder: 'Choose option',
+            _selectedItem: {
+               bg: "teal.600",
+               endIcon: <CheckIcon size={5} />
+            }
+            // borderRadius: 10,
+         },
       },
       SelectItem: {
          baseStyle: {
-            borderRadius: 'lg'
-         }
-      },
-      Divider: {
-         baseStyle: {
-            borderColor: 'gray'
+            p: 1,
+            px: 2,
+            borderRadius: 20,
+            minH: 0,
          },
-         defaultProps: {},
-         variants: {},
-         sizes: {},
-     }
+         defaultProps: {
+            style: {
+               defaultProps: 20,
+            }
+         }
+      }
    }
    // fontPrimary: ''
 }

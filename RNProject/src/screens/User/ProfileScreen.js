@@ -1,7 +1,7 @@
 import React, { Fragment, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import {useColorScheme, View} from 'react-native';
-import {connect, useDispatch, useSelector} from 'react-redux';
+import { useColorScheme, View } from 'react-native';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import Page from '@modules/rn-kit/layouts/Page';
 import { Avatar, Center, Divider, HStack, List, Switch, useTheme, useToast, VStack } from 'native-base';
 import Text from '@modules/rn-kit/atoms/Text';
@@ -19,6 +19,7 @@ import useTranslation from '@/hooks/useTranslation';
 import ProfilePhotoUpdate from '@/components/ProfilePhotoUpdate';
 import { alert } from '@modules/rn-kit/utils/alert';
 import { setThemeAction } from '@/store/options/options.actions';
+import { Portal } from 'react-native-portalize';
 // import ErrorMessage from '@modules/rn-kit/molecules/ErrorMessage';
 // import { Button } from 'packages/rn-kit';
 const avatarPlaceholderImage = require('../../../assets/avatar_placeholder.jpeg')
@@ -32,7 +33,7 @@ const ProfileScreen = ({ user, isAuthenticated, options }) => {
    const selectedTheme = useMemo(() => {
       return options.appearance_theme
       // return 'light'
-   }, [ options ])
+   }, [options])
    function loginAsGuest() {
 
    }
@@ -51,10 +52,22 @@ const ProfileScreen = ({ user, isAuthenticated, options }) => {
    }
 
    return (
-      <Page scroll={true}>
+      <Page scroll={true} fullScreen={true} hideStatusbar={true}>
          <Page.Container>
             <Page.Title>My Account</Page.Title>
          </Page.Container>
+         <HStack>
+            <Button title={'Logout'} variant={'primary'} />
+            <Button title={'Logout'} variant={'info'} />
+            <Button title={'Logout'} variant={'secondary'} />
+            <Button title={'Logout'} variant={'danger'} />
+         </HStack>
+         <HStack>
+            <Button title={'Logout'} variant={'primary-outline'} />
+            <Button title={'Logout'} variant={'info-outline'} />
+            <Button title={'Logout'} variant={'secondary-outline'} />
+            <Button title={'Logout'} variant={'danger-outline'} />
+         </HStack>
          <Center style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center', paddingHorizontal: 15 }}>
             <View style={{ flex: 1, }}>
                <HStack alignItems={'center'} space={4}>
@@ -92,13 +105,13 @@ const ProfileScreen = ({ user, isAuthenticated, options }) => {
                   style={{ marginBottom: 15, borderWidth: 0 }}
                   divider={<Divider />}
                   space={1}
-                  >
+               >
                   <ErrorBoundary>
                      <Fragment>
                         {(teams?.length) && teams.map(tm => (
-                        <List.Item key={tm.id}>
-                           <Text>{tm.title}</Text>
-                        </List.Item>
+                           <List.Item key={tm.id}>
+                              <Text>{tm.title}</Text>
+                           </List.Item>
                         ))}
                      </Fragment>
                   </ErrorBoundary>
@@ -140,7 +153,7 @@ const ProfileScreen = ({ user, isAuthenticated, options }) => {
                   style={{ marginBottom: 15, borderWidth: 0 }}
                   divider={<Divider />}
                   space={1}
-                  >
+               >
                   <List.Item >
                      <Text bold fontSize={'15'}>{__('Help')}</Text>
                   </List.Item>
@@ -172,6 +185,7 @@ const ProfileScreen = ({ user, isAuthenticated, options }) => {
             </VStack>
             <View style={{ marginBottom: 20 }}>
                <ErrorBoundary>
+
                   <LogoutActionDialogue renderButton={(btnprops) => (
                      <Button title={'Logout'} {...btnprops} />
                   )} />
