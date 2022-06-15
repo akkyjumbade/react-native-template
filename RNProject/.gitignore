@@ -58,3 +58,6 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+yarn.lock
+*.zip
+#.env.js

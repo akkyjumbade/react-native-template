@@ -1,0 +1,17 @@
+export default {
+   gray: 'gray',
+   black: 'black',
+   dark: 'black',
+   label: '#f1f1f1',
+   primary: '#47ffc4',
+   secondary: 'lightgray',
+   success: 'gren',
+   warning: 'yellow',
+   danger: 'red',
+   light: '#f1f1f1',
+   white: 'white',
+   default: 'lightgray',
+   info: 'skyblue',
+   pageBg: 'white',
+   // textColor: '#191919',
+}

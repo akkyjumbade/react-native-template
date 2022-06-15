@@ -36,9 +36,84 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Allow your location to serve better results near you.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Enabling Face ID allows you quick and secure access to your account.</string>
+	<key>UIAppFonts</key>
+   <!-- <key>NSAppleMusicUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+   <!-- <key>NSBluetoothAlwaysUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+   <!-- <key>NSBluetoothPeripheralUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+   <!-- <key>NSCalendarsUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+   <!-- <key>NSCameraUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+   <!-- <key>NSContactsUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+   <!-- <key>NSFaceIDUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+   <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+   <string>Allow us to serve better services near you.</string>
+   <!-- <key>NSLocationAlwaysUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+   <!-- <key>NSLocationTemporaryUsageDescriptionDictionary</key>
+   <dict>
+      <key>YOUR-PURPOSE-KEY</key>
+      <string>YOUR TEXT</string>
+   </dict> -->
+   <!-- <key>NSLocationWhenInUseUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+   <!-- <key>NSMicrophoneUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+   <!-- <key>NSMotionUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+   <!-- <key>NSPhotoLibraryUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+   <!-- <key>NSPhotoLibraryAddUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+   <!-- <key>NSRemindersUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+   <!-- <key>NSSpeechRecognitionUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+   <!-- <key>NSSiriUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+   <!-- <key>NSUserTrackingUsageDescription</key>
+   <string>YOUR TEXT</string> -->
+	<array>
+		<string>Inter-Black.ttf</string>
+		<string>Inter-Bold.ttf</string>
+		<string>Inter-ExtraBold.ttf</string>
+		<string>Inter-ExtraLight.ttf</string>
+		<string>Inter-Light.ttf</string>
+		<string>Inter-Medium.ttf</string>
+		<string>Inter-Regular.ttf</string>
+		<string>Inter-SemiBold.ttf</string>
+		<string>Inter-Thin.ttf</string>
+		<string>AntDesign.ttf</string>
+		<string>Entypo.ttf</string>
+		<string>EvilIcons.ttf</string>
+		<string>Feather.ttf</string>
+		<string>FontAwesome.ttf</string>
+		<string>FontAwesome5_Brands.ttf</string>
+		<string>FontAwesome5_Regular.ttf</string>
+		<string>FontAwesome5_Solid.ttf</string>
+		<string>Fontisto.ttf</string>
+		<string>Foundation.ttf</string>
+		<string>Ionicons.ttf</string>
+		<string>MaterialCommunityIcons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>Octicons.ttf</string>
+		<string>SimpleLineIcons.ttf</string>
+		<string>Zocial.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>BootSplash</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

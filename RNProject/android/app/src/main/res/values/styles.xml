@@ -4,5 +4,10 @@
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
     </style>
+   <!-- Add the following lines (BootTheme should inherit from AppTheme) -->
+   <style name="BootTheme" parent="AppTheme">
+      <!-- set the generated bootsplash.xml drawable as activity background -->
+      <item name="android:background">@drawable/bootsplash</item>
+   </style>
 
 </resources>

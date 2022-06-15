@@ -1,3 +1,5 @@
+import { Text } from '@modules/rn-kit/atoms';
+import { View } from 'native-base';
 import React from 'react'
 
 
@@ -12,22 +14,22 @@ export default class ErrorBoundary extends React.Component {
       return { hasError: true, error };
    }
 
-   componentDidCatch(error, errorInfo) {
-      // You can also log the error to an error reporting service
-      // logErrorToMyService(error, errorInfo);
-   }
+   // componentDidCatch(error, errorInfo) {
+   //    // You can also log the error to an error reporting service
+   //    // logErrorToMyService(error, errorInfo);
+   // }
 
    render() {
-      // if (this.state.hasError) {
-      //    // You can render any custom fallback UI
-      //    return (
-      //       <View>
-      //          <Text>
-   //             Something went wrong.
-      //          </Text>
-      //       </View>
-      //    );
-      // }
+      if (this.state.hasError && __DEV__) {
+         const { error } = this.state
+         return (
+            <View>
+               <Text>
+                  {error.message ?? 'Something went wrong.'}
+               </Text>
+            </View>
+         );
+      }
 
       return this.props.children;
    }

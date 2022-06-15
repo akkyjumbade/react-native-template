@@ -1,4 +1,18 @@
 {
-  "name": "RNProject",
-  "displayName": "RNProject"
+   "name": "RNProject",
+   "displayName": "RNProject",
+   "package": "com.rnproject",
+   "android": {
+      "versionCode": ""
+   },
+   "ios": {
+      "bundleId": ""
+   },
+   "developer": {
+      "name": "",
+      "url": ""
+   },
+   "expo": {
+
+   }
 }

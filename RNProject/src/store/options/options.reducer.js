@@ -9,8 +9,9 @@ const initialState = {
    appearance_theme: 'system',
    alert_types: configOptions.alertTypes,
    languages: configOptions.languages,
-   countryCode: 'INR',
+   country: 'IN',
    countryPhoneCode: '+91',
+   biometrics_enabled: false,
 };
 
 export const actionTypes = {
@@ -20,6 +21,7 @@ export const actionTypes = {
    T_DARK_MODE: 'SET_DARK_MODE',
    T_UPDATE_CONFIG: 'UPDATE_CONFIG',
    T_SET_CHOICE: 'SET_CHOICE',
+   ACTION_SET_THEME: 'SET_THEME',
 }
 
 export default function optionsReducer(state = initialState, action) {
@@ -38,6 +40,7 @@ export default function optionsReducer(state = initialState, action) {
          }
          break;
       case actionTypes.T_DARK_MODE:
+      case actionTypes.ACTION_SET_THEME:
          state = {
             ...state,
             appearance_theme: action.payload,

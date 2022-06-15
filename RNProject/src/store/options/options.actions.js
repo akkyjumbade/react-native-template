@@ -12,6 +12,12 @@ function getConfigFromCacheOrApi(api) {
    })
 }
 
+export const setThemeAction = (theme = 'light') => {
+   return dispatch => {
+      dispatch({ type: 'SET_THEME', payload: theme })
+   }
+}
+
 export const perform_api_calls_action = props => {
    return async (dispatch, getState, { api }) => {
       try {

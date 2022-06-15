@@ -1,13 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Text, View } from 'react-native'
-import Page from '../components/layouts/Page'
+import Text from '@modules/rn-kit/atoms/Text'
+import ButtonPrimary from '@modules/rn-kit/atoms/ButtonPrimary'
+import Page from "@modules/rn-kit/layouts/Page";
 
 const LoadingScreen = (props) => {
    //
    return (
       <Page>
-         <Text>Loading...</Text>
+
       </Page>
    )
 }
@@ -17,7 +17,7 @@ LoadingScreen.propTypes = {
 }
 
 LoadingScreen.defaultProps = {
-   type: 'text'
+
 }
 
 export default LoadingScreen

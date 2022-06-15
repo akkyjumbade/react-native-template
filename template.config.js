@@ -1,5 +1,5 @@
 module.exports = {
-   // Placeholder name that will be replaced in package.json, index.json, android/, ios/ for a project name.
+   // Placeholder name that will be replaced in package.json, en.json, android/, ios/ for a project name.
    placeholderName: 'RNProject',
 
    // Placeholder title that will be replaced in values.xml and Info.plist with title provided by the user.
